@@ -13,7 +13,6 @@ public class Word {
     word_explain = new String(_word_explain);
     word_type = new String(_word_type);
     word_example = new String(_word_example);
-    word_level = new String(_word_level);
   }
 
   /**constructor without parameters */
@@ -22,7 +21,6 @@ public class Word {
     word_explain = "";
     word_type = "";
     word_example = "";
-    word_level = "";
   }
 
   /**getter word. */
@@ -68,16 +66,6 @@ public class Word {
   /**getter word_example. */
   public String getWordExample() {
     return new String(word_example);
-  }
-
-  /**setter word_level. */
-  public void setWordLevel(String n) {
-    word_level = new String (n);
-  }
-
-  /**getter word_level. */
-  public String getWordLevel() {
-    return new String(word_level);
   }
 
 
