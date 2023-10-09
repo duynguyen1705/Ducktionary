@@ -79,13 +79,12 @@ public class DatabaseConnection {
 //            // Tạo table - run trong lần đầu chạy code
             Statement stm = connection.createStatement();
 
-//            String addTable = "CREATE TABLE DICTIONARY " + "(word_target VARCHAR (50), " + "word_explain VARCHAR(511), "
-//                    + "word_type VARCHAR(127), " + "word_example VARCHAR(1023) )";
-//            stm.executeUpdate(addTable);
+            String addTable = "CREATE TABLE DICTIONARY " + "(word_target VARCHAR (50), " + "word_explain VARCHAR(511), "
+                    + "word_type VARCHAR(127), " + "word_example VARCHAR(1023) )";
+            stm.executeUpdate(addTable);
 
             //đưa từ vào table
             addWordToDatabase(connection);
-
 
             connection.close();
         } catch (SQLException e) {
