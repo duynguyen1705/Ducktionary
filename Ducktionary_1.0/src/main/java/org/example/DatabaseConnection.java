@@ -48,7 +48,7 @@ public class DatabaseConnection {
     }
 
     public static void addWordToDatabase(Connection connection) {
-        ArrayList<String> commandLines = new DatabaseConnection().getJSONFromFile("D:\\Year_2\\BTL_OOP\\Ducktionary\\Ducktionary_1.0\\src\\main\\res\\wordList.json");
+        ArrayList<String> commandLines = new DatabaseConnection().getJSONFromFile("D:\\project\\Ducktionary\\Ducktionary_1.0\\src\\main\\res\\wordList.json");
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(commandLines.get(0));
             for (int i = 1; i < commandLines.size(); i += 4) {
@@ -70,18 +70,18 @@ public class DatabaseConnection {
          * Add vao project duoi local bang cach an Ctrl + Alf + Shift + S, vao library, them file .jar vao.
          * Hoac dung maven cho nhanh :> Luu y la file maven t dang dung 8.0.30, check lai ma dung ban moi nhat
          */
-        String url = "jdbc:mysql://localhost:3306/mydb"; //thay bang ten csdl
+        String url = "jdbc:mysql://localhost:3306/word_list"; //thay bang ten csdl
         String username = "root"; //nen dung root, thay username khac chua chac ket noi duoc
-        String password = "Duyd3pz4i"; // thay bang password cua csdl
+        String password = "Nguyen175@"; // thay bang password cua csdl
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
 //            // Tạo table - run trong lần đầu chạy code
             Statement stm = connection.createStatement();
 
-            String addTable = "CREATE TABLE DICTIONARY " + "(word_target VARCHAR (50), " + "word_explain VARCHAR(511), "
-                    + "word_type VARCHAR(127), " + "word_example VARCHAR(1023) )";
-            stm.executeUpdate(addTable);
+//            String addTable = "CREATE TABLE DICTIONARY " + "(word_target VARCHAR (50), " + "word_explain VARCHAR(511), "
+//                    + "word_type VARCHAR(127), " + "word_example VARCHAR(1023) )";
+//            stm.executeUpdate(addTable);
 
             //đưa từ vào table
             addWordToDatabase(connection);

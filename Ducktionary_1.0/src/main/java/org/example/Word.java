@@ -24,7 +24,7 @@ public class Word {
 
   /**getter word. */
   public String getWord() {
-    return new String (word_target + "  |  " + "  |  " + word_explain + "  |  " + word_type + "  |  " + word_example);
+    return new String (word_target + "  |  " + word_explain + "  |  " + word_type + "  |  " + word_example);
   }
 
   /**setter word_target. */
