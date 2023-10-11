@@ -24,7 +24,7 @@ public class DictionaryManagement extends Dictionary {
         });
 
     }
-    public void exportToFile(ArrayList<Word> word_list, String path) {
+    public void dictionaryExportToFile(ArrayList<Word> word_list, String path) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -38,7 +38,7 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    public void insertFromFile(ArrayList<Word> word_list, String path) {
+    public void dictionaryLookup(ArrayList<Word> word_list, String path) {
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -66,7 +66,7 @@ public class DictionaryManagement extends Dictionary {
             Scanner newScanner = new Scanner(System.in);
             for (int i = 0; i < words_list.size(); i++) {
                 if(Objects.equals(words_list.get(i).getWordTarget(), key)) {
-                    System.out.print(words_list.get(i).getWord() + " - " + words_list.get(i).getWordExplain());
+                    System.out.print(words_list.get(i).getWord());
                     break;
                 }
             }
