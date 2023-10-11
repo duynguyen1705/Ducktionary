@@ -65,7 +65,7 @@ public class DictionaryManagement extends Dictionary {
         try {
             Scanner newScanner = new Scanner(System.in);
             for (int i = 0; i < words_list.size(); i++) {
-                if(Objects.equals(words_list.get(i).getWord(), key)) {
+                if(Objects.equals(words_list.get(i).getWordTarget(), key)) {
                     System.out.print(words_list.get(i).getWord() + " - " + words_list.get(i).getWordExplain());
                     break;
                 }
