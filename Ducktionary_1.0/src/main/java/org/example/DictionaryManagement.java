@@ -1,73 +1,121 @@
 package org.example;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.util.*;
-
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Scanner;
 
-public class DictionaryManagement extends Dictionary {
-    public static void insertFromCommandline() {
-        // input
+public class DictionaryManagement {
+    public void insertFromCommandline(ArrayList<Word> dictionary) {
+
         Scanner sc = new Scanner(System.in);
-        String word_target = sc.nextLine();
-        String word_type = sc.nextLine();
-        String word_explain = sc.nextLine();
-        String word_example = sc.nextLine();
+        System.out.println("Input word you want to add: ");
+        String wordTarget = sc.nextLine();
 
-        word_list.add(new Word(word_target, word_explain, word_type, word_example));
-        word_list.sort(new Comparator<Word>() {
-            @Override
-            public int compare(Word word1, Word word2) {
-                return word1.getWordTarget().compareTo(word2.getWordTarget());
-            }
-        });
+        System.out.println("Input type of *"  + wordTarget.trim() + " :");
+        String wordType = sc.nextLine();
 
+        System.out.println("Input meaning of *" + wordTarget.trim() + " :");
+        String wordExplain = sc.nextLine();
+
+        Word newWord = new Word();
+        newWord.setWordTarget(wordTarget);
+        newWord.setWordType(wordType);
+        newWord.setWordExplain(wordExplain);
+
+        dictionary.add(newWord);
+        System.out.println(wordTarget + "is added in Ductionary");
+        // dictionary.sort(new sortWord());
     }
-    public void dictionaryExportToFile(ArrayList<Word> word_list, String path) {
+
+    public void insertFromFile(ArrayList<Word> dictionary, String path) {
+        try {
+            FileReader fileReader = new FileReader(path);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+
+            String wordTarget = line.replace("|", "");
+
+            while ((line = bufferedReader.readLine()) != null) {
+                Word newWord = new Word();
+                newWord.setWordTarget(wordTarget.trim());
+                String wordExplain = "";
+                String wordType = "";
+                if(line.startsWith("*")) {
+                    wordType = line.replace("*", "");
+                }
+                else {
+                    wordExplain = line.trim()+ "\n";
+                }
+                while ((line = bufferedReader.readLine()) != null) {
+                    if(line.startsWith("-")) {
+                        wordExplain += line.trim() + "\n";
+                    } else if(line.startsWith("|")) {
+                        wordTarget = line.replace("|", "");
+                        break;
+                    }
+                }
+                newWord.setWordType(wordType.trim());
+                newWord.setWordExplain(wordExplain.trim());
+                dictionary.add(newWord);
+                System.out.println("Insert from file successfully!");
+            }
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+    }
+
+    public void dictionaryExportToFile(ArrayList<Word> dictionary, String path) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (Word word : word_list) {
-                bufferedWriter.write("-" + word.getWordTarget() + "\n" + word.getWordType() + "\n" + word.getWordExplain() + "\n" + word.getWordExample());
+            for (Word word : dictionary) {
+                bufferedWriter.write("|" + word.getWordTarget() + "\n");
+                if(!word.getWordType().isEmpty()) {
+                    bufferedWriter.write("*" + word.getWordType() + "\n");
+                }
+                bufferedWriter.write(word.getWordExplain());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
+            System.out.println("Export to file successfully!");
         } catch (Exception error) {
             System.out.println("Error: " + error);
         }
     }
 
-    public void dictionaryLookup(ArrayList<Word> word_list, String path) {
+    public int searchWord(ArrayList<Word> dictionary, String word) {
         try {
-            FileReader fileReader = new FileReader(path);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                Word newWord = new Word();
-                String[] parts = line.split("\t");
-                String wordTarget = "", wordExplain = "";
-                if (parts.length == 2) {
-                    wordTarget = parts[0].trim();
-                    wordExplain = parts[1].trim();
+            dictionary.sort(new sortWord());
+            int begin = 0;
+            int last = dictionary.size() - 1;
+            while(begin <= last) {
+                int mid = (begin+last)/2;
+                int check = dictionary.get(mid).getWordTarget().compareTo(word);
+                if(check == 0) {
+                    return mid;
                 }
-                newWord.setWordTarget(wordTarget);
-                newWord.setWordExplain(wordExplain);
-                newWord.setWordExample("Word Example is Loading");
-                newWord.setWordType("Word Type is Loading");
-                word_list.add(newWord);
+                if(check <= 0) {
+                    begin = mid + 1;
+                } else {
+                    last = mid - 1;
+                }
             }
-        } catch(IOException error) {
-            error.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
+        return -1;
     }
-    public void lookupWord(ArrayList<Word> words_list, String key ) {
+
+    public void dictionaryLookup(ArrayList<Word> dictionary) {
         try {
-            Scanner newScanner = new Scanner(System.in);
-            for (int i = 0; i < words_list.size(); i++) {
-                if(Objects.equals(words_list.get(i).getWordTarget(), key)) {
-                    System.out.print(words_list.get(i).getWord());
-                    break;
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Input word you want to lookup: ");
+            String word = scanner.nextLine();
+            System.out.println("The result: ");
+            for (Word w : dictionary) {
+                if (w.getWordTarget().startsWith(word)) {
+                    System.out.println(w.getWordTarget());
                 }
             }
         } catch (Exception e) {
@@ -75,33 +123,79 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-    public void updateWord(ArrayList<Word> words_list, int index, String meaning, String path) {
+    public void updateWord(ArrayList<Word> dictionary, String path) {
         try {
-            words_list.get(index).setWordExplain(meaning);
-            exportToFile(words_list, path);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Input word you want to update: ");
+
+            String word = scanner.nextLine();
+
+            int index = searchWord(dictionary, word);
+
+            System.out.println("Do you want to update word type or meaning of " + word + "\n" + "1. Word type\n2. Meaning");
+            int selection = scanner.nextInt();
+            scanner.nextLine();
+            if(selection == 1) {
+                System.out.println("Input word type of *" + word + ": ");
+                String wordType = scanner.nextLine();
+                dictionary.get(index).setWordType(wordType);
+            }
+            else {
+                System.out.println("Input meaning of *" + word +  ": ");
+                String meaning = scanner.nextLine();
+                dictionary.get(index).setWordExplain(meaning);
+            }
+            System.out.println(word + " is updated in Ducktionary.");
+            dictionaryExportToFile(dictionary, path);
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
         }
     }
 
-    public void deleteWord(ArrayList<Word> words_list, int index, String path) {
-        try {
-            words_list.remove(index);
-            exportToFile(words_list, path);
-        } catch (NullPointerException e) {
-            System.out.println("Null Exception.");
-        }
-    }
-
-    public void addWord(Word word, String path) {
+    public void addWord(ArrayList<Word> dictionary, String path) {
         try (FileWriter fileWriter = new FileWriter(path, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write(word.getWordTarget() + "\t" + word.getWordExplain());
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Input word you want to add: ");
+            String wordTarget = scanner.nextLine();
+
+            System.out.println("Input word type of *" + wordTarget + ": (if don't, please type 'null')");
+            String wordType = scanner.nextLine();
+
+            System.out.println("Input meaning of *" + wordTarget + ": ");
+            String meaning = scanner.nextLine();
+
+            Word newWord = new Word();
+            newWord.setWordTarget(wordTarget);
+            newWord.setWordType(wordType);
+            newWord.setWordExplain(meaning);
+            dictionary.add(newWord);
+            bufferedWriter.write("|" + newWord.getWordTarget() + "\n");
+            if(!newWord.getWordType().isEmpty()) {
+                bufferedWriter.write("*" + newWord.getWordType() + "\n");
+            }
+            bufferedWriter.write(newWord.getWordExplain());
             bufferedWriter.newLine();
+
+            System.out.println(wordTarget + " is added in Ducktionary");
         } catch (IOException e) {
             System.out.println("IOException.");
         } catch (NullPointerException e) {
             System.out.println("Null Exception.");
+        }
+    }
+    public void removeWord(ArrayList<Word> dictionary) {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Input word you remove: ");
+
+            String word= scanner.nextLine();
+            int index = searchWord(dictionary, word);
+            dictionary.remove(index);
+
+            System.out.println(word + " is removed from Ducktionary");
+        } catch (NullPointerException e){
+            System.out.println("Null");
         }
     }
 }
