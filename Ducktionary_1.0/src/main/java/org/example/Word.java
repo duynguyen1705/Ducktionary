@@ -1,70 +1,55 @@
 package org.example;
 
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
 public class Word {
-  private String word_target;
-  private String word_explain;
-  private String word_type;
-  private String word_example;
+    private String wordTarget;
+    private String wordExplain;
+    private String wordPronunciation;
+    private String wordType;
 
-  /**constructor with parameters. */
-  public Word(String _word_target, String _word_explain, String _word_type, String _word_example) {
-    word_target = new String(_word_target);
-    word_explain = new String(_word_explain);
-    word_type = new String(_word_type);
-    word_example = new String(_word_example);
-  }
+    public Word() {
+        this.wordTarget = "";
+        this.wordPronunciation = "";
+        this.wordExplain = "";
+        this.wordType = "";
+    }
+    public Word(String wordTarget, String wordPronunciation, String wordType, String wordExplain) {
+        this.wordTarget = wordTarget;
+        this.wordPronunciation = wordPronunciation;
+        this.wordExplain = wordExplain;
+        this.wordType = wordType;
+    }
+    public String getWordExplain() {
+        return wordExplain;
+    }
 
-  /**constructor without parameters */
-  public Word() {
-    word_target = "";
-    word_explain = "";
-    word_type = "";
-    word_example = "";
-  }
+    public void setWordExplain(String wordExplain) {
+        this.wordExplain = wordExplain;
+    }
 
-  /**getter word. */
-  public String getWord() {
-    return new String (word_target + "  |  " + word_explain + "  |  " + word_type + "  |  " + word_example);
-  }
+    public String getWordTarget() {
+        return wordTarget;
+    }
 
-  /**setter word_target. */
-  public void setWordTarget(String n) {
-    word_target = new String(n);
-  }
+    public void setWordTarget(String wordTarget) {
+        this.wordTarget = wordTarget;
+    }
 
-  /**getter word_target. */
-  public String getWordTarget() {
-    return new String(word_target);
-  }
+    public String getWordPronunciation() {
+        return wordPronunciation;
+    }
 
-  /**setter word_explain. */
-  public void setWordExplain(String n) {
-    word_explain = new String(n);
-  }
+    public void setWordPronunciation(String wordPronunciation) {
+        this.wordPronunciation = wordPronunciation;
+    }
 
-  /**getter word_explain. */
-  public String getWordExplain() {
-    return new String(word_explain);
-  }
+    public void setWordType(String wordType) {
+        this.wordType = wordType;
+    }
 
-  /**setter word_type. */
-  public void setWordType(String n) {
-    word_example = new String(n);
-  }
-
-  /**getter word_type. */
-  public String getWordType() {
-    return new String(word_type);
-  }
-
-  /**setter word_example. */
-  public void setWordExample(String n) {
-    word_example = new String(n);
-  }
-
-  /**getter word_example. */
-  public String getWordExample() {
-    return new String(word_example);
-  }
+    public String getWordType() {
+        return wordType;
+    }
 
 }
