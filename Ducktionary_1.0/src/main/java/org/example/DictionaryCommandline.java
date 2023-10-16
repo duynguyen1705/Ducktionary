@@ -20,8 +20,8 @@ public class DictionaryCommandline {
         }
     }
     public static void dictionaryAdvanced(ArrayList<Word> dictionary) {
-        final String pathInput = "C:\\Users\\Andrew\\Desktop\\dictionaries.txt";
-        final String pathOutput = "C:\\Users\\Andrew\\Desktop\\DictionaryOutput.txt";
+        String pathInput = "src/main/resources/dictionaries.txt";
+        final String pathOutput = "src/main/resources/dictionariesOutput.txt";
         while(true) {
             System.out.println("\n----------------------------");
             System.out.println("Welcome to Ducktionary!");
