@@ -1,0 +1,18 @@
+.panel {
+    -fx-background-color: #A1C9F1;
+}
+
+.inputField {
+    -fx-font-family: "Montserrat Medium";
+}
+
+.inputText {
+    -fx-font-family: "Montserrat Semibold";
+}
+
+.button {
+    -fx-background-color: "FFFFFF";
+    -fx-border-radius: 6px;
+    -fx-border-width: 2px;
+    -fx-font-style: 20px;
+}
