@@ -11,7 +11,7 @@ public class AdderController extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Adder.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/adder.fxml"));
         Scene adderScene = new Scene(root, 600, 400);
         stage.setScene(adderScene);
         stage.show();
