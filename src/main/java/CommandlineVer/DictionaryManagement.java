@@ -58,7 +58,6 @@ public class DictionaryManagement {
                 newWord.setWordType(wordType.trim());
                 newWord.setWordExplain(wordExplain.trim());
                 dictionary.add(newWord);
-                System.out.println("Insert from file successfully!");
             }
         } catch (IOException error) {
             error.printStackTrace();

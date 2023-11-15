@@ -96,7 +96,7 @@ public class DictionaryCommandline {
                     System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", index + 1, dictionary.get(index).getWordTarget(), dictionary.get(index).getWordType(), dictionary.get(index).getWordExplain());
                     break;
                 case 7:
-                    System.out.println("Loading....");
+                    playGame(dictionary);
                 case 8:
                     management.insertFromFile(Dictionary.dictionary, pathInput);
                     break;
@@ -116,5 +116,29 @@ public class DictionaryCommandline {
     }
     public static void main(String[] args) {
         dictionaryAdvanced(Dictionary.dictionary);
+    }
+
+    public static void playGame(ArrayList<Word> dictionary) {
+        String pathInput = "src/main/resources/dictionaries.txt";
+        management.insertFromFile(dictionary, pathInput);
+        Wordle wordle = new Wordle();
+        Scanner scan = new Scanner(System.in);
+        wordle.chooseWord();
+        int count = 5;
+        System.out.println("You have 5 hearts...");
+        while (count >= 0) {
+            System.out.println("Enter your character u guess the word has: ");
+            char temp = scan.next().charAt(0);
+            if (wordle.checkIn(temp)) {
+                wordle.print();
+            }
+            else {
+                System.out.println("You have " + --count + " choices");
+            }
+            if (wordle.checkTrue()) {
+                return;
+            }
+        }
+        System.out.println(":< so sad!! you dead!! Our word is: " + wordle.getTargetWord());
     }
 }
