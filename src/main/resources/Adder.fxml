@@ -31,13 +31,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="139.0" layoutY="83.0" prefHeight="26.0" prefWidth="140.0" styleClass="inputField" stylesheets="@style.css" />
+            <TextField fx:id="wordName" layoutX="139.0" layoutY="83.0" prefHeight="26.0" prefWidth="140.0" styleClass="inputField" stylesheets="@style.css" />
             <Label layoutX="139.0" layoutY="214.0" styleClass="inputText" stylesheets="@style.css" text="Ví dụ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="139.0" layoutY="321.0" mnemonicParsing="false" stylesheets="@style.css" text="Thêm" />
+            <Button fx:id="AdderSubmitBtn" layoutX="139.0" layoutY="321.0" mnemonicParsing="false" onAction="#createWord" stylesheets="@style.css" text="Thêm" />
             <Label layoutX="201.0" layoutY="325.0" styleClass="inputText" stylesheets="@style.css" text="Thành công" />
             <Label layoutX="201.0" layoutY="325.0" styleClass="inputText" stylesheets="@style.css" text="Không thành công! Đã tồn tại từ trong từ điển" />
             <Label layoutX="139.0" layoutY="54.0" styleClass="inputText" stylesheets="@style.css" text="Từ tiếng anh">
@@ -51,8 +51,8 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="139.0" layoutY="161.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
-            <TextField layoutX="139.0" layoutY="244.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
+            <TextField fx:id="wordExplaination" layoutX="139.0" layoutY="161.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
+            <TextField fx:id="wordExample" layoutX="139.0" layoutY="244.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
          </children>
       </Pane>
    </children>

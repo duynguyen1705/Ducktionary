@@ -1,23 +1,40 @@
 package CommandlineVer;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
-import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.awt.*;
 
-public class AdderController extends Application {
+public class AdderController {
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/adder.fxml"));
-        Scene adderScene = new Scene(root, 600, 400);
-        stage.setScene(adderScene);
-        stage.show();
-    }
+    @FXML
+    TextField wordName;
 
-    public static void main(String[] args) {
-        launch();
+    @FXML
+    TextField wordExplaination;
+
+    TextField wordExample;
+
+    @FXML
+
+    Word newWord;
+
+    public void createWord() {
+        System.out.println("Button clicked! \n");
+        try {
+            String wordNameText = wordName.getText();
+            String wordExplainationText = wordExplaination.getText();
+            String wordExampleText = wordExample.getText();
+
+            if (wordNameText == "" || wordExplainationText == "" || wordExampleText == "") {
+                throw new RuntimeException("Missing components");
+            }
+
+
+
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 }

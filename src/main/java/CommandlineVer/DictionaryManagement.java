@@ -24,7 +24,7 @@ public class DictionaryManagement {
         newWord.setWordExplain(wordExplain);
 
         dictionary.add(newWord);
-        System.out.println(wordTarget + "is added in Ductionary");
+        System.out.println(wordTarget + "is added in Ducktionary");
         // dictionary.sort(new sortWord());
     }
 
