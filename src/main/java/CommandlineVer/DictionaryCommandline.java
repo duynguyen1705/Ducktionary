@@ -25,7 +25,7 @@ public class DictionaryCommandline {
         while(true) {
             System.out.println("\n----------------------------");
             System.out.println("Welcome to Ducktionary!");
-            final int numberFunction = 10;
+            final int numberFunction = 11;
             for (int i = 0; i < numberFunction; i++) {
                 System.out.print("[" + i + "] ");
                 switch (i) {
@@ -58,6 +58,8 @@ public class DictionaryCommandline {
                         break;
                     case 9:
                         System.out.println("Export to file");
+                    case 10:
+                        System.out.println("Translate text");
                     default:
                         break;
                 }
@@ -102,6 +104,9 @@ public class DictionaryCommandline {
                     break;
                 case 9:
                     management.dictionaryExportToFile(Dictionary.dictionary, pathOutput);
+                    break;
+                case 10:
+                    management.translatetext();
                     break;
                 default:
                     System.out.println("Action not supported");

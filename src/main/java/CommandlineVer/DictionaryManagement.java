@@ -122,6 +122,13 @@ public class DictionaryManagement {
         }
     }
 
+    public void translatetext() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your text");
+        String text = scan.next();
+        System.out.println("It means: " + translateText.callGoogleTrans(text, "VN"));
+    }
+
     public void updateWord(ArrayList<Word> dictionary, String path) {
         try {
             Scanner scanner = new Scanner(System.in);
