@@ -3,16 +3,77 @@
 }
 
 .inputField {
-    -fx-font-family: "Montserrat Medium";
+    -fx-font-family: "Montserrat Semibold";
 }
 
 .inputText {
     -fx-font-family: "Montserrat Semibold";
+    -fx-font-size: 15px;
 }
 
-.button {
+.submit_button {
     -fx-background-color: "FFFFFF";
     -fx-border-radius: 6px;
     -fx-border-width: 2px;
-    -fx-font-style: 20px;
+    -fx-font-size: 15px;
+}
+
+/* General styling for the TabPane */
+.tab-pane {
+    -fx-background-color: transparent; /* Change the background color around tabs */
+}
+
+.tab-pane .tab {
+    -fx-min-height: 50px; /* Set the minimum height of the tabs */
+    -fx-pref-height: 50px; /* Set the preferred height of the tabs */
+}
+
+/* Styling for individual tabs */
+.tab {
+    -fx-background-color: transparent; /* Change the tab background color */
+
+}
+
+/* Rotating text in tab headers */
+.tab .tab-label {
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-background-inset: 0;
+    -fx-background-radius: 0.0;
+    -fx-padding: 0 10 0 10;
+    -fx-rotate: 90; /* Rotate the text by 90 degrees */
+    -fx-font-size: 12;
+}
+
+/* Adjusting the height of the tabs */
+.tab-pane .tab {
+    -fx-min-height: 50px; /* Set the minimum height of the tabs */
+    -fx-pref-height: 50px; /* Set the preferred height of the tabs */
+}
+
+.page_placeholder {
+    -fx-spacing: 30;
+    -fx-background-color: #4e91d4
+}
+
+.page_button {
+    -fx-min-height: 50px;
+    -fx-pref-height: 50px;
+    -fx-min-width: 50px;
+    -fx-min-width: 50px;
+    -fx-background-color: transparent;
+}
+
+.page_button .image-view {
+    -fx-min-height: 50px;
+    -fx-pref-height: 50px;
+    -fx-min-width: 50px;
+    -fx-min-width: 50px;
+}
+
+.func_button {
+    -fx-min-height: 20px;
+    -fx-pref-height: 20px;
+    -fx-min-width: 20px;
+    -fx-min-width: 20px;
 }
