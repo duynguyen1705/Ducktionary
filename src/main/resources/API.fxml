@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CommandlineVer.APIController">
+   <children>
+      <VBox layoutX="-1.0" layoutY="-8.0" prefHeight="408.0" prefWidth="58.0" styleClass="page_placeholder" stylesheets="@style.css">
+         <children>
+            <Region prefHeight="20.0" prefWidth="70.0" />
+            <Button minHeight="37.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="54.0" styleClass="page_button" stylesheets="@style.css">
+               <graphic>
+                  <ImageView id="book_button" fitHeight="51.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@book.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="api_button" minWidth="49.0" mnemonicParsing="false" prefWidth="54.0" styleClass="page_button" stylesheets="@style.css">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@globe.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="game_button" mnemonicParsing="false" prefWidth="54.0" styleClass="page_button" stylesheets="@style.css">
+               <graphic>
+                  <ImageView id="game_button" fitHeight="47.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@console.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="57.0" prefHeight="400.0" prefWidth="542.0">
+         <children>
+            <Label layoutX="236.0" layoutY="14.0" text="Dịch văn bản" />
+            <TabPane layoutY="44.0" prefHeight="356.0" prefWidth="542.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Anh - Việt">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tab" stylesheets="@style.css">
+                           <children>
+                              <Label layoutX="110.0" layoutY="26.0" text="Tiếng Anh" />
+                              <Label layoutX="378.0" layoutY="26.0" text="Tiếng Việt" />
+                              <TextField id="en_input" alignment="TOP_LEFT" layoutX="40.0" layoutY="52.0" prefHeight="222.0" prefWidth="195.0" promptText="Nhập văn bản" stylesheets="@style.css" />
+                              <Button layoutX="248.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="46.0" text="Dịch" />
+                              <Button layoutX="40.0" layoutY="274.0" minHeight="31.0" minWidth="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="30.0" style="-fx-pref-height: 20; -fx-pref-width: 20;" stylesheets="@style.css">
+                                 <styleClass>
+                                    <String fx:value="page_button" />
+                                    <String fx:value="func_button" />
+                                 </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@speaker-filled-audio-tool.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <TextArea id="vi_output" layoutX="305.0" layoutY="54.0" prefHeight="220.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Việt - Anh">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="381.0" layoutY="28.0" text="Tiếng Anh" />
+                              <Label layoutX="106.0" layoutY="28.0" text="Tiếng Việt" />
+                              <TextField id="vi_input" alignment="TOP_LEFT" layoutX="35.0" layoutY="52.0" prefHeight="222.0" prefWidth="195.0" promptText="Nhập văn bản" />
+                              <TextField id="en_output" layoutX="311.0" layoutY="52.0" prefHeight="222.0" prefWidth="195.0" />
+                              <Button layoutX="35.0" layoutY="274.0" minHeight="31.0" minWidth="30.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="30.0" style="-fx-pref-height: 20; -fx-pref-width: 20;" stylesheets="@style.css">
+                                 <styleClass>
+                                    <String fx:value="page_button" />
+                                    <String fx:value="func_button" />
+                                 </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@speaker-filled-audio-tool.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="248.0" layoutY="280.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="46.0" text="Dịch" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
