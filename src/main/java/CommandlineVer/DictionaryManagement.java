@@ -2,7 +2,6 @@ package CommandlineVer;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -106,17 +105,13 @@ public class DictionaryManagement {
         return -1;
     }
 
-    public void dictionaryLookup(ArrayList<Word> dictionary) {
+    public void dictionaryLookup() {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input word you want to lookup: ");
             String word = scanner.nextLine();
             System.out.println("The result: ");
-            for (Word w : dictionary) {
-                if (w.getWordTarget().startsWith(word)) {
-                    System.out.println(w.getWordTarget());
-                }
-            }
+            System.out.println(CallAPI.lookup(word, "en", "vi"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -126,7 +121,7 @@ public class DictionaryManagement {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your text");
         String text = scan.next();
-        System.out.println("It means: " + translateText.callGoogleTrans(text, "VN"));
+        System.out.println("It means: " + CallAPI.translate(text, "en", "vi"));
     }
 
     public void updateWord(ArrayList<Word> dictionary, String path) {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main">
+   <children>
+      <AnchorPane fx:id="container" layoutX="61.0" prefHeight="400.0" prefWidth="538.0" />
+      <Button fx:id="SearchButton" layoutY="104.0" mnemonicParsing="false" text="Search">
+         <tooltip>
+            <Tooltip text="Search" />
+         </tooltip>
+      </Button>
+      <Button fx:id="AddButton" layoutY="174.0" mnemonicParsing="false" text="Add">
+         <tooltip>
+            <Tooltip text="Add" />
+         </tooltip>
+      </Button>
+      <Button fx:id="TranslateButton" layoutY="243.0" mnemonicParsing="false" text="Translate">
+         <tooltip>
+            <Tooltip text="Translate" />
+         </tooltip>
+      </Button>
+      <Button fx:id="ExitButton" layoutY="346.0" mnemonicParsing="false" text="Exit">
+         <tooltip>
+            <Tooltip text="Exit" />
+         </tooltip>
+      </Button>
+   </children>
+</AnchorPane>

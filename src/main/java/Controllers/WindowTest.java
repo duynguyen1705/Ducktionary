@@ -11,7 +11,7 @@ public class WindowTest extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/DictionaryWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/DictionaryWindow.fxml"));
         Scene adderScene = new Scene(root, 600, 400);
         stage.setScene(adderScene);
         stage.show();

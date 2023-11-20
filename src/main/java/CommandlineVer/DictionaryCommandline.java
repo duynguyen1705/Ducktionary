@@ -86,7 +86,7 @@ public class DictionaryCommandline {
                     commandLine.showAllWord();
                     break;
                 case 5:
-                    management.dictionaryLookup(Dictionary.dictionary);
+                    management.dictionaryLookup();
                     break;
                 case 6:
                     System.out.println("Search");
