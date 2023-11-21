@@ -79,7 +79,6 @@ public class SearcherController implements Initializable {
             setListDefault(firstIndexOfListFound);
         } else {
             notAvailableAlert.setVisible(false);
-            headerList.setText("Kết quả");
             listResults.setItems(list);
             firstIndexOfListFound = dictionaryManagement.searchWord(dictionary, list.get(0));
         }
@@ -154,8 +153,6 @@ public class SearcherController implements Initializable {
     }
 
     private void setListDefault(int index) {
-        if (index == 0) headerList.setText("15 từ đầu tiên");
-        else headerList.setText("Kết quả liên quan");
         list.clear();
         for (int i = index; i < Math.min(index + 15, dictionary.size()); i++) {
 
@@ -175,7 +172,7 @@ public class SearcherController implements Initializable {
     private Button cancelBtn, saveBtn;
 
     @FXML
-    private Label englishWord, headerList, notAvailableAlert;
+    private Label englishWord, notAvailableAlert;
 
     @FXML
     private TextArea explanation;
