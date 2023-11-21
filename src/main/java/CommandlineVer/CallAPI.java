@@ -32,7 +32,8 @@ public class CallAPI {
         .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
         .body("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]")
         .asString();
-    return response.getBody();
+    String res = response.getBody();
+    return res;
 //
 //    if (response.getStatus() == 200) { // Kiểm tra xem yêu cầu đã thành công hay không
 //      String jsonData = response.getBody();
