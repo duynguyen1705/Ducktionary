@@ -1,32 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFFFFF;" stylesheets="@../Utils/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main">
    <children>
-      <AnchorPane fx:id="container" layoutX="61.0" prefHeight="400.0" prefWidth="538.0" />
-      <Button fx:id="SearchButton" layoutY="104.0" mnemonicParsing="false" text="Search">
-         <tooltip>
-            <Tooltip text="Search" />
-         </tooltip>
-      </Button>
-      <Button fx:id="AddButton" layoutY="174.0" mnemonicParsing="false" text="Add">
-         <tooltip>
-            <Tooltip text="Add" />
-         </tooltip>
-      </Button>
-      <Button fx:id="TranslateButton" layoutY="243.0" mnemonicParsing="false" text="Translate">
-         <tooltip>
-            <Tooltip text="Translate" />
-         </tooltip>
-      </Button>
-      <Button fx:id="ExitButton" layoutY="346.0" mnemonicParsing="false" text="Exit">
-         <tooltip>
-            <Tooltip text="Exit" />
-         </tooltip>
-      </Button>
+      <AnchorPane fx:id="container" layoutX="-1.0" layoutY="339.0" prefHeight="63.0" prefWidth="600.0">
+         <children>
+            <ButtonBar layoutX="139.0" layoutY="6.0" prefHeight="50.0" prefWidth="323.0">
+               <buttons>
+                  <Button fx:id="AddButton" minWidth="48.0" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="SearchButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/loupe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="TranslateButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                     <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/globe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="ExitButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/exit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </buttons>
+            </ButtonBar>
+         </children></AnchorPane>
+      <Pane layoutX="72.0" layoutY="181.0" prefHeight="38.0" prefWidth="455.0">
+         <children>
+            <TextField alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="-1.0" prefHeight="39.0" prefWidth="407.0" text="Search your words" />
+            <Button layoutX="406.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="18.0" style="-fx-background-color: transparent;" styleClass="submit_button" stylesheets="@../Utils/style.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/loupe.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="53.0" layoutY="13.0" prefHeight="150.0" prefWidth="494.0">
+         <children>
+            <ImageView fitHeight="149.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/duck_logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="149.0" fitWidth="234.0" layoutX="345.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/duck_logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="149.0" fitWidth="234.0" layoutX="173.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/duck_logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

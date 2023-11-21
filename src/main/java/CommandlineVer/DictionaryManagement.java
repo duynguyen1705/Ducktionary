@@ -111,7 +111,7 @@ public class DictionaryManagement {
             System.out.println("Input word you want to lookup: ");
             String word = scanner.nextLine();
             System.out.println("The result: ");
-            System.out.println(CallAPI.lookup(word, "en", "vi"));
+//            System.out.println(CallAPI.lookup(word, "en", "vi"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,7 +121,7 @@ public class DictionaryManagement {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your text");
         String text = scan.next();
-        System.out.println("It means: " + CallAPI.translate(text, "en", "vi"));
+//        System.out.println("It means: " + CallAPI.translate(text, "en", "vi"));
     }
 
     public void updateWord(ArrayList<Word> dictionary, String path) {

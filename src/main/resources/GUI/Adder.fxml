@@ -1,58 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdderController">
+<AnchorPane prefHeight="328.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdderController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0" styleClass="panel" stylesheets="@../Utils/style.css">
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: 00b4d8;" styleClass="panel" stylesheets="@../Utils/style.css">
          <children>
-            <Label layoutX="380.0" layoutY="367.0" prefHeight="25.0" prefWidth="220.0" stylesheets="@../Utils/style.css" text="One new language, one new world">
-               <font>
-                  <Font name="Montserrat Medium" size="12.0" />
-               </font>
-            </Label>
-            <Pane layoutY="14.0" prefHeight="30.0" prefWidth="600.0" stylesheets="@../Utils/style.css">
+            <AnchorPane fx:id="container" layoutY="337.0" prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #0077b6;">
                <children>
-                  <Label layoutX="181.0" layoutY="-2.0" text="Thêm từ vựng mới">
-                     <font>
-                        <Font name="Montserrat SemiBold" size="25.0" />
-                     </font>
-                  </Label>
+                  <ButtonBar layoutX="139.0" layoutY="6.0" prefHeight="50.0" prefWidth="323.0">
+                     <buttons>
+                        <Button fx:id="AddButton" minWidth="48.0" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="SearchButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                           <graphic>
+                              <ImageView fitHeight="42.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/loupe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="TranslateButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/globe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="ExitButton" mnemonicParsing="false" styleClass="page_button" stylesheets="@../Utils/style.css" ButtonBar.buttonData="LEFT">
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/exit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </buttons>
+                  </ButtonBar>
                </children>
-            </Pane>
-            <Label layoutX="139.0" layoutY="130.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Giải nghĩa">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField layoutX="139.0" layoutY="83.0" prefHeight="26.0" prefWidth="140.0" styleClass="inputField" stylesheets="@../Utils/style.css" />
-            <Label layoutX="139.0" layoutY="214.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Ví dụ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="139.0" layoutY="321.0" mnemonicParsing="false" stylesheets="@../Utils/style.css" text="Thêm" />
-            <Label layoutX="201.0" layoutY="325.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Thành công" />
-            <Label layoutX="201.0" layoutY="325.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Không thành công! Đã tồn tại từ trong từ điển" />
-            <Label layoutX="139.0" layoutY="54.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Từ tiếng anh">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <ChoiceBox layoutX="425.0" layoutY="84.0" prefWidth="150.0" stylesheets="@../Utils/style.css" />
-            <Label layoutX="425.0" layoutY="54.0" styleClass="inputText" stylesheets="@../Utils/style.css" text="Dạng từ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField layoutX="139.0" layoutY="161.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
-            <TextField layoutX="139.0" layoutY="244.0" prefHeight="39.0" prefWidth="437.0" styleClass="inputField" />
+            </AnchorPane>
+            <Label alignment="CENTER" layoutX="190.0" layoutY="14.0" prefHeight="17.0" prefWidth="220.0" text="Thêm từ" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="48.0" layoutY="216.0" prefHeight="17.0" prefWidth="41.0" text="Ví dụ" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="46.0" layoutY="125.0" prefHeight="17.0" prefWidth="57.0" text="Giải nghĩa" textAlignment="CENTER" />
+            <Label layoutX="382.0" layoutY="53.0" prefHeight="17.0" prefWidth="160.0" text="Từ loại" textAlignment="CENTER" />
+            <Label layoutX="49.0" layoutY="53.0" prefHeight="17.0" prefWidth="50.0" text="Từ" textAlignment="CENTER" />
+            <TextField layoutX="48.0" layoutY="84.0" />
+            <TextField layoutX="48.0" layoutY="153.0" prefHeight="50.0" prefWidth="492.0" />
+            <TextField layoutX="48.0" layoutY="240.0" prefHeight="50.0" prefWidth="492.0" />
+            <Button layoutX="271.0" layoutY="303.0" mnemonicParsing="false" text="Thêm" />
+            <ChoiceBox layoutX="382.0" layoutY="84.0" prefHeight="25.0" prefWidth="160.0" />
          </children>
       </Pane>
    </children>
