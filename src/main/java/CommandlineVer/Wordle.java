@@ -7,9 +7,12 @@ public class Wordle {
     private String targetWord;
     private ArrayList<Character> guess;
     int count = 0;
+    private Dictionary dictionary = new Dictionary();
     public void chooseWord() {
-      int index = (int)(Math.random()*Dictionary.dictionary.size());
-      Word guessWord = Dictionary.dictionary.get(index);
+      int index = (int)(Math.random()*dictionary.size());
+      DictionaryManagement dictionaryManagement = new DictionaryManagement();
+      dictionaryManagement.insertFromFile(dictionary, "dictionaries.txt");
+      Word guessWord = dictionary.get(index);
       targetWord = guessWord.getWordTarget();
       guess = new ArrayList<>();
       for (int i = 0; i < targetWord.length(); i++) {

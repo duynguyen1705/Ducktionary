@@ -6,16 +6,16 @@ import java.util.Scanner;
 public class DictionaryCommandline {
     private static final DictionaryCommandline commandLine = new DictionaryCommandline();
     private static final DictionaryManagement management = new DictionaryManagement();
-
+    private static Dictionary dictionary = new Dictionary();
     public void showAllWord() {
         System.out.println("DUCKTIONARY\n----------------------------");
         System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "WORD TYPE", "VIETNAMESE");
-        for (int i = 0; i < Dictionary.dictionary.size(); i++) {
+        for (int i = 0; i < dictionary.size(); i++) {
             String format = "%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n";
             String no = Integer.toString(i + 1);
-            String english = Dictionary.dictionary.get(i).getWordTarget();
-            String wordType = Dictionary.dictionary.get(i).getWordType();
-            String vietnamese = Dictionary.dictionary.get(i).getWordExplain();
+            String english = dictionary.get(i).getWordTarget();
+            String wordType = dictionary.get(i).getWordType();
+            String vietnamese = dictionary.get(i).getWordExplain();
             System.out.printf(format, no, english, wordType, vietnamese);
         }
     }
@@ -73,14 +73,14 @@ public class DictionaryCommandline {
             }
             switch (selection) {
                 case 1:
-                    management.addWord(Dictionary.dictionary, pathOutput);
+                    management.addWord(dictionary, pathOutput);
                     break;
                 case 2:
-                    management.removeWord(Dictionary.dictionary);
+                    management.removeWord(dictionary);
                     //DictionaryManagement.insertFromCommandline(Dictionary.dictionary);
                     break;
                 case 3:
-                    management.updateWord(Dictionary.dictionary, pathOutput);
+                    management.updateWord(dictionary, pathOutput);
                     break;
                 case 4:
                     commandLine.showAllWord();
@@ -93,17 +93,17 @@ public class DictionaryCommandline {
                     System.out.println("Please input word you want to search: ");
                     Scanner sc = new Scanner(System.in);
                     String word = sc.nextLine();
-                    int index = management.searchWord(Dictionary.dictionary, word);
+                    int index = management.searchWord(dictionary, word);
                     System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "WORD TYPE", "VIETNAMESE");
                     System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", index + 1, dictionary.get(index).getWordTarget(), dictionary.get(index).getWordType(), dictionary.get(index).getWordExplain());
                     break;
                 case 7:
                     playGame(dictionary);
                 case 8:
-                    management.insertFromFile(Dictionary.dictionary, pathInput);
+                    management.insertFromFile(dictionary, pathInput);
                     break;
                 case 9:
-                    management.dictionaryExportToFile(Dictionary.dictionary, pathOutput);
+                    management.dictionaryExportToFile(dictionary, pathOutput);
                     break;
                 case 10:
                     management.translatetext();
@@ -116,11 +116,11 @@ public class DictionaryCommandline {
 
     }
     public void dictionaryBasic(Dictionary dictionary) {
-        management.insertFromCommandline(Dictionary.dictionary);
+        management.insertFromCommandline(dictionary);
         commandLine.showAllWord();
     }
     public static void main(String[] args) {
-        dictionaryAdvanced(Dictionary.dictionary);
+        dictionaryAdvanced(dictionary);
     }
 
     public static void playGame(ArrayList<Word> dictionary) {

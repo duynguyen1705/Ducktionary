@@ -1,90 +1,188 @@
 package Controllers;
 
-import CommandlineVer.CallAPI;
-import CommandlineVer.VietnameseWord;
-import java.util.List;
+import CommandlineVer.*;
+import Alerts.*;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import java.net.URL;
 import javafx.scene.input.KeyEvent;
-
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 public class SearcherController implements Initializable {
-  @FXML
-  private TextField SearchBox;
-  @FXML
-  private Button SearchButton;
-  @FXML
-  private TextField Detect;
-  @FXML
-  private TextArea SearchResult;
-  @FXML
-  private TextField Word;
-  @FXML
-  private TextField Transliterate;
-  @FXML
-  private TextArea Define;
-  @FXML
-  private TextArea Examples;
-  @FXML
-  private Label notExist;
+    private Dictionary dictionary = new Dictionary();
+    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
+    private final String path = "src/main/resources/Utils/dictionaries.txt";
+    ObservableList<String> list = FXCollections.observableArrayList();
+    private Alerts alerts = new Alerts();
+    private int indexOfSelectedWord;
+    private int firstIndexOfListFound = 0;
 
-  ObservableList<String> list = FXCollections.observableArrayList();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dictionaryManagement.insertFromFile(dictionary, path);
+        System.out.println(dictionary.size());
+        dictionaryManagement.setTrie(dictionary);
+        setListDefault(0);
 
+        searchTerm.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (searchTerm.getText().isEmpty()) {
+                    cancelBtn.setVisible(false);
+                    setListDefault(0);
+                } else {
+                    cancelBtn.setVisible(true);
+                    handleOnKeyTyped();
+                }
+            }
+        });
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-    SearchBox.setOnKeyTyped(new EventHandler<KeyEvent>() {
-      @Override
-      public void handle(KeyEvent keyEvent) {
-        if (SearchBox.getText().isEmpty())
-          SearchButton.setVisible(false);
-        else {
-          SearchButton.setVisible(true);
+        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                searchTerm.clear();
+                notAvailableAlert.setVisible(false);
+                cancelBtn.setVisible(false);
+                setListDefault(0);
+            }
+        });
+
+        explanation.setEditable(false);
+        saveBtn.setVisible(false);
+        cancelBtn.setVisible(false);
+        notAvailableAlert.setVisible(false);
+    }
+
+    @FXML
+    private void handleOnKeyTyped() {
+        list.clear();
+        String searchKey = searchTerm.getText().trim();
+        list = dictionaryManagement.lookupWord(dictionary, searchKey);
+        if (list.isEmpty()) {
+            notAvailableAlert.setVisible(true);
+            setListDefault(firstIndexOfListFound);
+        } else {
+            notAvailableAlert.setVisible(false);
+            headerList.setText("Kết quả");
+            listResults.setItems(list);
+            firstIndexOfListFound = dictionaryManagement.searchWord(dictionary, list.get(0));
         }
-      }
-    });
-    SearchButton.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent actionEvent) { handleOnKey();}
-    });
-  }
-  @FXML
-  private void handleOnKey() {
-    list.clear();
-    String searchKey = SearchBox.getText();
-    List<VietnameseWord> res = CallAPI.lookup(searchKey, "en", "vi");
-    if (res == null) {
-      notExist.setVisible(true);
-      return;
     }
-    notExist.setVisible(false);
-    Word.setText(searchKey);
-    String defineText = "";
-    for (int i = 0; i < res.size(); i++) {
-      defineText += res.get(i);
+
+    @FXML
+    private void handleMouseClickAWord(MouseEvent arg0) {
+        String selectedWord = listResults.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            indexOfSelectedWord = dictionaryManagement.searchWord(dictionary, selectedWord);
+            if (indexOfSelectedWord == -1) return;
+            Word word = dictionary.get(indexOfSelectedWord);
+            englishWord.setText(word.getWordTarget());
+            explanation.setText(word.getWordType() + "\n" + word.getWordExplain() + "\n" + word.getWordExample());
+            headerOfExplanation.setVisible(true);
+            explanation.setVisible(true);
+            explanation.setEditable(false);
+            saveBtn.setVisible(false);
+        }
     }
-    Define.setText(defineText);
 
-    String examplesText = "";
-
-    for (int i = 0; i < res.size(); i++) {
-      List<String> examplesString = CallAPI.example(searchKey, res.get(i).getDisplayTarget());
-      for (int j = 0; j < examplesString.size(); j++) {
-        examplesText += examplesString.get(i) + "\n";
-      }
+    @FXML
+    private void handleClickEditBtn() {
+        explanation.setEditable(true);
+        saveBtn.setVisible(true);
+        alerts.showAlertInfo("Information", "Bạn đã cho phép chỉnh sửa nghĩa từ này!");
     }
-    Examples.setText(examplesText);
 
-  }
+    @FXML
+    private void handleClickSoundBtn() {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(dictionary.get(indexOfSelectedWord).getWordTarget());
+        } else throw new IllegalStateException("Cannot find voice: kevin16");
+    }
+
+    @FXML
+    private void handleClickSaveBtn() {
+        Alert alertConfirmation = alerts.alertConfirmation("Update", "Bạn chắc chắn muốn cập nhật nghĩa từ này ?");
+        Optional<ButtonType> option = alertConfirmation.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            dictionaryManagement.updateWord(dictionary, indexOfSelectedWord, explanation.getText(), path);
+            alerts.showAlertInfo("Information", "Cập nhập thành công!");
+        } else alerts.showAlertInfo("Information", "Thay đổi không được công nhận!");
+        saveBtn.setVisible(false);
+        explanation.setEditable(false);
+    }
+
+    @FXML
+    private void handleClickDeleteBtn() {
+        Alert alertWarning = alerts.alertWarning("Delete", "Bạn chắc chắn muốn xóa từ này?");
+        alertWarning.getButtonTypes().add(ButtonType.CANCEL);
+        Optional<ButtonType> option = alertWarning.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            dictionaryManagement.deleteWord(dictionary, indexOfSelectedWord, path);
+            refreshAfterDeleting();
+            alerts.showAlertInfo("Information", "Xóa thành công");
+        } else alerts.showAlertInfo("Information", "Thay đổi không được công nhận");
+    }
+
+    private void refreshAfterDeleting() {
+        for (int i = 0; i < list.size(); i++)
+            if (list.get(i).equals(englishWord.getText())) {
+                list.remove(i);
+                break;
+            }
+        listResults.setItems(list);
+        headerOfExplanation.setVisible(false);
+        explanation.setVisible(false);
+    }
+
+    private void setListDefault(int index) {
+        if (index == 0) headerList.setText("15 từ đầu tiên");
+        else headerList.setText("Kết quả liên quan");
+        list.clear();
+        for (int i = index; i < Math.min(index + 15, dictionary.size()); i++) {
+
+                list.add(dictionary.get(i).getWordTarget());
+
+
+        }
+        listResults.setItems(list);
+        englishWord.setText(dictionary.get(index).getWordTarget());
+        explanation.setText(dictionary.get(index).getWordExplain());
+    }
+
+    @FXML
+    private TextField searchTerm;
+
+    @FXML
+    private Button cancelBtn, saveBtn;
+
+    @FXML
+    private Label englishWord, headerList, notAvailableAlert;
+
+    @FXML
+    private TextArea explanation;
+
+    @FXML
+    private ListView<String> listResults;
+
+    @FXML
+    private Pane headerOfExplanation;
 }

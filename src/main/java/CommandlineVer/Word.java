@@ -10,27 +10,33 @@ public class Word {
     private String wordExplain;
     private String wordPronunciation;
     private String wordType;
-    private List<String> examples = new ArrayList<>();
-    private int frequencyCount;
-    private double confidence;
-    private List<Word> relatedWords = new ArrayList<>();
+
+    private String wordExample;
+
 
     public Word() {
         this.wordTarget = "";
         this.wordPronunciation = "";
         this.wordExplain = "";
         this.wordType = "";
+        this.wordExample = "";
     }
-    public Word(String wordTarget, String wordPronunciation, String wordType, String wordExplain) {
+    public Word(String wordTarget, String wordExplain, String wordType, String wordExample) {
         this.wordTarget = wordTarget;
-        this.wordPronunciation = wordPronunciation;
+        this.wordExample = wordExample;
         this.wordExplain = wordExplain;
         this.wordType = wordType;
     }
-    public Word(String wordTarget, String wordExplain, int frequencyCount) {
+    public Word(String wordTarget, String wordExplain) {
         this.wordTarget = wordTarget;
         this.wordExplain = wordExplain;
-        this.frequencyCount = frequencyCount;
+    }
+
+
+    public Word(String wordTarget, String wordExplain, String wordType) {
+        this.wordTarget = wordTarget;
+        this.wordExplain = wordExplain;
+        this.wordType = wordType;
     }
     public String getWordExplain() {
         return wordExplain;
@@ -48,13 +54,7 @@ public class Word {
         this.wordTarget = wordTarget;
     }
 
-    public String getWordPronunciation() {
-        return wordPronunciation;
-    }
 
-    public void setWordPronunciation(String wordPronunciation) {
-        this.wordPronunciation = wordPronunciation;
-    }
 
     public void setWordType(String wordType) {
         this.wordType = wordType;
@@ -64,34 +64,11 @@ public class Word {
         return wordType;
     }
 
-    public int getFrequencyCount() {
-        return frequencyCount;
-    }
-    public void setFrequencyCount(int num) {
-        this.frequencyCount = num;
+    public void setWordExample(String wordExample) {
+        this.wordExample = wordExample;
     }
 
-    public void setRelatedWords(List<Word> relatedWords) {
-        this.relatedWords = relatedWords;
-    }
-
-    public List<Word> getRelatedWords() {
-        return relatedWords;
-    }
-
-    public void setExamples(List<String> examples) {
-        this.examples = examples;
-    }
-
-    public List<String> getExamples() {
-        return examples;
-    }
-
-    public double getConfidence() {
-        return confidence;
-    }
-
-    public void setConfidence(double confidence) {
-        this.confidence = confidence;
+    public String getWordExample() {
+        return wordExample;
     }
 }
