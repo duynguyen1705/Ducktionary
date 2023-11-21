@@ -33,11 +33,13 @@ public class Word {
     }
 
 
-    public Word(String wordTarget, String wordExplain, String wordType) {
+
+    public Word( String wordTarget, String wordType, String wordExplain) {
         this.wordTarget = wordTarget;
-        this.wordExplain = wordExplain;
         this.wordType = wordType;
+        this.wordExplain = wordExplain;
     }
+
     public String getWordExplain() {
         return wordExplain;
     }
@@ -70,5 +72,16 @@ public class Word {
 
     public String getWordExample() {
         return wordExample;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "wordTarget='" + wordTarget + '\'' +
+                ", wordExplain='" + wordExplain + '\'' +
+                ", wordPronunciation='" + wordPronunciation + '\'' +
+                ", wordType='" + wordType + '\'' +
+                ", wordExample='" + wordExample + '\'' +
+                '}';
     }
 }

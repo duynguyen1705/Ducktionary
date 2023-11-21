@@ -27,6 +27,6 @@
             </ImageView>
          </graphic>
       </Label>
-      <TextArea fx:id="result" layoutX="100.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="result" layoutX="70.0" layoutY="141.0" prefHeight="200.0" prefWidth="433.0" />
    </children>
 </AnchorPane>
