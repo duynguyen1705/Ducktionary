@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
    <children>
-      <Button layoutX="276.0" layoutY="295.0" mnemonicParsing="false" onAction="#check" text="Check" />
+      <Button fx:id="checkBtn" layoutX="276.0" layoutY="295.0" mnemonicParsing="false" onAction="#check" text="Check" />
       <HBox alignment="CENTER" layoutX="200.0" layoutY="120.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
@@ -41,8 +41,8 @@
          </children>
       </HBox>
       <TextField fx:id="guess" layoutX="225.0" layoutY="251.0" />
-      <Button layoutX="348.0" layoutY="295.0" mnemonicParsing="false" onAction="#replay" text="New Word" />
+      <Button layoutX="348.0" layoutY="295.0" mnemonicParsing="false" onAction="#replay" text="Play" />
       <TextArea fx:id="hintText" layoutX="8.0" layoutY="51.0" prefHeight="201.0" prefWidth="164.0" />
-      <Button layoutX="199.0" layoutY="295.0" mnemonicParsing="false" onAction="#showHint" text="Hint" />
+      <Button fx:id="hintBtn" layoutX="199.0" layoutY="295.0" mnemonicParsing="false" onAction="#showHint" text="Hint" />
    </children>
 </AnchorPane>

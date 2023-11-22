@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -27,8 +28,11 @@ public class EasyModeController extends Wordle{
   private Label Box3 = new Label();
   @FXML
   private TextField guess;
+  @FXML
+  private Button hintBtn, checkBtn;
+  private boolean playCheck = false;
 
-  String word = "fun";
+  public static int turns = 3;
 
 
   @Override
@@ -58,16 +62,20 @@ public class EasyModeController extends Wordle{
 //    System.out.println(guessWord);
 //    System.out.println(word);
     guessWord = guess.getText();
-
-    String letter1 = guessWord.substring(0, 1);
-    System.out.println(letter1);
+    if (guessWord.length() != 3) {
+      Alerts alerts = new Alerts();
+      alerts.showAlertWarning("Warning", "Từ bạn đang nhập không thỏa mãn");
+      turns--;
+    } else {
+      String letter1 = guessWord.substring(0, 1);
+      System.out.println(letter1);
       Box1.setText(letter1);
 
-        if (letter1.equals(word.substring(0, 1))) {
-          Box1.setStyle("-fx-background-color: #8eeda1;");
-        } else if (word.indexOf(letter1) > 0) {
-          Box1.setStyle("-fx-background-color: #5f6ef5;");
-        }
+      if (letter1.equals(word.substring(0, 1))) {
+        Box1.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter1) > 0) {
+        Box1.setStyle("-fx-background-color: #5f6ef5;");
+      }
 
       String letter2 = guessWord.substring(1, 2);
       Box2.setText(letter2);
@@ -77,15 +85,16 @@ public class EasyModeController extends Wordle{
       } else if (word.indexOf(letter2) != -1 && word.indexOf(letter2) != 1) {
         Box2.setStyle("-fx-background-color: #5f6ef5;");
       }
-    String letter3 = guessWord.substring(2, 3);
-    Box3.setText(letter3);
-    if (letter3.equals(word.substring(2, 3))) {
-      Box3.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 2) {
-      Box3.setStyle("-fx-background-color: #5f6ef5;");
+      String letter3 = guessWord.substring(2, 3);
+      Box3.setText(letter3);
+      if (letter3.equals(word.substring(2, 3))) {
+        Box3.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 2) {
+        Box3.setStyle("-fx-background-color: #5f6ef5;");
+      }
+      turns--;
     }
-    turns--;
-   }
+  }
 
 
    @FXML @Override
@@ -110,6 +119,9 @@ public class EasyModeController extends Wordle{
      Box1.setText("");
      Box2.setText("");
      Box3.setText("");
+     Box1.setStyle("-fx-border-color: #000000");
+     Box2.setStyle("-fx-border-color: #000000");
+     Box3.setStyle("-fx-border-color: #000000");
      Box1.setStyle("-fx-background-color: #ffffff;");
      Box2.setStyle("-fx-background-color: #ffffff;");
      Box3.setStyle("-fx-background-color: #ffffff;");
@@ -120,4 +132,6 @@ public class EasyModeController extends Wordle{
      hintText.setText(word0.getWordType() + "\n" + word0.getWordExplain());
    }
   }
+
+
 

@@ -32,7 +32,9 @@ public class HardModeController extends Wordle{
   @FXML
   private TextField guess;
 
-  String word = "fun";
+  String word = "proud";
+
+  private static int turns = 5;
 
 
   @Override
@@ -47,7 +49,7 @@ public class HardModeController extends Wordle{
       }
       word = list.get((int)(Math.random()*list.size()));
       System.out.println(word);
-      turns = 3;
+      turns = 5;
     }
     catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -62,47 +64,53 @@ public class HardModeController extends Wordle{
 //    System.out.println(guessWord);
 //    System.out.println(word);
     guessWord = guess.getText();
+    if (guessWord.length() != 5) {
+      Alerts alerts = new Alerts();
+      alerts.showAlertWarning("Warning", "Từ bạn đang nhập không thỏa mãn");
+      turns--;
+    } else {
 
-    String letter1 = guessWord.substring(0, 1);
-    System.out.println(letter1);
-    Box1.setText(letter1);
+      String letter1 = guessWord.substring(0, 1);
+      System.out.println(letter1);
+      Box1.setText(letter1);
 
-    if (letter1.equals(word.substring(0, 1))) {
-      Box1.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter1) > 0) {
-      Box1.setStyle("-fx-background-color: #5f6ef5;");
-    }
+      if (letter1.equals(word.substring(0, 1))) {
+        Box1.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter1) > 0) {
+        Box1.setStyle("-fx-background-color: #5f6ef5;");
+      }
 
-    String letter2 = guessWord.substring(1, 2);
-    Box2.setText(letter2);
-    if (letter2.equals(word.substring(1, 2))) {
+      String letter2 = guessWord.substring(1, 2);
+      Box2.setText(letter2);
+      if (letter2.equals(word.substring(1, 2))) {
 
-      Box2.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter2) != -1 && word.indexOf(letter2) != 1) {
-      Box2.setStyle("-fx-background-color: #5f6ef5;");
+        Box2.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter2) != -1 && word.indexOf(letter2) != 1) {
+        Box2.setStyle("-fx-background-color: #5f6ef5;");
+      }
+      String letter3 = guessWord.substring(2, 3);
+      Box3.setText(letter3);
+      if (letter3.equals(word.substring(2, 3))) {
+        Box3.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 2) {
+        Box3.setStyle("-fx-background-color: #5f6ef5;");
+      }
+      String letter4 = guessWord.substring(3, 4);
+      Box4.setText(letter4);
+      if (letter4.equals(word.substring(3, 4))) {
+        Box4.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter4) != -1 && word.indexOf(letter4) != 3) {
+        Box4.setStyle("-fx-background-color: #5f6ef5;");
+      }
+      String letter5 = guessWord.substring(4, 5);
+      Box5.setText(letter5);
+      if (letter5.equals(word.substring(4, 5))) {
+        Box5.setStyle("-fx-background-color: #8eeda1;");
+      } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 4) {
+        Box5.setStyle("-fx-background-color: #5f6ef5;");
+      }
+      turns--;
     }
-    String letter3 = guessWord.substring(2, 3);
-    Box3.setText(letter3);
-    if (letter3.equals(word.substring(2, 3))) {
-      Box3.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 2) {
-      Box3.setStyle("-fx-background-color: #5f6ef5;");
-    }
-    String letter4 = guessWord.substring(3, 4);
-    Box4.setText(letter4);
-    if (letter4.equals(word.substring(3, 4))) {
-      Box4.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter4) != -1 && word.indexOf(letter4) != 3) {
-      Box4.setStyle("-fx-background-color: #5f6ef5;");
-    }
-    String letter5 = guessWord.substring(4, 5);
-    Box5.setText(letter5);
-    if (letter5.equals(word.substring(4, 5))) {
-      Box5.setStyle("-fx-background-color: #8eeda1;");
-    } else if (word.indexOf(letter3) != -1 && word.indexOf(letter3) != 4) {
-      Box5.setStyle("-fx-background-color: #5f6ef5;");
-    }
-    turns--;
   }
 
 
@@ -112,24 +120,29 @@ public class HardModeController extends Wordle{
     if (turns == 0) {
       Alerts alerts = new Alerts();
       alerts.showAlertInfo("Loser", "You are Loserrr");
-      turns = 3;
+      turns = 5;
     }
     if (word.equals(guess.getText())) {
       Alerts alerts = new Alerts();
       alerts.showAlertInfo("Winn", "You are winner");
-      turns = 3;
+      turns = 5;
     }
   }
   @FXML @Override
   public void replay() {
     path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
     generate(path);
-    turns = 3;
+    turns = 5;
     Box1.setText("");
     Box2.setText("");
     Box3.setText("");
     Box4.setText("");
     Box5.setText("");
+    Box1.setStyle("-fx-border-color: #000000");
+    Box2.setStyle("-fx-border-color: #000000");
+    Box3.setStyle("-fx-border-color: #000000");
+    Box4.setStyle("-fx-border-color: #000000");
+    Box5.setStyle("-fx-border-color: #000000");
     Box1.setStyle("-fx-background-color: #ffffff;");
     Box2.setStyle("-fx-background-color: #ffffff;");
     Box3.setStyle("-fx-background-color: #ffffff;");
