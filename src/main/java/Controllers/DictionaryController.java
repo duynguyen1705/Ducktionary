@@ -3,8 +3,6 @@ package Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,10 +23,12 @@ public class DictionaryController implements Initializable {
 
         menuBtn.setOnAction(e -> showComponent("/GUI/MenuGUI.fxml"));
 
+        gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGUI.fxml"));
+
         tooltip1.setShowDelay(Duration.seconds(0.5));
         tooltip2.setShowDelay(Duration.seconds(0.5));
         tooltip3.setShowDelay(Duration.seconds(0.5));
-        showComponent("/GUI/MenuGame.fxml");
+        showComponent("/GUI/MenuGUI.fxml");
 
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
@@ -54,7 +54,7 @@ public class DictionaryController implements Initializable {
     private Tooltip tooltip1, tooltip2, tooltip3;
 
     @FXML
-    private Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn;
+    private Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn;
 
     @FXML
     private AnchorPane container;

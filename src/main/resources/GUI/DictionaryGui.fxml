@@ -110,5 +110,26 @@
                 </Button>
          </children>
       </VBox>
+      <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutY="525.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Game" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/icons/icons8-home-48.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip fx:id="tooltip111" text="Tra từ điển" />
+         </tooltip>
+      </Button>
     </children>
 </AnchorPane>
