@@ -3,12 +3,9 @@ package CommandlineVer;
 import java.util.ArrayList;
 import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Word {
     private String wordTarget;
     private String wordExplain;
-    private String wordPronunciation;
     private String wordType;
 
     private String wordExample;
@@ -16,7 +13,6 @@ public class Word {
 
     public Word() {
         this.wordTarget = "";
-        this.wordPronunciation = "";
         this.wordExplain = "";
         this.wordType = "";
         this.wordExample = "";
