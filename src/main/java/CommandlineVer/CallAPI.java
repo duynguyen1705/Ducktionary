@@ -26,10 +26,9 @@ public class CallAPI {
   }
 
   public static String lookup(String text) {
-    String wordTarget;
-    String wordType;
-    String wordExplain;
-    String wordExample;
+    String wordTarget = "";
+    String wordType = "";
+    String wordExplain = "";
 
     HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
         .header("content-type", "application/json")
@@ -41,9 +40,8 @@ public class CallAPI {
 
     if (response.getStatus() == 200) { // Kiểm tra xem yêu cầu đã thành công hay không
       String jsonData = response.getBody();
-      System.out.println(jsonData);
+      System.out.println("response" + jsonData);
       if (jsonData == null) {
-        System.out.println(response.getBody());
         return "Không có gì đâu, đừng nhìn";
       }
       JSONArray jsonArray = new JSONArray(response.getBody());
@@ -52,19 +50,27 @@ public class CallAPI {
       JSONArray translations = obj.getJSONArray("translations");
 
       JSONObject subObj = translations.getJSONObject(0);
-      wordTarget = obj.getString("normalizedSource");
-      wordExplain = subObj.getString("normalizedTarget");
-      wordType = subObj.getString("posTag");
 
-      Word newWord = new Word(wordTarget, wordType, wordExplain);
-      example(newWord);
-      System.out.println(newWord);
+      wordTarget += obj.getString("normalizedSource");
+      wordType += subObj.getString("posTag");
+
+      for (int i = 0; i < translations.length(); i++) {
+        JSONObject jsonObj = translations.getJSONObject(i);
+        if (jsonObj.getString("normalizedTarget") != wordTarget) {
+          wordExplain += subObj.getString("normalizedTarget");
+          break;
+        }
+      }
+
     } else {
       // Xử lý lỗi hoặc thông báo khi yêu cầu không thành công
       System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.getStatus());
     }
 
-    return "Ê chạy này!";
+    Word newWord = new Word(wordTarget, wordType, wordExplain);
+    example(newWord);
+
+    return newWord.toString();
   }
 
 
@@ -78,38 +84,49 @@ public class CallAPI {
               .body("[{\"Text\": \"" + word.getWordTarget() + "\", \"Translation\": \"" + word.getWordExplain() + "\"}]")
               .asString();
 
-      List<String> list = new ArrayList<>();
-      JSONArray jsonArray = new JSONArray(response.getBody());
-      System.out.println(jsonArray);
+      System.out.println(response);
+      String responseBody = response.getBody();
 
-      for (int i = 0; i < jsonArray.length(); i++) {
-        JSONObject item = jsonArray.getJSONObject(i);
-        String normalizedSource = item.getString("normalizedSource");
 
-        if (normalizedSource.equals(word.getWordTarget())) {
-          JSONArray examples = item.getJSONArray("examples");
+      if (responseBody != null && !responseBody.isEmpty()) {
+        JSONArray jsonArray = new JSONArray(responseBody);
+        System.out.println(jsonArray);
 
-          for (int j = 0; j < examples.length(); j++) {
-            JSONObject example = examples.getJSONObject(j); // Use 'j' instead of 'i' here
-            String temp = example.getString("sourcePrefix") + example.getString("sourceTerm")
-                    + example.getString("sourceSuffix");
-            String trans = example.getString("targetPrefix") + example.getString("targetTerm")
-                    + example.getString("targetSuffix");
-            String last = temp + " (" + trans + ")";
-            list.add(last);
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+          JSONObject item = jsonArray.getJSONObject(i);
+          String normalizedSource = item.getString("normalizedSource");
+
+          if (normalizedSource.equals(word.getWordTarget())) {
+            JSONArray examples = item.getJSONArray("examples");
+
+            for (int j = 0; j < examples.length(); j++) {
+              JSONObject example = examples.getJSONObject(j);
+              String temp = example.getString("sourcePrefix") + example.getString("sourceTerm")
+                      + example.getString("sourceSuffix");
+              String trans = example.getString("targetPrefix") + example.getString("targetTerm")
+                      + example.getString("targetSuffix");
+              String last = temp + " (" + trans + ")";
+              list.add(last);
+            }
           }
         }
-      }
 
-      if (!list.isEmpty()) {
-        String tmp = "";
-        for (String s: list) {
-          tmp += s;
-          tmp += "\n";
+        if (!list.isEmpty()) {
+          StringBuilder tmp = new StringBuilder();
+          for (String s : list) {
+            tmp.append(s).append("\n");
+          }
+
+          word.setWordExample(tmp.toString());
+        } else {
+          word.setWordExample("No examples found");
         }
       } else {
-        // Handle case where no examples were found for the word
-        word.setWordExample("No examples found");
+        // Handle the case where the response body is null or empty
+        // It could indicate an issue with the API request or no data received
+        word.setWordExample("No response received");
       }
     } catch (Exception e) {
       // Handle exceptions gracefully
@@ -117,6 +134,7 @@ public class CallAPI {
       // Add appropriate error handling or fallback mechanism
     }
   }
+
 
 
 

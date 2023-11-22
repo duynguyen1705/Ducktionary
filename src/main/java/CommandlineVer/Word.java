@@ -76,12 +76,11 @@ public class Word {
 
     @Override
     public String toString() {
-        return "Word{" +
-                "wordTarget='" + wordTarget + '\'' +
-                ", wordExplain='" + wordExplain + '\'' +
-                ", wordPronunciation='" + wordPronunciation + '\'' +
-                ", wordType='" + wordType + '\'' +
-                ", wordExample='" + wordExample + '\'' +
-                '}';
+        return wordTarget + "\t"
+                + wordType
+                + "\n"
+                + wordExplain
+                + "\n"
+                + wordExample;
     }
 }
