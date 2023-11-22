@@ -31,7 +31,7 @@ public class MediumModeController extends Wordle{
   private TextField guess;
 
   String word = "fun";
-
+ 
 
   @Override
   protected void generate(String path) {
