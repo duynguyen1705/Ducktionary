@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,37 +18,25 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
-public class MenuController implements Initializable {
-
+public class MenuController extends DictionaryController implements Initializable {
   @FXML
-  private TextField SearchBox;
+  public Button easyBtn;
   @FXML
-  private Label notAvailableAlert;
-
+  public Button mediumBtn;
   @FXML
-  private Button SearchBtn;
+  public Button hardBtn;
   @FXML
-  private TextArea result;
-
-  private DictionaryManagement dictionaryManagement = new DictionaryManagement();
-  private Dictionary dictionary = new Dictionary();
-  @FXML
-  private void handleClickSearchBtn() {
-    String word = CallAPI.lookup(SearchBox.getText());
-    result.setText(word);
-  }
-
+  public AnchorPane container;
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    SearchBox.setOnKeyTyped(new EventHandler<KeyEvent>() {
+    easyBtn.setOnAction(new EventHandler<ActionEvent>() {
       @Override
-      public void handle(KeyEvent keyEvent) {
-        if (SearchBox.getText().isEmpty())
-          SearchBtn.setDisable(true);
-        else
-          SearchBtn.setDisable(false);
+      public void handle(ActionEvent actionEvent) {
+        showComponent("");
       }
     });
   }
+
 }

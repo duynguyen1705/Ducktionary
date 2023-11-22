@@ -48,20 +48,20 @@ public class DictionaryController implements Initializable {
         tooltip1.setShowDelay(Duration.seconds(0.5));
         tooltip2.setShowDelay(Duration.seconds(0.5));
         tooltip3.setShowDelay(Duration.seconds(0.5));
-        showComponent("/GUI/MenuGui.fxml");
+        showComponent("/GUI/MenuGame.fxml");
 
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });
     }
 
-    private void setNode(Node node) {
-        container.getChildren().clear();
+    protected void setNode(Node node) {
+         container.getChildren().clear();
         container.getChildren().add(node);
     }
 
     @FXML
-    private void showComponent(String path) {
+    protected void showComponent(String path) {
         try {
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
             setNode(component);
