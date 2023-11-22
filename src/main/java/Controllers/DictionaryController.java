@@ -17,33 +17,13 @@ import javafx.util.Duration;
 public class DictionaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchWordBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showComponent("/GUI/SearcherGui.fxml");
-            }
-        });
+        searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
 
-        addWordBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showComponent("/GUI/AdditionGui.fxml");
-            }
-        });
+        addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
 
-        translateBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showComponent("/GUI/TranslationGui.fxml");
-            }
-        });
+        translateBtn.setOnAction(e -> showComponent("/GUI/TranslationGui.fxml"));
 
-        menuBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                showComponent("/GUI/MenuGUI.fxml");
-            }
-        });
+        menuBtn.setOnAction(e -> showComponent("/GUI/MenuGUI.fxml"));
 
         tooltip1.setShowDelay(Duration.seconds(0.5));
         tooltip2.setShowDelay(Duration.seconds(0.5));
