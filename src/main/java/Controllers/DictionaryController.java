@@ -48,14 +48,14 @@ public class DictionaryController implements Initializable {
         tooltip1.setShowDelay(Duration.seconds(0.5));
         tooltip2.setShowDelay(Duration.seconds(0.5));
         tooltip3.setShowDelay(Duration.seconds(0.5));
-        showComponent("/GUI/Wordle/EasyMode.fxml");
+        showComponent("/GUI/MenuGame.fxml");
 
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });
     }
 
-    private void setNode(Node node) {
+    protected void setNode(Node node) {
          container.getChildren().clear();
         container.getChildren().add(node);
     }

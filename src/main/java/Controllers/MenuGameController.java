@@ -10,8 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.*;
 
 
 public class MenuGameController extends DictionaryController implements Initializable {
@@ -22,6 +22,8 @@ public class MenuGameController extends DictionaryController implements Initiali
   private Button mediumBtn;
   @FXML
   private Button hardBtn;
+  @FXML
+  private AnchorPane container;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,16 +37,16 @@ public class MenuGameController extends DictionaryController implements Initiali
     mediumBtn.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        showComponent("/GUI/AdditionGui.fxml");
+        showComponent("/GUI/Wordle/MediumMode.fxml");
       }
     });
 
     hardBtn.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        showComponent("/GUI/TranslationGui.fxml");
+        showComponent("/GUI/Wordle/HardMode.fxml");
       }
     });
+    }
 
-  }
 }
