@@ -5,16 +5,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.MediumModeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.MediumModeController">
    <children>
-      <Button layoutX="296.0" layoutY="315.0" mnemonicParsing="false" onAction="#check" text="Check" />
-      <HBox alignment="CENTER" layoutX="190.0" layoutY="143.0" prefHeight="100.0" prefWidth="355.0">
+      <Button layoutX="447.0" layoutY="284.0" mnemonicParsing="false" onAction="#check" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Check" />
+      <HBox alignment="CENTER" layoutX="122.0" layoutY="150.0" prefHeight="100.0" prefWidth="355.0">
          <children>
-            <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css">
                <font>
                   <Font size="48.0" />
                </font>
@@ -25,7 +28,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="Box2" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box2" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css">
                <font>
                   <Font size="48.0" />
                </font>
@@ -36,7 +39,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="Box3" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box3" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css">
                <font>
                   <Font size="48.0" />
                </font>
@@ -47,7 +50,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="Box4" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box4" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css">
                <font>
                   <Font size="48.0" />
                </font>
@@ -60,10 +63,20 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="guess" layoutX="245.0" layoutY="271.0" />
-      <Button layoutX="368.0" layoutY="315.0" mnemonicParsing="false" onAction="#replay" text="New Word" />
-      <TextArea fx:id="hintText" layoutX="28.0" layoutY="71.0" prefHeight="201.0" prefWidth="164.0" />
-      <Button layoutX="219.0" layoutY="315.0" mnemonicParsing="false" onAction="#showHint" text="Hint" />
-      <Button fx:id="exitBtn" layoutX="47.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
+      <TextField fx:id="guess" layoutX="96.0" layoutY="278.0" styleClass="answer-field" stylesheets="@../../Utils/style.css" />
+      <Button layoutX="513.0" layoutY="348.0" mnemonicParsing="false" onAction="#replay" text="New Word" />
+      <TextArea fx:id="hintText" layoutX="118.0" layoutY="77.0" prefHeight="46.0" prefWidth="430.0" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
+      <Button layoutX="57.0" layoutY="82.0" mnemonicParsing="false" onAction="#showHint" prefHeight="37.0" prefWidth="32.0" styleClass="hint-button" stylesheets="@../../Utils/style.css">
+         <tooltip>
+            <Tooltip text="Hint" />
+         </tooltip>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Utils/icons/lamp%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label alignment="CENTER" layoutX="128.0" layoutY="26.0" prefHeight="18.0" prefWidth="343.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Medium Mode" />
    </children>
 </AnchorPane>

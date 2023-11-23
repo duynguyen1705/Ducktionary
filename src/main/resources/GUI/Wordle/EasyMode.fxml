@@ -5,34 +5,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
    <children>
-      <Button fx:id="checkBtn" layoutX="276.0" layoutY="295.0" mnemonicParsing="false" onAction="#check" text="Check" />
-      <HBox alignment="CENTER" layoutX="200.0" layoutY="120.0" prefHeight="100.0" prefWidth="200.0">
+      <Button fx:id="checkBtn" layoutX="399.0" layoutY="277.0" mnemonicParsing="false" onAction="#check" prefHeight="38.0" prefWidth="86.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Check" />
+      <HBox alignment="CENTER" layoutX="144.0" layoutY="135.0" prefHeight="130.0" prefWidth="314.0">
          <children>
-            <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="a">
                <font>
-                  <Font size="48.0" />
+                  <Font size="60.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Box2" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box2" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="b">
                <font>
-                  <Font size="48.0" />
+                  <Font size="60.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Box3" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" style="-fx-border-color: black;">
+            <Label fx:id="Box3" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="n">
                <font>
-                  <Font size="48.0" />
+                  <Font size="60.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -40,10 +44,28 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="guess" layoutX="225.0" layoutY="251.0" />
-      <Button layoutX="348.0" layoutY="295.0" mnemonicParsing="false" onAction="#replay" text="Play" />
-      <TextArea fx:id="hintText" layoutX="8.0" layoutY="51.0" prefHeight="201.0" prefWidth="164.0" />
-      <Button fx:id="hintBtn" layoutX="199.0" layoutY="295.0" mnemonicParsing="false" onAction="#showHint" text="Hint" />
-      <Button fx:id="exitBtn" layoutX="37.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
+      <TextField fx:id="guess" alignment="CENTER" layoutX="144.0" layoutY="271.0" prefHeight="38.0" prefWidth="223.0" promptText="Answer here..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
+         <font>
+            <Font name="Montserrat SemiBold" size="20.0" />
+         </font></TextField>
+      <Button layoutX="534.0" layoutY="360.0" mnemonicParsing="false" onAction="#replay" text="Play" />
+      <Pane layoutX="45.0" layoutY="55.0" prefHeight="68.0" prefWidth="512.0">
+         <children>
+            <Button fx:id="hintBtn" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showHint" prefHeight="38.0" prefWidth="24.0" styleClass="hint-button" stylesheets="@../../Utils/style.css">
+               <tooltip>
+                  <Tooltip text="Hint" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Utils/icons/lamp%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Your hint will be shown here" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Easy Mode" />
    </children>
 </AnchorPane>

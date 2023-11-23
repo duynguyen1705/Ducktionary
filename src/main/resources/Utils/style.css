@@ -218,13 +218,6 @@
    	-fx-background-insets: 2, 0, 0;
    	-fx-background-radius: 2em;
 }
-.english-word-input,
-.meaning-input{
-    -fx-text-fill: #9f45b0;
-    -fx-border-color: #966FBD;
-    -fx-font-size: 14px;
-    -fx-border-width: 1.5;
-}
 .list-cell .scroll-bar:vertical .thumb,
 .list-cell .scroll-bar:horizontal .thumb,
 .explanation-field .scroll-bar:vertical .thumb {
@@ -316,4 +309,68 @@
 .exit-button:hover {
     -fx-background-color: #b22a00;
 
+}
+
+/* game */
+.hint-bar {
+    -fx-border-color: #013c58;
+    -fx-border-style: 10;
+    -fx-border-radius: 8;
+    -fx-font-size: 15;
+    -fx-pref-height: 15;
+    -fx-font-family: "Montserrat SemiBold";
+    -fx-text-alignment: "center";
+}
+
+.hint-button {
+    -fx-background-color: #013c58;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #0b1e33;
+}
+
+.hint-button:hover {
+    -fx-background-color: #ffba42;
+    -fx-border-color: 	#f5a201;
+}
+
+.letter-box {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 70;
+    -fx-pref-height: 100;
+    -fx-pref-width: 80;
+    -fx-border-color: #0b1e33;
+    -fx-font-family: "Montserrat Black";
+}
+
+.answer-field {
+    -fx-font-size: 25;
+    -fx-pref-height: 30;
+    -fx-font-family: "Monsterrat SemiBold";
+    -fx-border-color: #0b1e33;
+}
+
+.check-button {
+    -fx-background-color: #013c58;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 20;
+    -fx-text-fill: #ffffff;
+}
+
+.check-button:hover {
+    -fx-background-color: #ffba42;
+    -fx-border-color: 	#f5a201;
+}
+
+.easy-button {
+    -fx-background-color: 	#0d7eb3;
+}
+
+.medium-button {
+    -fx-background-color: 	#055275;
+}
+
+.hard-button {
+    -fx-background-color: 	#06192f;
 }
