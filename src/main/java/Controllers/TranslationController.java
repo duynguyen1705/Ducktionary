@@ -3,7 +3,6 @@ package Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,16 +21,15 @@ public class TranslationController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        translateBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        translateBtn.setOnAction(e -> {
                 try {
                     handleOnClickTranslateBtn();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
-        });
+
+        );
         searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
 
         addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
@@ -87,12 +85,10 @@ public class TranslationController extends Controller implements Initializable {
         if (isToVietnameseLang) {
             englishLabel.setLayoutX(426);
             vietnameseLabel.setLayoutX(104);
-            sourceLanguage = "vi";
             toLanguage = "en";
         } else {
             englishLabel.setLayoutX(100);
             vietnameseLabel.setLayoutX(426);
-            sourceLanguage = "en";
             toLanguage = "vi";
         }
         isToVietnameseLang = !isToVietnameseLang;
@@ -114,7 +110,6 @@ public class TranslationController extends Controller implements Initializable {
 
     @FXML
     public AnchorPane container;
-    private String sourceLanguage = "en";
     private String toLanguage = "vi";
     private boolean isToVietnameseLang = true;
 }

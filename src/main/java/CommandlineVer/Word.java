@@ -1,7 +1,5 @@
 package CommandlineVer;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Word {
     private String wordTarget;

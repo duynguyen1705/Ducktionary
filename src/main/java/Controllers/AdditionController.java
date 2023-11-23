@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 public class AdditionController extends Controller implements Initializable {
 
@@ -51,6 +52,15 @@ public class AdditionController extends Controller implements Initializable {
         menuBtn.setOnAction(e -> showComponent("/GUI/MenuGui.fxml"));
 
         gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGui.fxml"));
+        closeBtn.setOnMouseClicked(e -> {
+            System.exit(0);
+        });
+        tooltip1.setShowDelay(Duration.seconds(0.5));
+        tooltip2.setShowDelay(Duration.seconds(0.5));
+        tooltip3.setShowDelay(Duration.seconds(0.5));
+        tooltip4.setShowDelay(Duration.seconds(0.5));
+        tooltip5.setShowDelay(Duration.seconds(0.5));
+        tooltip6.setShowDelay(Duration.seconds(0.5));
 
         successAlert.setVisible(false);
     }
