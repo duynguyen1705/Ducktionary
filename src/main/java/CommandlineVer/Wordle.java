@@ -1,7 +1,6 @@
 package CommandlineVer;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Wordle {
     private String targetWord;

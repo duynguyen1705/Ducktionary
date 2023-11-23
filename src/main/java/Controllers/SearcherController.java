@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -49,14 +48,11 @@ public class SearcherController extends Controller implements Initializable {
             }
         });
 
-        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        cancelBtn.setOnAction(e -> {
                 searchTerm.clear();
                 notAvailableAlert.setVisible(false);
                 cancelBtn.setVisible(false);
                 setListDefault(0);
-            }
         });
         searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
 

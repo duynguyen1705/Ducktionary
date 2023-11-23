@@ -2,10 +2,8 @@ package CommandlineVer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
-import java.util.Objects;
 import org.json.*;
 
 public class CallAPI {
@@ -25,7 +23,7 @@ public class CallAPI {
     return response.getBody();
   }
 
-  public static String lookup(String text) {
+  public static Word lookup(String text) {
     String wordTarget = "";
     String wordType = "";
     String wordExplain = "";
@@ -42,7 +40,7 @@ public class CallAPI {
       String jsonData = response.getBody();
       System.out.println("response" + jsonData);
       if (jsonData == null) {
-        return "Không có gì đâu, đừng nhìn";
+        return null;
       }
       JSONArray jsonArray = new JSONArray(response.getBody());
       JSONObject obj = jsonArray.getJSONObject(0);
@@ -70,7 +68,7 @@ public class CallAPI {
     Word newWord = new Word(wordTarget, wordType, wordExplain);
     example(newWord);
 
-    return newWord.toString();
+    return newWord;
   }
 
 

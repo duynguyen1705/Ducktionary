@@ -38,7 +38,7 @@
       <HBox alignment="CENTER" layoutX="247.0" layoutY="200.0" prefHeight="20.0" prefWidth="275.0">
          <children>
             <TextField fx:id="SearchBox" prefHeight="30.0" prefWidth="212.0" promptText="Nhập từ cần tìm ..." styleClass="home-search" stylesheets="@../Utils/style.css" />
-            <Button fx:id="SearchBtn" mnemonicParsing="false" onAction="#handleClickSearchBtn" prefHeight="27.0" prefWidth="25.0" styleClass="btn" stylesheets="@../Utils/style.css">
+            <Button fx:id="SearchBtn" mnemonicParsing="false" prefHeight="27.0" prefWidth="25.0" styleClass="btn" stylesheets="@../Utils/style.css">
                <graphic>
                   <ImageView fitHeight="14.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>

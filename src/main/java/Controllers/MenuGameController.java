@@ -69,8 +69,6 @@ public class MenuGameController extends Controller implements Initializable {
   @FXML
   private Button hardBtn;
   @FXML
-  private AnchorPane container;
-  @FXML
   public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
 
   @FXML
