@@ -70,11 +70,7 @@ public class Word {
 
     @Override
     public String toString() {
-        return wordTarget + "\t"
-                + wordType
-                + "\n"
-                + wordExplain
-                + "\n"
-                + wordExample;
+        return wordTarget + "\n"
+                + wordExplain;
     }
 }

@@ -81,12 +81,7 @@ public class DictionaryManagement {
             for (Word word : dictionary) {
                 System.out.println(word.getWordExplain());
                 bufferedWriter.write("|" + word.getWordTarget() + "\n"
-                + "*" + word.getWordType() + "\n"
-                + word.getWordExplain() + "\n"
-                + word.getWordExample());
-
-                bufferedWriter.newLine();
-
+                + word.getWordExplain() + "\n");
             }
             bufferedWriter.close();
             System.out.println("Export to file successfully!");

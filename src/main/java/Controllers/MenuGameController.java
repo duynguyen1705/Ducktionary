@@ -18,7 +18,6 @@ import javafx.util.Duration;
 
 public class MenuGameController extends Controller implements Initializable {
 
-
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     easyBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -63,14 +62,8 @@ public class MenuGameController extends Controller implements Initializable {
     });
     }
   @FXML
-  private Button easyBtn;
-  @FXML
-  private Button mediumBtn;
-  @FXML
-  private Button hardBtn;
-  @FXML
   public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
 
   @FXML
-  public Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn;
+  public Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn, easyBtn, mediumBtn, hardBtn;
 }

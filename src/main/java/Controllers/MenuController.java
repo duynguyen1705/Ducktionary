@@ -35,8 +35,9 @@ public class MenuController extends Controller implements Initializable {
         result.setText("Từ không tồn tại");
       else {
         result.setText(word.toString());
-        dictionaryManagement.insertFromFile(dictionary, "/Utils/dictionaries.txt");
-
+        dictionaryManagement.insertFromFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
+        dictionary.add(word);
+        dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
       }
     });
     searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));

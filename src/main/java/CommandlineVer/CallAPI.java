@@ -64,10 +64,10 @@ public class CallAPI {
       // Xử lý lỗi hoặc thông báo khi yêu cầu không thành công
       System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.getStatus());
     }
-
-    Word newWord = new Word(wordTarget, wordType, wordExplain);
+    Word newWord = new Word(wordTarget, wordExplain);
     example(newWord);
-
+    wordExplain = "*" + wordType + "\n" + "#" + wordExplain + "\n" + newWord.getWordExample();
+    newWord.setWordExplain(wordExplain);
     return newWord;
   }
 

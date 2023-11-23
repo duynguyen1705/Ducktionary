@@ -1,6 +1,7 @@
 package Controllers.Game;
 
 
+import CommandlineVer.CallAPI;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -139,7 +140,11 @@ public class HardModeController extends Wordle{
   }
   @FXML @Override
   public void showHint() {
-    hintText.setText(word0.getWordType() + "\n" + word0.getWordExplain());
+    word0 = CallAPI.lookup(word);
+    if (word0 == null)
+      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
+    else
+      hintText.setText(word0.getWordExplain());
   }
   @FXML
   public void handleOnClickExit() {

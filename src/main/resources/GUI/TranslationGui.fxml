@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="590.0" prefWidth="962.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TranslationController">
+<AnchorPane fx:id="container" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TranslationController">
    <children>
        <Pane layoutX="95.0" layoutY="14.0" prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
            <children>
@@ -77,9 +77,97 @@
                </Pane>
            </children>
        </AnchorPane>
-      <VBox layoutX="24.0" layoutY="130.0" prefHeight="240.0" prefWidth="60.0">
+      <Pane prefHeight="600.0" prefWidth="118.0">
          <children>
-            <Button fx:id="menuBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Home" textAlignment="CENTER">
+            <VBox layoutX="45.0" layoutY="163.0" prefHeight="240.0" prefWidth="60.0">
+               <children>
+                  <Button fx:id="menuBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Home" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/icons/icons8-home-48.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip4" text="Nhà" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="searchWordBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Search" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip1" text="Tra từ điển" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/icons/icons8_search_24px.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D height="30.0" width="30.0" />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="translateBtn1" alignment="BOTTOM_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Translate" textAlignment="CENTER" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/icons/icons8-translate-64.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D minX="15.0" minY="15.0" />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip3" text="Phiên dịch" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Add">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/icons/icons8_add_32px.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D height="30.0" width="30.0" />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip2" text="Thêm từ vựng mới" />
+                     </tooltip>
+                  </Button>
+               </children>
+            </VBox>
+            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="45.0" layoutY="534.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Game" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -97,106 +185,22 @@
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip fx:id="tooltip4" text="Nhà" />
+                  <Tooltip fx:id="tooltip5" text="Trò chơi" />
                </tooltip>
             </Button>
-            <Button fx:id="searchWordBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Search" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip fx:id="tooltip1" text="Tra từ điển" />
-               </tooltip>
+            <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="52.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="exit-button" stylesheets="@../Utils/style.css" text="Exit">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/icons/icons8_search_24px.png" />
+                        <Image url="@../Utils/icons/icons8_exit_32px.png" />
                      </image>
-                     <viewport>
-                        <Rectangle2D height="30.0" width="30.0" />
-                     </viewport>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="translateBtn1" alignment="BOTTOM_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Translate" textAlignment="CENTER" textOverrun="CLIP">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/icons/icons8-translate-64.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D minX="15.0" minY="15.0" />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
                <tooltip>
-                  <Tooltip fx:id="tooltip3" text="Phiên dịch" />
-               </tooltip>
-            </Button>
-            <Button fx:id="addWordBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Add">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/icons/icons8_add_32px.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D height="30.0" width="30.0" />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip fx:id="tooltip2" text="Thêm từ vựng mới" />
+                  <Tooltip fx:id="tooltip6" text="Thoát" />
                </tooltip>
             </Button>
          </children>
-      </VBox>
-      <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="24.0" layoutY="455.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Game" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/icons/icons8-home-48.png" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-            </ImageView>
-         </graphic>
-         <tooltip>
-            <Tooltip fx:id="tooltip5" text="Trò chơi" />
-         </tooltip>
-      </Button>
-      <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="31.0" layoutY="33.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="exit-button" stylesheets="@../Utils/style.css" text="Exit">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/icons/icons8_exit_32px.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <tooltip>
-            <Tooltip fx:id="tooltip6" text="Thoát" />
-         </tooltip>
-      </Button>
+      </Pane>
    </children>
 </AnchorPane>

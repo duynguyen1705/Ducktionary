@@ -70,7 +70,6 @@ public class AdditionController extends Controller implements Initializable {
         Alert alertConfirmation = new Alert(AlertType.CONFIRMATION);
         alertConfirmation.setTitle("Thêm");
         alertConfirmation.setContentText("Bạn có chắc muốn thêm từ này vào từ điển");
-        alertConfirmation.show();
         Optional<ButtonType> option = alertConfirmation.showAndWait();
         String englishWord = wordTargetInput.getText().trim();
         String meaning = explanationInput.getText().trim();
@@ -78,7 +77,7 @@ public class AdditionController extends Controller implements Initializable {
         String examples = example.getText().trim();
 
         if (option.get() == ButtonType.OK) {
-            Word word = new Word(englishWord, meaning, type, examples);
+            Word word = new Word(englishWord, "*" + type + "\n" + "#" + meaning + "\n" + examples);
             if (dictionary.contains(word)) {
                 int indexOfWord = dictionaryManagement.searchWord(dictionary, englishWord);
                 Alert selectionAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -126,6 +125,8 @@ public class AdditionController extends Controller implements Initializable {
     private void resetInput() {
         wordTargetInput.setText("");
         explanationInput.setText("");
+        example.setText("");
+        wordTargetType.setText("");
     }
 
     private void showSuccessAlert() {

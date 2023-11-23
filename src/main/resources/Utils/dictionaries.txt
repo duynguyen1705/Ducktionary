@@ -1,4 +1,23 @@
-|
-*
-*
+|hello
+*noun
+#chào
+hello, how are you
+|fly
+*VERB
+#bay
+They fly in the air. (Họ bay trong không khí.)
+You gotta let me fly! (Phải để tôi bay chứ!)
+You want button fly or zipper fly? (Bạn muốn nút hay bay dây kéo?)
+I knew a man who could fly. (Cô biết một người biết bay.)
+Can you fly with me? (Cậu bay cùng tôi được không?)
+Things like that just fly out. (Những câu như thế cứ bay ra.)
+Not many people fly these days. (Giờ chẳng mấy ai bay đâu.)
+Birds that can't fly. (Chim mà không thể bay được.)
+I'm going to teach you how to really fly. (Ta sẽ dạy cậu bay thật sư!.)
+You taught me how to fly! (Anh đã dạy tôi cách bay!)
+Space bar to fly up. (không gian thanh để bay lên.)
+I'm going to teach you to fly. (Tao dạy chúng mày bay!)
+I will fly with you. (Tôi sẽ bay cùng anh.)
+They are added on the fly by the plugin. (Chúng được gửi vào bay do plugin.)
+Can't fly in rain. (Không thể bay trong mưa.)
 

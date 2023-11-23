@@ -89,5 +89,6 @@
             </ImageView>
          </graphic></Button>
       <Label alignment="CENTER" layoutX="114.0" layoutY="14.0" prefHeight="18.0" prefWidth="390.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Hard mode" />
+      <Button fx:id="exitBtn" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Exit" />
    </children>
 </AnchorPane>
