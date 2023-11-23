@@ -14,12 +14,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
-public class AdderController extends Controller implements Initializable {
+
+public class AdderController extends Controller implements Initializable{
 
 
     @Override
@@ -42,25 +40,7 @@ public class AdderController extends Controller implements Initializable {
                 else addBtn.setDisable(false);
             }
         });
-
-        searchWordBtn.setOnAction(e -> changeScene("/GUI/Searcher.fxml"));
-
-        addWordBtn.setOnAction(e -> changeScene("/GUI/Adder.fxml"));
-
-        translateBtn.setOnAction(e -> changeScene("/GUI/TranslateText.fxml"));
-
-        menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
-
-        gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
-        closeBtn.setOnMouseClicked(e -> {
-            System.exit(0);
-        });
-        tooltip1.setShowDelay(Duration.seconds(0.5));
-        tooltip2.setShowDelay(Duration.seconds(0.5));
-        tooltip3.setShowDelay(Duration.seconds(0.5));
-        tooltip4.setShowDelay(Duration.seconds(0.5));
-        tooltip5.setShowDelay(Duration.seconds(0.5));
-        tooltip6.setShowDelay(Duration.seconds(0.5));
+        handleActionChangeScene();
 
         successAlert.setVisible(false);
     }
@@ -150,12 +130,7 @@ public class AdderController extends Controller implements Initializable {
     private TextField wordTargetType;
     @FXML
     private TextArea example;
-    @FXML
-    public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
-    @FXML
-    public Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn;
-    @FXML
-    public AnchorPane container;
+
     private Dictionary dictionary = new Dictionary();
     private DictionaryManagement dictionaryManagement = new DictionaryManagement();
     private final String path = "src/main/resources/Utils/dictionaries.txt";

@@ -140,18 +140,7 @@ public class HardModeController extends Wordle{
     Box5.setStyle("-fx-background-color: #ffffff;");
     guess.setText("");
   }
-  @FXML @Override
-  public void showHint() {
-    word0 = CallAPI.lookup(word);
-    if (word0 == null)
-      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
-    else
-      hintText.setText(word0.getWordExplain());
-  }
-  @FXML
-  public void handleOnClickExit() {
-    changeScene("/GUI/MenuGame.fxml");
-  }
+
   @FXML
   private Label Box1 = new Label();
   @FXML
@@ -171,9 +160,5 @@ public class HardModeController extends Wordle{
   @FXML
   private AnchorPane container;
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-
-  }
 }
 

@@ -5,19 +5,14 @@ import CommandlineVer.CallAPI;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 
 public class EasyModeController extends Wordle{
@@ -48,8 +43,7 @@ public class EasyModeController extends Wordle{
 
   @Override
   protected void checkGuess() {
-//    System.out.println(guessWord);
-//    System.out.println(word);
+
     guessWord = guess.getText();
     if (guessWord.length() != 3) {
       Alert alert = new Alert(AlertType.WARNING);
@@ -122,19 +116,8 @@ public class EasyModeController extends Wordle{
      Box3.setStyle("-fx-background-color: #ffffff;");
      guess.setText("");
    }
-  @FXML @Override
-  public void showHint() {
-    word0 = CallAPI.lookup(word);
-    if (word0 == null)
-      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
-    else
-      hintText.setText(word0.getWordExplain());
-  }
 
-   @FXML
-  public void handleOnClickExit() {
-     changeScene("/GUI/MenuGame.fxml");
-   }
+
   @FXML
   private Label Box1 = new Label();
   @FXML
@@ -145,15 +128,9 @@ public class EasyModeController extends Wordle{
   private TextField guess;
   @FXML
   public Button hintBtn, checkBtn, exitBtn;
-  private boolean playCheck = false;
 
   public static int turns = 3;
-  @FXML
-  private AnchorPane container;
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-  }
 }
 
 

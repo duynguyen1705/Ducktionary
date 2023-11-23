@@ -30,26 +30,7 @@ public class TranslateTextController extends Controller implements Initializable
             }
 
         );
-        searchWordBtn.setOnAction(e -> changeScene("/GUI/Searcher.fxml"));
-
-        addWordBtn.setOnAction(e -> changeScene("/GUI/Adder.fxml"));
-
-        translateBtn.setOnAction(e -> changeScene("/GUI/TranslateText.fxml"));
-
-        menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
-
-        gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
-
-        tooltip1.setShowDelay(Duration.seconds(0.5));
-        tooltip2.setShowDelay(Duration.seconds(0.5));
-        tooltip3.setShowDelay(Duration.seconds(0.5));
-        tooltip4.setShowDelay(Duration.seconds(0.5));
-        tooltip5.setShowDelay(Duration.seconds(0.5));
-        tooltip6.setShowDelay(Duration.seconds(0.5));
-
-        closeBtn.setOnMouseClicked(e -> {
-            System.exit(0);
-        });
+        handleActionChangeScene();
 
         sourceLangField.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -102,11 +83,6 @@ public class TranslateTextController extends Controller implements Initializable
 
     @FXML
     private Label englishLabel , vietnameseLabel;
-    @FXML
-    public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
-
-    @FXML
-    public Button addWordBtn, translateBtn1, searchWordBtn, closeBtn, menuBtn, gameBtn;
 
     @FXML
     public AnchorPane container;

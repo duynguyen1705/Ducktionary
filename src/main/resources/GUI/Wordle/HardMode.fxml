@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.HardModeController">
+<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.HardModeController">
    <children>
       <Button fx:id="checkBtn" layoutX="442.0" layoutY="287.0" mnemonicParsing="false" onAction="#check" prefHeight="43.0" prefWidth="121.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Kiểm tra" />
       <HBox alignment="CENTER" layoutX="154.0" layoutY="145.0" prefHeight="130.0" prefWidth="314.0">

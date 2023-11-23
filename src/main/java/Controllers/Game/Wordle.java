@@ -1,5 +1,6 @@
 package Controllers.Game;
 
+import CommandlineVer.CallAPI;
 import CommandlineVer.Word;
 import Controllers.Controller;
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -16,7 +18,9 @@ public abstract class Wordle extends Controller {
   String guessWord;
   Word word0;
   String path;
+  @FXML
   public TextField guess;
+  @FXML
   public TextArea hintText;
 
   protected void generate(String path) {
@@ -38,8 +42,19 @@ public abstract class Wordle extends Controller {
       e.printStackTrace();
     }
   }
+  @FXML
+  public void handleOnClickExit() {
+    changeScene("/GUI/MenuGame.fxml");
+  }
+  @FXML
+  protected void showHint() {
+    word0 = CallAPI.lookup(word);
+    if (word0 == null)
+      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
+    else
+      hintText.setText(word0.getWordExplain());
+  }
   protected abstract void checkGuess();
   protected abstract void check();
   protected abstract void replay();
-  protected abstract void showHint();
 }

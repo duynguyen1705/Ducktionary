@@ -40,26 +40,7 @@ public class MenuController extends Controller implements Initializable {
         dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
       }
     });
-    searchWordBtn.setOnAction(e -> changeScene("/GUI/Searcher.fxml"));
-
-    addWordBtn.setOnAction(e -> changeScene("/GUI/Adder.fxml"));
-
-    translateBtn.setOnAction(e -> changeScene("/GUI/TranslateText.fxml"));
-
-    menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
-
-    gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
-
-    tooltip1.setShowDelay(Duration.seconds(0.5));
-    tooltip2.setShowDelay(Duration.seconds(0.5));
-    tooltip3.setShowDelay(Duration.seconds(0.5));
-    tooltip4.setShowDelay(Duration.seconds(0.5));
-    tooltip5.setShowDelay(Duration.seconds(0.5));
-    tooltip6.setShowDelay(Duration.seconds(0.5));
-
-    closeBtn.setOnMouseClicked(e -> {
-      System.exit(0);
-    });
+    handleActionChangeScene();
   }
 
   private Dictionary dictionary = new Dictionary();
@@ -72,9 +53,5 @@ public class MenuController extends Controller implements Initializable {
   private Button SearchBtn;
   @FXML
   private TextArea result;
-  @FXML
-  private Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
-  @FXML
-  private Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn;
 
 }
