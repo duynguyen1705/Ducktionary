@@ -16,7 +16,7 @@ import javafx.util.Duration;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
-public class TranslationController extends Controller implements Initializable {
+public class TranslateTextController extends Controller implements Initializable {
 
 
     @Override
@@ -30,15 +30,15 @@ public class TranslationController extends Controller implements Initializable {
             }
 
         );
-        searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
+        searchWordBtn.setOnAction(e -> changeScene("/GUI/Searcher.fxml"));
 
-        addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
+        addWordBtn.setOnAction(e -> changeScene("/GUI/Adder.fxml"));
 
-        translateBtn.setOnAction(e -> showComponent("/GUI/TranslationGui.fxml"));
+        translateBtn.setOnAction(e -> changeScene("/GUI/TranslateText.fxml"));
 
-        menuBtn.setOnAction(e -> showComponent("/GUI/MenuGui.fxml"));
+        menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
 
-        gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGui.fxml"));
+        gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
 
         tooltip1.setShowDelay(Duration.seconds(0.5));
         tooltip2.setShowDelay(Duration.seconds(0.5));

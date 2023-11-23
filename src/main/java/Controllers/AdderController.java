@@ -19,7 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-public class AdditionController extends Controller implements Initializable {
+public class AdderController extends Controller implements Initializable {
 
 
     @Override
@@ -43,15 +43,15 @@ public class AdditionController extends Controller implements Initializable {
             }
         });
 
-        searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
+        searchWordBtn.setOnAction(e -> changeScene("/GUI/Searcher.fxml"));
 
-        addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
+        addWordBtn.setOnAction(e -> changeScene("/GUI/Adder.fxml"));
 
-        translateBtn.setOnAction(e -> showComponent("/GUI/TranslationGui.fxml"));
+        translateBtn.setOnAction(e -> changeScene("/GUI/TranslateText.fxml"));
 
-        menuBtn.setOnAction(e -> showComponent("/GUI/MenuGui.fxml"));
+        menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
 
-        gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGui.fxml"));
+        gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
         closeBtn.setOnMouseClicked(e -> {
             System.exit(0);
         });

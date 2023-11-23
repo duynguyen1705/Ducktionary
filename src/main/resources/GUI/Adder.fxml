@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,70 +14,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TranslationController">
-   <children>
-       <Pane layoutX="95.0" layoutY="14.0" prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
-           <children>
-            <Pane layoutX="240.0" layoutY="20.0" />
-               <Pane layoutX="221.0" layoutY="34.0" prefHeight="45.0" prefWidth="331.0" stylesheets="@../Utils/style.css">
-               <children>
-                       <Label alignment="CENTER" layoutX="-30.0" prefHeight="45.0" prefWidth="391.0" styleClass="home-header" stylesheets="@../Utils/style.css" text="Phiên dịch " textFill="WHITE">
-                           <font>
-                               <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                       </Label>
-               </children>
-               </Pane>
-           </children>
-       </Pane>
-       <AnchorPane layoutX="95.0" layoutY="105.0" prefHeight="419.0" prefWidth="780.0">
-           <children>
-               <Pane layoutX="68.0" layoutY="80.0" stylesheets="@../Utils/style.css">
-                   <children>
-                       <Pane prefHeight="57.0" prefWidth="645.0" styleClass="header-translate" stylesheets="@../Utils/style.css">
-                           <children>
-                               <Label fx:id="englishLabel" layoutX="104.0" layoutY="13.0" prefHeight="37.0" prefWidth="100.0" styleClass="language-text" stylesheets="@../Utils/style.css" text="English" textFill="#9f45b0">
-                                   <font>
-                                       <Font name="System Bold" size="16.0" />
-                                   </font>
-                                   <graphic>
-                                       <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                           <image>
-                                               <Image url="@../Utils/icons/icons8_great_britain_48px.png" />
-                                           </image>
-                                       </ImageView>
-                                   </graphic>
-                               </Label>
-                               <Label fx:id="vietnameseLabel" layoutX="426.0" layoutY="14.0" prefHeight="37.0" prefWidth="130.0" styleClass="language-text" stylesheets="@../Utils/style.css" text="Vietnamese" textFill="#9f45b0">
-                                   <font>
-                                       <Font name="System Bold" size="16.0" />
-                                   </font>
-                                   <graphic>
-                                       <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                           <image>
-                                               <Image url="@../Utils/icons/icons8_vietnam_48px.png" />
-                                           </image>
-                                       </ImageView>
-                                   </graphic>
-                               </Label>
-                               <Button fx:id="switchToggle" layoutX="302.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleOnClickSwitchToggle" styleClass="switch-button" stylesheets="@../Utils/style.css">
-                                   <graphic>
-                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                           <image>
-                                               <Image url="@../Utils/icons/exchange.png" />
-                                           </image>
-                                       </ImageView>
-                                   </graphic>
-                               </Button>
-                           </children>
-                       </Pane>
-                       <TextArea fx:id="sourceLangField" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" promptText="Type.." styleClass="src-speech-field" stylesheets="@../Utils/style.css" wrapText="true" />
-                       <TextArea fx:id="toLangField" layoutX="322.0" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" styleClass="to-speech-field" stylesheets="@../Utils/style.css" wrapText="true" />
-                       <Button fx:id="translateBtn" layoutX="282.0" layoutY="272.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch" />
-                   </children>
-               </Pane>
-           </children>
-       </AnchorPane>
+<AnchorPane fx:id="container" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Utils/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdderController">
+    <children>
+        <AnchorPane layoutX="69.0" layoutY="35.0" prefHeight="480.0" prefWidth="769.0">
+            <children>
+                <Pane layoutX="157.0" prefHeight="45.0" prefWidth="455.0" styleClass="title" stylesheets="@../Utils/style.css">
+                    <children>
+                        <Label alignment="CENTER" layoutX="72.0" prefHeight="45.0" prefWidth="311.0" styleClass="home-header" stylesheets="@../Utils/style.css" text="Thêm từ vựng mới" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold Italic" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Label layoutX="92.0" layoutY="58.0" styleClass="section-text" stylesheets="@../Utils/style.css" text="Từ tiếng anh " textFill="#9f45b0">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="wordTargetInput" layoutX="92.0" layoutY="88.0" prefHeight="32.0" prefWidth="386.0" promptText="Nhập từ tiếng anh..." styleClass="input" stylesheets="@../Utils/style.css" />
+                <Label layoutX="95.0" layoutY="219.0" styleClass="section-text" text="Giải nghĩa" textFill="#9f45b0">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+                <TextArea fx:id="explanationInput" layoutX="92.0" layoutY="252.0" prefHeight="39.0" prefWidth="519.0" promptText="Nhập giải nghĩa của từ...." styleClass="input" stylesheets="@../Utils/style.css" wrapText="true" />
+                <Button fx:id="addBtn" graphicTextGap="2.0" layoutX="161.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="22.0" prefWidth="57.0" styleClass="add-button" stylesheets="@../Utils/style.css" text="Thêm " />
+            <Label fx:id="successAlert" alignment="CENTER" layoutX="299.0" layoutY="439.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../Utils/style.css" text="Thành công">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/icons/icons8_ok_48px.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <TextField fx:id="wordTargetType" layoutX="93.0" layoutY="166.0" prefHeight="33.0" prefWidth="274.0" promptText="danh từ, động từ ..." styleClass="input" stylesheets="@../Utils/style.css" />
+            <Label layoutX="94.0" layoutY="139.0" styleClass="section-text" text="Loại từ" textFill="#9f45b0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="example" layoutX="93.0" layoutY="338.0" prefHeight="73.0" prefWidth="519.0" promptText="Nhập giải nghĩa của từ...." styleClass="input" stylesheets="@../Utils/style.css" wrapText="true" />
+            <Label layoutX="93.0" layoutY="305.0" styleClass="section-text" text="Ví dụ" textFill="#9f45b0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
       <Pane prefHeight="600.0" prefWidth="118.0">
          <children>
             <VBox layoutX="45.0" layoutY="163.0" prefHeight="240.0" prefWidth="60.0">
@@ -123,7 +108,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="translateBtn1" alignment="BOTTOM_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Translate" textAlignment="CENTER" textOverrun="CLIP">
+                  <Button fx:id="translateBtn" alignment="BOTTOM_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Translate" textAlignment="CENTER" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -202,5 +187,5 @@
             </Button>
          </children>
       </Pane>
-   </children>
+    </children>
 </AnchorPane>

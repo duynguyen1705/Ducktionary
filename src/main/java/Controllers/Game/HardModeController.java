@@ -6,8 +6,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -148,13 +150,7 @@ public class HardModeController extends Wordle{
   }
   @FXML
   public void handleOnClickExit() {
-    try {
-      AnchorPane component = FXMLLoader.load(getClass().getResource("/GUI/MenuGameGui.fxml"));
-      container.getChildren().clear();
-      container.getChildren().add(component);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    changeScene("/GUI/MenuGame.fxml");
   }
   @FXML
   private Label Box1 = new Label();
@@ -175,5 +171,9 @@ public class HardModeController extends Wordle{
   @FXML
   private AnchorPane container;
 
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+
+  }
 }
 

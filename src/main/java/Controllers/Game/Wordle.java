@@ -1,6 +1,7 @@
 package Controllers.Game;
 
 import CommandlineVer.Word;
+import Controllers.Controller;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,7 +10,7 @@ import java.util.List;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public abstract class Wordle {
+public abstract class Wordle extends Controller {
   static int turns;
   String word;
   String guessWord;

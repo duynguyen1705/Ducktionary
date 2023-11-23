@@ -1,15 +1,15 @@
 package CommandlineVer;
 
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import Trie.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DictionaryManagement {
-    private Trie trie = new Trie();
+    private BinaryTree trie = new BinaryTree();
     public void insertFromCommandline(ArrayList<Word> dictionary) {
 
         Scanner sc = new Scanner(System.in);
@@ -214,7 +214,7 @@ public class DictionaryManagement {
     public void deleteWord(Dictionary dictionary, int index, String path) {
         try {
             dictionary.remove(index);
-            trie = new Trie();
+            trie = new BinaryTree();
             setTrie(dictionary);
             dictionaryExportToFile(dictionary, path);
         } catch (NullPointerException e) {
