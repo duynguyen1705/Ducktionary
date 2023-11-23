@@ -1,7 +1,6 @@
 package Controllers;
 
 import CommandlineVer.*;
-import Alerts.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import java.net.URL;
@@ -14,24 +13,21 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
-public class SearcherController implements Initializable {
-    private Dictionary dictionary = new Dictionary();
-    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
-    private final String path = "src/main/resources/Utils/dictionaries.txt";
-    ObservableList<String> list = FXCollections.observableArrayList();
-    private Alerts alerts = new Alerts();
-    private int indexOfSelectedWord;
-    private int firstIndexOfListFound = 0;
+public class SearcherController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,6 +57,26 @@ public class SearcherController implements Initializable {
                 cancelBtn.setVisible(false);
                 setListDefault(0);
             }
+        });
+        searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
+
+        addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
+
+        translateBtn.setOnAction(e -> showComponent("/GUI/TranslationGui.fxml"));
+
+        menuBtn.setOnAction(e -> showComponent("/GUI/MenuGui.fxml"));
+
+        gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGui.fxml"));
+
+        tooltip1.setShowDelay(Duration.seconds(0.5));
+        tooltip2.setShowDelay(Duration.seconds(0.5));
+        tooltip3.setShowDelay(Duration.seconds(0.5));
+        tooltip4.setShowDelay(Duration.seconds(0.5));
+        tooltip5.setShowDelay(Duration.seconds(0.5));
+        tooltip6.setShowDelay(Duration.seconds(0.5));
+
+        closeBtn.setOnMouseClicked(e -> {
+            System.exit(0);
         });
 
         explanation.setEditable(false);
@@ -104,7 +120,10 @@ public class SearcherController implements Initializable {
     private void handleClickEditBtn() {
         explanation.setEditable(true);
         saveBtn.setVisible(true);
-        alerts.showAlertInfo("Information", "Bạn đã cho phép chỉnh sửa nghĩa từ này!");
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setContentText("Bạn đã cho phép chỉnh sửa nghĩa này");
+        alert.show();
     }
 
     @FXML
@@ -119,26 +138,47 @@ public class SearcherController implements Initializable {
 
     @FXML
     private void handleClickSaveBtn() {
-        Alert alertConfirmation = alerts.alertConfirmation("Update", "Bạn chắc chắn muốn cập nhật nghĩa từ này ?");
+        Alert alertConfirmation = new Alert(AlertType.CONFIRMATION);
+        alertConfirmation.setTitle("Cập nhật");
+        alertConfirmation.setContentText("Bạn có chắc muốn cập nhật từ này");
+        alertConfirmation.show();
         Optional<ButtonType> option = alertConfirmation.showAndWait();
         if (option.get() == ButtonType.OK) {
             dictionaryManagement.updateWord(dictionary, indexOfSelectedWord, explanation.getText(), path);
-            alerts.showAlertInfo("Information", "Cập nhập thành công!");
-        } else alerts.showAlertInfo("Information", "Thay đổi không được công nhận!");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setContentText("Bạn đã cập nhật thành công");
+            alert.show();
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setContentText("Thay đổi không được công nhận");
+            alert.show();
+        }
         saveBtn.setVisible(false);
         explanation.setEditable(false);
     }
 
     @FXML
     private void handleClickDeleteBtn() {
-        Alert alertWarning = alerts.alertWarning("Delete", "Bạn chắc chắn muốn xóa từ này?");
+        Alert alertWarning = new Alert(AlertType.WARNING);
+        alertWarning.setTitle("Xóa");
+        alertWarning.setTitle("Bạn có chắc muốn xóa từ này khỏi từ điển?");
         alertWarning.getButtonTypes().add(ButtonType.CANCEL);
         Optional<ButtonType> option = alertWarning.showAndWait();
         if (option.get() == ButtonType.OK) {
             dictionaryManagement.deleteWord(dictionary, indexOfSelectedWord, path);
             refreshAfterDeleting();
-            alerts.showAlertInfo("Information", "Xóa thành công");
-        } else alerts.showAlertInfo("Information", "Thay đổi không được công nhận");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setContentText("Bạn đã xóa thành công");
+            alert.show();
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setContentText("Thay đổi không được công nhận");
+            alert.show();
+        }
     }
 
     private void refreshAfterDeleting() {
@@ -182,4 +222,19 @@ public class SearcherController implements Initializable {
 
     @FXML
     private Pane headerOfExplanation;
+    @FXML
+    public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
+
+    @FXML
+    public Button addWordBtn, translateBtn, searchWordBtn, closeBtn, menuBtn, gameBtn;
+
+    @FXML
+    public AnchorPane container;
+    private Dictionary dictionary = new Dictionary();
+    private DictionaryManagement dictionaryManagement = new DictionaryManagement();
+    private final String path = "src/main/resources/Utils/dictionaries.txt";
+    ObservableList<String> list = FXCollections.observableArrayList();
+    private int indexOfSelectedWord;
+    private int firstIndexOfListFound = 0;
+
 }

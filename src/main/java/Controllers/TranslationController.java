@@ -10,14 +10,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
-public class TranslationController implements Initializable {
-    private String sourceLanguage = "en";
-    private String toLanguage = "vi";
-    private boolean isToVietnameseLang = true;
+public class TranslationController extends Controller implements Initializable {
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,6 +31,26 @@ public class TranslationController implements Initializable {
                     e.printStackTrace();
                 }
             }
+        });
+        searchWordBtn.setOnAction(e -> showComponent("/GUI/SearcherGui.fxml"));
+
+        addWordBtn.setOnAction(e -> showComponent("/GUI/AdditionGui.fxml"));
+
+        translateBtn.setOnAction(e -> showComponent("/GUI/TranslationGui.fxml"));
+
+        menuBtn.setOnAction(e -> showComponent("/GUI/MenuGui.fxml"));
+
+        gameBtn.setOnAction(e -> showComponent("/GUI/MenuGameGui.fxml"));
+
+        tooltip1.setShowDelay(Duration.seconds(0.5));
+        tooltip2.setShowDelay(Duration.seconds(0.5));
+        tooltip3.setShowDelay(Duration.seconds(0.5));
+        tooltip4.setShowDelay(Duration.seconds(0.5));
+        tooltip5.setShowDelay(Duration.seconds(0.5));
+        tooltip6.setShowDelay(Duration.seconds(0.5));
+
+        closeBtn.setOnMouseClicked(e -> {
+            System.exit(0);
         });
 
         sourceLangField.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -85,4 +106,15 @@ public class TranslationController implements Initializable {
 
     @FXML
     private Label englishLabel , vietnameseLabel;
+    @FXML
+    public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
+
+    @FXML
+    public Button addWordBtn, translateBtn1, searchWordBtn, closeBtn, menuBtn, gameBtn;
+
+    @FXML
+    public AnchorPane container;
+    private String sourceLanguage = "en";
+    private String toLanguage = "vi";
+    private boolean isToVietnameseLang = true;
 }

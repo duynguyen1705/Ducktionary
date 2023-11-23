@@ -10,59 +10,45 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="573.0" prefWidth="797.0" stylesheets="@../Utils/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdditionController">
-    <children>
-        <AnchorPane layoutX="69.0" layoutY="35.0" prefHeight="480.0" prefWidth="769.0">
-            <children>
-                <Pane layoutX="157.0" prefHeight="45.0" prefWidth="455.0" styleClass="title" stylesheets="@../Utils/style.css">
-                    <children>
-                        <Label alignment="CENTER" layoutX="72.0" prefHeight="45.0" prefWidth="311.0" styleClass="home-header" stylesheets="@../Utils/style.css" text="Thêm từ vựng mới" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold Italic" size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-                <Label layoutX="92.0" layoutY="58.0" styleClass="section-text" stylesheets="@../Utils/style.css" text="Từ tiếng anh " textFill="#9f45b0">
-                    <font>
-                        <Font name="System Bold" size="16.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="wordTargetInput" layoutX="92.0" layoutY="88.0" prefHeight="32.0" prefWidth="386.0" promptText="Nhập từ tiếng anh..." styleClass="input" stylesheets="@../Utils/style.css" />
-                <Label layoutX="95.0" layoutY="219.0" styleClass="section-text" text="Giải nghĩa" textFill="#9f45b0">
-                    <font>
-                        <Font name="System Bold" size="16.0" />
-                    </font>
-                </Label>
-                <TextArea fx:id="explanationInput" layoutX="92.0" layoutY="252.0" prefHeight="39.0" prefWidth="519.0" promptText="Nhập giải nghĩa của từ...." styleClass="input" stylesheets="@../Utils/style.css" wrapText="true" />
-                <Button fx:id="addBtn" graphicTextGap="2.0" layoutX="161.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="22.0" prefWidth="57.0" styleClass="add-button" stylesheets="@../Utils/style.css" text="Thêm " />
-            <Label fx:id="successAlert" alignment="CENTER" layoutX="299.0" layoutY="439.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../Utils/style.css" text="Thành công">
+<AnchorPane fx:id="container" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
+   <children>
+      <Label layoutX="206.0" layoutY="143.0" style="-fx-text-fill: #FFFFFF;" styleClass="home-header" stylesheets="@../Utils/style.css" text="Ducktionary Search">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+      <Label fx:id="notAvailableAlert" alignment="CENTER" layoutX="270.0" layoutY="245.0" opacity="0.9" prefHeight="20.0" prefWidth="230.0" styleClass="warning-alert" stylesheets="@../Utils/style.css" text="Rất tiếc, từ này không tồn tại">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/icons/icons8_high_priority_40px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <TextArea fx:id="result" layoutX="168.0" layoutY="300.0" prefHeight="200.0" prefWidth="433.0" />
+      <ImageView fitHeight="107.0" fitWidth="107.0" layoutX="332.0" layoutY="24.0">
+         <image>
+            <Image url="@../Utils/images/ducktionlogo.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="247.0" layoutY="200.0" prefHeight="20.0" prefWidth="275.0">
+         <children>
+            <TextField fx:id="SearchBox" prefHeight="30.0" prefWidth="212.0" promptText="Nhập từ cần tìm ..." styleClass="home-search" stylesheets="@../Utils/style.css" />
+            <Button fx:id="SearchBtn" mnemonicParsing="false" onAction="#handleClickSearchBtn" prefHeight="27.0" prefWidth="25.0" styleClass="btn" stylesheets="@../Utils/style.css">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="14.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/icons/icons8_ok_48px.png" />
+                        <Image url="@../Utils/icons/icons8_search_24px.png" />
                      </image>
                   </ImageView>
-               </graphic></Label>
-            <TextField fx:id="wordTargetType" layoutX="93.0" layoutY="166.0" prefHeight="33.0" prefWidth="274.0" promptText="danh từ, động từ ..." styleClass="input" stylesheets="@../Utils/style.css" />
-            <Label layoutX="94.0" layoutY="139.0" styleClass="section-text" text="Loại từ" textFill="#9f45b0">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="example" layoutX="93.0" layoutY="338.0" prefHeight="73.0" prefWidth="519.0" promptText="Nhập giải nghĩa của từ...." styleClass="input" stylesheets="@../Utils/style.css" wrapText="true" />
-            <Label layoutX="93.0" layoutY="305.0" styleClass="section-text" text="Ví dụ" textFill="#9f45b0">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            </children>
-        </AnchorPane>
-      <VBox layoutX="28.0" layoutY="122.0" prefHeight="240.0" prefWidth="60.0">
+               </graphic></Button>
+         </children>
+      </HBox>
+      <VBox layoutX="38.0" layoutY="132.0" prefHeight="240.0" prefWidth="60.0">
          <children>
             <Button fx:id="menuBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Home" textAlignment="CENTER">
                <cursor>
@@ -150,7 +136,7 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="28.0" layoutY="447.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Game" textAlignment="CENTER">
+      <Button fx:id="gameBtn" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="457.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="menu-item" stylesheets="@../Utils/style.css" text="Game" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -171,7 +157,7 @@
             <Tooltip fx:id="tooltip5" text="Trò chơi" />
          </tooltip>
       </Button>
-      <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="35.0" layoutY="25.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="exit-button" stylesheets="@../Utils/style.css" text="Exit">
+      <Button fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="45.0" layoutY="35.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="exit-button" stylesheets="@../Utils/style.css" text="Exit">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -183,5 +169,5 @@
             <Tooltip fx:id="tooltip6" text="Thoát" />
          </tooltip>
       </Button>
-    </children>
+   </children>
 </AnchorPane>

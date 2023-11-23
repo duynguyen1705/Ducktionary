@@ -1,38 +1,24 @@
 package Controllers.Game;
 
-import Alerts.Alerts;
-import CommandlineVer.CallAPI;
-import CommandlineVer.Word;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javax.annotation.processing.Generated;
-import javax.imageio.IIOException;
+import javafx.scene.layout.AnchorPane;
+
 
 public class EasyModeController extends Wordle{
-  @FXML
-  private Label Box1 = new Label();
-  @FXML
-  private Label Box2 = new Label();
-  @FXML
-  private Label Box3 = new Label();
-  @FXML
-  private TextField guess;
-  @FXML
-  private Button hintBtn, checkBtn;
-  private boolean playCheck = false;
 
-  public static int turns = 3;
 
 
   @Override
@@ -63,8 +49,10 @@ public class EasyModeController extends Wordle{
 //    System.out.println(word);
     guessWord = guess.getText();
     if (guessWord.length() != 3) {
-      Alerts alerts = new Alerts();
-      alerts.showAlertWarning("Warning", "Từ bạn đang nhập không thỏa mãn");
+      Alert alert = new Alert(AlertType.WARNING);
+      alert.setTitle("Cảnh báo");
+      alert.setContentText("Bạn đang nhập sai từ");
+      alert.show();
       turns--;
     } else {
       String letter1 = guessWord.substring(0, 1);
@@ -101,13 +89,17 @@ public class EasyModeController extends Wordle{
    public void check() {
     checkGuess();
     if (turns == 0) {
-      Alerts alerts = new Alerts();
-      alerts.showAlertInfo("Loser", "You are Loserrr");
+      Alert alert = new Alert(AlertType.INFORMATION);
+      alert.setContentText("You are loser");
+      alert.setTitle("Lose");
+      alert.show();
       turns = 3;
     }
     if (word.equals(guess.getText())) {
-      Alerts alerts = new Alerts();
-      alerts.showAlertInfo("Winn", "You are winner");
+      Alert alert = new Alert(AlertType.INFORMATION);
+      alert.setContentText("You are winner");
+      alert.setTitle("Win");
+      alert.show();
       turns = 3;
     }
    }
@@ -131,6 +123,32 @@ public class EasyModeController extends Wordle{
   public void showHint() {
      hintText.setText(word0.getWordType() + "\n" + word0.getWordExplain());
    }
+
+   @FXML
+  public void handleOnClickExit() {
+     try {
+       AnchorPane component = FXMLLoader.load(getClass().getResource("/GUI/MenuGameGui.fxml"));
+       container.getChildren().clear();
+       container.getChildren().add(component);
+     } catch (IOException e) {
+       e.printStackTrace();
+     }
+   }
+  @FXML
+  private Label Box1 = new Label();
+  @FXML
+  private Label Box2 = new Label();
+  @FXML
+  private Label Box3 = new Label();
+  @FXML
+  private TextField guess;
+  @FXML
+  private Button hintBtn, checkBtn;
+  private boolean playCheck = false;
+
+  public static int turns = 3;
+  @FXML
+  private AnchorPane container;
   }
 
 

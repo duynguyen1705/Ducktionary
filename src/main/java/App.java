@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/DictionaryGui.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MenuGui.fxml"));
         stage.setTitle("Ducktionary");
         stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(new EventHandler<MouseEvent>() {

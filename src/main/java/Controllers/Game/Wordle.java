@@ -1,13 +1,11 @@
 package Controllers.Game;
 
-import Alerts.Alerts;
 import CommandlineVer.Word;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 

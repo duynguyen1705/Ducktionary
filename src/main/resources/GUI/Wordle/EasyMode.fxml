@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
+<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
    <children>
       <Button fx:id="checkBtn" layoutX="276.0" layoutY="295.0" mnemonicParsing="false" onAction="#check" text="Check" />
       <HBox alignment="CENTER" layoutX="200.0" layoutY="120.0" prefHeight="100.0" prefWidth="200.0">
@@ -44,5 +44,6 @@
       <Button layoutX="348.0" layoutY="295.0" mnemonicParsing="false" onAction="#replay" text="Play" />
       <TextArea fx:id="hintText" layoutX="8.0" layoutY="51.0" prefHeight="201.0" prefWidth="164.0" />
       <Button fx:id="hintBtn" layoutX="199.0" layoutY="295.0" mnemonicParsing="false" onAction="#showHint" text="Hint" />
+      <Button fx:id="exitBtn" layoutX="37.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
    </children>
 </AnchorPane>
