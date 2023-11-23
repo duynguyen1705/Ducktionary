@@ -1,5 +1,5 @@
 @font-face {
-    src: url("Utils\fonts\Montserrat.ttf");
+    src: url("src/main/resources/Utils/Montserrat.ttf");
 }
 .root{
      -fx-background-color: 	#0b1e33;

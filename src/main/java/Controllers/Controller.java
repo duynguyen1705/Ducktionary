@@ -8,14 +8,15 @@ import javafx.scene.layout.AnchorPane;
 
 public abstract class Controller implements Initializable {
 
+  @FXML
   protected AnchorPane container;
 
   @FXML
   protected void changeScene(String path) {
     try {
-      AnchorPane component = FXMLLoader.load(getClass().getResource(path));
+      AnchorPane pane = FXMLLoader.load(getClass().getResource(path));
       container.getChildren().clear();
-      container.getChildren().add(component);
+      container.getChildren().add(pane);
     } catch (IOException e) {
       e.printStackTrace();
     }

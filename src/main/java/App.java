@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,6 +17,11 @@ public class App extends Application {
         launch(args);
     }
 
+    @Override
+    public void init() throws Exception {
+        // Load the font from the file
+        Font.loadFont(getClass().getResourceAsStream("/Utils/Montserrat.ttf"), 10);
+    }
     @Override
     public void start(final Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));

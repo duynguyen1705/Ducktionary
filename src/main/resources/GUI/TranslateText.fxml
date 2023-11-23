@@ -70,7 +70,7 @@
                                </Button>
                            </children>
                        </Pane>
-                       <TextArea fx:id="sourceLangField" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" promptText="Type.." styleClass="src-speech-field" stylesheets="@../Utils/style.css" wrapText="true" />
+                       <TextArea fx:id="sourceLangField" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" promptText="Nhập văn bản ..." styleClass="src-speech-field" stylesheets="@../Utils/style.css" wrapText="true" />
                        <TextArea fx:id="toLangField" layoutX="322.0" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" styleClass="to-speech-field" stylesheets="@../Utils/style.css" wrapText="true" />
                        <Button fx:id="translateBtn" layoutX="282.0" layoutY="272.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch" />
                    </children>
