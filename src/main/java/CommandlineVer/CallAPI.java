@@ -130,9 +130,7 @@ public class CallAPI {
         word.setWordExample("No response received");
       }
     } catch (Exception e) {
-      // Handle exceptions gracefully
-      e.printStackTrace(); // Log the exception for debugging purposes
-      // Add appropriate error handling or fallback mechanism
+      e.printStackTrace(); 
     }
   }
 }
