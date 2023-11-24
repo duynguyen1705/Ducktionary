@@ -1,0 +1,45 @@
+|hello
+*động từ
+-xin chào
+|hello
+*xin chào
+-xin chào lần 2
+|hello
+*động từ
+-xin chào
+
+|hello
+*động từ
+-xin chào
+
+|buy
+*động từ
+-mua đồ
+
+|hello
+*động từ
+-xin chào
+
+|buyy
+*động từ
+-mua đồ
+
+|bye
+*động từ
+-tạm biệt
+
+|hello
+*động từ
+-xin chào
+|buy
+*động từ
+-mua đồ
+|bye
+*động từ
+-tạm biệt
+|hello
+*động từ
+-xin chào
+|buy
+*động từ
+-mua đồ
