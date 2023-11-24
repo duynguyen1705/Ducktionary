@@ -52,12 +52,12 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="guess" alignment="CENTER" layoutX="126.0" layoutY="291.0" prefHeight="55.0" prefWidth="315.0" promptText="Câu trả lời nhập ở đây ..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
+      <TextField fx:id="guess" alignment="CENTER" layoutX="126.0" layoutY="291.0" prefHeight="55.0" prefWidth="315.0" promptText="Trả lời ..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
          <font>
             <Font name="Montserrat SemiBold" size="20.0" />
          </font>
       </TextField>
-      <Button layoutX="554.0" layoutY="380.0" mnemonicParsing="false" onAction="#replay" text="Chơi" />
+      <Button layoutX="554.0" layoutY="380.0" mnemonicParsing="false" onAction="#replay" text="Chơi lại" />
       <Pane layoutX="65.0" layoutY="75.0" prefHeight="68.0" prefWidth="512.0">
          <children>
             <Button fx:id="hintBtn" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showHint" prefHeight="38.0" prefWidth="24.0" styleClass="hint-button" stylesheets="@../../Utils/style.css">
@@ -72,10 +72,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Gợi ý ở đây ..." styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
+            <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Gợi ý" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="73.0" layoutY="34.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Easy Mode" />
+      <Label alignment="CENTER" layoutX="73.0" layoutY="34.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Medium Mode" />
       <Button fx:id="exitBtn" layoutX="47.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
    </children>
 </AnchorPane>

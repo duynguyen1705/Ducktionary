@@ -104,7 +104,7 @@ public class EasyModeController extends Wordle {
       alert.show();
       turns = 3;
     }
-    if (word.equals(guess.getText())) {
+    if (word.toUpperCase().equals(guessWord.toUpperCase())) {
       Alert alert = new Alert(AlertType.INFORMATION);
       alert.setContentText("You are winner");
       alert.setTitle("Win");

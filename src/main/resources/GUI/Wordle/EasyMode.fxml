@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
    <children>
-      <Button fx:id="checkBtn" layoutX="399.0" layoutY="277.0" mnemonicParsing="false" onAction="#check" prefHeight="38.0" prefWidth="86.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Check" />
+      <Button fx:id="checkBtn" layoutX="399.0" layoutY="277.0" mnemonicParsing="false" onAction="#check" prefHeight="43.0" prefWidth="116.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Kiểm tra" />
       <HBox alignment="CENTER" layoutX="144.0" layoutY="135.0" prefHeight="130.0" prefWidth="314.0">
          <children>
             <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="a">
@@ -44,11 +44,11 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="guess" alignment="CENTER" layoutX="144.0" layoutY="271.0" prefHeight="38.0" prefWidth="223.0" promptText="Answer here..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
+      <TextField fx:id="guess" alignment="CENTER" layoutX="144.0" layoutY="271.0" prefHeight="38.0" prefWidth="223.0" promptText="Trả lời ..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
          <font>
             <Font name="Montserrat SemiBold" size="20.0" />
          </font></TextField>
-      <Button layoutX="534.0" layoutY="360.0" mnemonicParsing="false" onAction="#replay" text="Play" />
+      <Button layoutX="534.0" layoutY="360.0" mnemonicParsing="false" onAction="#replay" text="Chơi lại" />
       <Pane layoutX="45.0" layoutY="55.0" prefHeight="68.0" prefWidth="512.0">
          <children>
             <Button fx:id="hintBtn" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showHint" prefHeight="38.0" prefWidth="24.0" styleClass="hint-button" stylesheets="@../../Utils/style.css">
@@ -63,10 +63,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Your hint will be shown here" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
+            <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Gợi ý" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
          </children>
       </Pane>
       <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Easy Mode" />
-      <Button fx:id="exitBtn" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Exit" />
+      <Button fx:id="exitBtn" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
    </children>
 </AnchorPane>

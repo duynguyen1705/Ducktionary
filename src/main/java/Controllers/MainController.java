@@ -18,7 +18,7 @@ public abstract class MainController extends Controller implements Initializable
 
     menuBtn.setOnAction(e -> changeScene("/GUI/Menu.fxml"));
 
-    gameBtn.setOnAction(e -> changeScene("/GUI/MenuGame.fxml"));
+    gameBtn.setOnAction(e -> changeScene("/GUI/WordleGuide.fxml"));
     closeBtn.setOnMouseClicked(e -> {
       System.exit(0);
     });

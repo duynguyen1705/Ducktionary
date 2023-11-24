@@ -15,6 +15,7 @@ public class MenuGameController extends MainController {
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
+
     easyBtn.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
