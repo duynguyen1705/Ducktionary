@@ -42,6 +42,7 @@
 }
 
 .home-header {
+    -fx-text-fill: #ffffff;
     -fx-font-size: 35px;
     -fx-font-family: "Montserrat SemiBold";
 }

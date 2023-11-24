@@ -24,7 +24,7 @@
       <TextArea fx:id="result" layoutX="233.0" layoutY="300.0" prefHeight="200.0" prefWidth="433.0" />
       <ImageView fitHeight="107.0" fitWidth="107.0" layoutX="385.0" layoutY="29.0">
          <image>
-            <Image url="@../Utils/images/ducktionlogo.png" />
+            <Image url="@../Utils/ducktionlogo.png" />
          </image>
       </ImageView>
       <HBox alignment="CENTER" layoutX="301.0" layoutY="217.0" prefHeight="20.0" prefWidth="275.0">
