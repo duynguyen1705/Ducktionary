@@ -22,7 +22,8 @@ import javafx.scene.layout.AnchorPane;
 public class HardModeController extends Wordle{
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
+    path = "D:\\Year_2\\BTL_OOP\\Ducktionary\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
+//    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt"; -> chay tren may Duy Nguyen
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Chế độ khó");
     alert.setHeaderText("khó");
@@ -111,6 +112,14 @@ public class HardModeController extends Wordle{
     }
   }
 
+  @Override
+  protected void showHint() {
+    word0 = CallAPI.lookup(word);
+    if (word0 == null)
+      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
+    else
+      hintText.setText(word0.getWordExplain());
+  }
 
   @FXML @Override
   public void check() {

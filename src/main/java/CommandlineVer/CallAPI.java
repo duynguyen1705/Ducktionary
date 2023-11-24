@@ -24,22 +24,28 @@ public class CallAPI {
   }
 
   public static Word lookup(String text) {
+
     String wordTarget = "";
     String wordType = "";
     String wordExplain = "";
 
     HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
-        .header("content-type", "application/json")
-        .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
-        .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-        .body("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]")
-        .asString();
+            .header("content-type", "application/json")
+            .header("X-RapidAPI-Key", "ceea9bf779mshdf99b2304bc6e47p120ad2jsn89f22c1d4cbc")
+            .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
+            .body("[{\"Text\": \"" + text + "\"}]")
+            .asString();
+
+
+
 //    return response.getBody();
 
-    if (response.getStatus() == 200) { // Kiểm tra xem yêu cầu đã thành công hay không
+    if (response.getStatus() == 200) {// Kiểm tra xem yêu cầu đã thành công hay không
+      System.out.println(response.getBody());
       String jsonData = response.getBody();
-      System.out.println("response" + jsonData);
+      System.out.println("response" + response);
       if (jsonData == null) {
+        System.out.println("Vailzzz");
         return null;
       }
       JSONArray jsonArray = new JSONArray(response.getBody());
@@ -74,6 +80,7 @@ public class CallAPI {
 
   public static void example(Word word) {
     try {
+      System.out.println(word);
       HttpResponse<String> response = Unirest.post(
                       "https://microsoft-translator-text.p.rapidapi.com/Dictionary/Examples?to=vi&from=en&api-version=3.0")
               .header("content-type", "application/json")
@@ -82,9 +89,8 @@ public class CallAPI {
               .body("[{\"Text\": \"" + word.getWordTarget() + "\", \"Translation\": \"" + word.getWordExplain() + "\"}]")
               .asString();
 
-      System.out.println(response);
       String responseBody = response.getBody();
-
+      System.out.println(responseBody);
 
       if (responseBody != null && !responseBody.isEmpty()) {
         JSONArray jsonArray = new JSONArray(responseBody);
@@ -116,7 +122,7 @@ public class CallAPI {
           for (String s : list) {
             tmp.append(s).append("\n");
           }
-
+          System.out.println(tmp.toString());
           word.setWordExample(tmp.toString());
         } else {
           word.setWordExample("No examples found");
