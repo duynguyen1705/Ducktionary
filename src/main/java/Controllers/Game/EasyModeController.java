@@ -1,12 +1,13 @@
 package Controllers.Game;
 
 
-import CommandlineVer.CallAPI;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,9 +16,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 
-public class EasyModeController extends Wordle{
-
-
+public class EasyModeController extends Wordle {
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\3Char.txt";
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Chế độ dễ");
+    alert.setHeaderText("Dễ");
+    alert.setContentText("Ở chế độ này, bạn cần đoán 1 từ có 3 chữ cái. \n Bạn có 3 lượt đoán.");
+    alert.show();
+    generate(path);
+    word = word.toUpperCase();
+  }
 
   @Override
   protected void generate(String path) {
@@ -45,6 +55,8 @@ public class EasyModeController extends Wordle{
   protected void checkGuess() {
 
     guessWord = guess.getText();
+    guessWord = guessWord.toUpperCase();
+    resetBox();
     if (guessWord.length() != 3) {
       Alert alert = new Alert(AlertType.WARNING);
       alert.setTitle("Cảnh báo");
@@ -102,9 +114,12 @@ public class EasyModeController extends Wordle{
    }
    @FXML @Override
   public void replay() {
-    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\3Char.txt";
     generate(path);
     turns = 3;
+     resetBox();
+   }
+
+   private void resetBox() {
      Box1.setText("");
      Box2.setText("");
      Box3.setText("");

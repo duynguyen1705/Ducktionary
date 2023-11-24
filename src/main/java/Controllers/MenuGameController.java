@@ -11,7 +11,7 @@ import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
 
 
-public class MenuGameController extends Controller implements Initializable {
+public class MenuGameController extends MainController {
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {

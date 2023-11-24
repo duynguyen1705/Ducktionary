@@ -1,26 +1,33 @@
 package Controllers.Game;
 
 
-import CommandlineVer.CallAPI;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 
-public class MediumModeController extends Wordle{
+public class MediumModeController extends Wordle {
 
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\4Char.txt";
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Chế độ trung bình");
+    alert.setHeaderText("Trung bình");
+    alert.setContentText("Ở chế độ này, bạn cần đoán 1 từ có 4 chữ cái. \n Bạn có 4 lượt đoán.");
+    alert.show();
+    generate(path);
+    word = word.toUpperCase();
+  }
   @Override
   protected void generate(String path) {
     try {
@@ -47,6 +54,8 @@ public class MediumModeController extends Wordle{
   protected void checkGuess() {
 
     guessWord = guess.getText();
+    guessWord = guessWord.toUpperCase();
+    resetBox();
     if (guessWord.length() != 4) {
       Alert alert = new Alert(AlertType.WARNING);
       alert.setTitle("Cảnh báo");
@@ -114,6 +123,11 @@ public class MediumModeController extends Wordle{
     path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\4Char.txt";
     generate(path);
     turns = 4;
+    resetBox();
+  }
+
+  @FXML
+  private void resetBox() {
     Box1.setText("");
     Box2.setText("");
     Box3.setText("");

@@ -20,6 +20,17 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class HardModeController extends Wordle{
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Chế độ khó");
+    alert.setHeaderText("khó");
+    alert.setContentText("Ở chế độ này, bạn cần đoán 1 từ có 5 chữ cái. \n Bạn có 5 lượt đoán.");
+    alert.show();
+    generate(path);
+    word = word.toUpperCase();
+  }
 
   @Override
   protected void generate(String path) {
@@ -45,9 +56,10 @@ public class HardModeController extends Wordle{
 
   @Override
   protected void checkGuess() {
-//    System.out.println(guessWord);
-//    System.out.println(word);
+
     guessWord = guess.getText();
+    guessWord = guessWord.toUpperCase();
+    resetBox();
     if (guessWord.length() != 5) {
       Alert alert = new Alert(AlertType.WARNING);
       alert.setTitle("Cảnh báo");
@@ -123,6 +135,10 @@ public class HardModeController extends Wordle{
     path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
     generate(path);
     turns = 5;
+  }
+
+  @FXML
+  private void resetBox() {
     Box1.setText("");
     Box2.setText("");
     Box3.setText("");
@@ -157,8 +173,7 @@ public class HardModeController extends Wordle{
   String word = "proud";
 
   private static int turns = 5;
-  @FXML
-  private AnchorPane container;
+
 
 }
 

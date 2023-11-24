@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 
-public class AdderController extends Controller implements Initializable{
+public class AdderController extends MainController {
 
 
     @Override

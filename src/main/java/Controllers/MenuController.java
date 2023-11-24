@@ -16,7 +16,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
-public class MenuController extends Controller implements Initializable {
+public class MenuController extends MainController {
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {

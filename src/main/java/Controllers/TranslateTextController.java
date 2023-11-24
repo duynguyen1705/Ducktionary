@@ -16,7 +16,7 @@ import javafx.util.Duration;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
-public class TranslateTextController extends Controller implements Initializable {
+public class TranslateTextController extends MainController {
 
 
     @Override

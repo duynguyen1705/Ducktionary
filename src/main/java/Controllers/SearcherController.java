@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class SearcherController extends Controller implements Initializable {
+public class SearcherController extends MainController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
