@@ -166,8 +166,8 @@
       <Pane layoutX="224.0" layoutY="290.0" prefHeight="290.0" prefWidth="510.0" styleClass="home_result_bar" stylesheets="@../Utils/style.css">
          <children>
             <Label fx:id="wordName" layoutX="14.0" prefHeight="38.0" prefWidth="224.0" styleClass="home_word_name" stylesheets="@../Utils/style.css" text="Word_name" />
-            <Label layoutX="14.0" layoutY="38.0" styleClass="home_word_type" stylesheets="@../Utils/style.css" text="Word_type" />
-            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="69.0" prefHeight="205.0" prefWidth="472.0" styleClass="home_example_bar" text="Examples" />
+            <Label fx:id="wordType" layoutX="14.0" layoutY="38.0" styleClass="home_word_type" stylesheets="@../Utils/style.css" text="Word_type" />
+            <Label fx:id="wordExample" alignment="TOP_LEFT" layoutX="14.0" layoutY="69.0" prefHeight="205.0" prefWidth="472.0" styleClass="home_example_bar" text="Examples" />
          </children>
       </Pane>
    </children>

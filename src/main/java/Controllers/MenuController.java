@@ -27,10 +27,11 @@ public class MenuController extends MainController {
       }
     });
     SearchBtn.setOnAction(e -> {
-      Word word = CallAPI.lookup(SearchBox.getText().trim());
+      Word word = CallAPI.lookup(SearchBox.getText());
       if (word == null)
         wordName.setText("từ không tồn tại");
       else {
+        System.out.println("word type: " + word.getWordType());
         wordName.setText(word.getWordTarget());
         wordType.setText(word.getWordType());
         wordExample.setText(word.getWordExample());
