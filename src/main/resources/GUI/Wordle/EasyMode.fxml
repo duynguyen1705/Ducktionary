@@ -13,10 +13,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
+<AnchorPane fx:id="container" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Game.EasyModeController">
    <children>
-      <Button fx:id="checkBtn" layoutX="399.0" layoutY="277.0" mnemonicParsing="false" onAction="#check" prefHeight="43.0" prefWidth="116.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Kiểm tra" />
-      <HBox alignment="CENTER" layoutX="144.0" layoutY="135.0" prefHeight="130.0" prefWidth="314.0">
+      <Button fx:id="checkBtn" layoutX="540.0" layoutY="384.0" mnemonicParsing="false" onAction="#check" prefHeight="43.0" prefWidth="116.0" styleClass="check-button" stylesheets="@../../Utils/style.css" text="Kiểm tra" />
+      <HBox alignment="CENTER" layoutX="285.0" layoutY="235.0" prefHeight="130.0" prefWidth="314.0">
          <children>
             <Label fx:id="Box1" alignment="CENTER" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="D">
                <font>
@@ -44,12 +44,12 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="guess" alignment="CENTER" layoutX="144.0" layoutY="271.0" prefHeight="38.0" prefWidth="223.0" promptText="Trả lời ..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
+      <TextField fx:id="guess" alignment="CENTER" layoutX="285.0" layoutY="378.0" prefHeight="38.0" prefWidth="223.0" promptText="Trả lời ..." styleClass="answer-field" stylesheets="@../../Utils/style.css">
          <font>
             <Font name="Montserrat SemiBold" size="20.0" />
          </font></TextField>
-      <Button layoutX="534.0" layoutY="360.0" mnemonicParsing="false" onAction="#replay" text="Chơi lại" />
-      <Pane layoutX="45.0" layoutY="55.0" prefHeight="68.0" prefWidth="512.0">
+      <Button layoutX="675.0" layoutY="467.0" mnemonicParsing="false" onAction="#replay" text="Chơi lại" />
+      <Pane layoutX="186.0" layoutY="133.0" prefHeight="68.0" prefWidth="512.0">
          <children>
             <Button fx:id="hintBtn" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showHint" prefHeight="38.0" prefWidth="24.0" styleClass="hint-button" stylesheets="@../../Utils/style.css">
                <tooltip>
@@ -66,7 +66,7 @@
             <TextArea fx:id="hintText" layoutX="68.0" layoutY="8.0" prefHeight="46.0" prefWidth="440.0" promptText="Gợi ý" styleClass="hint-bar" stylesheets="@../../Utils/style.css" />
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Easy Mode" />
-      <Button fx:id="exitBtn" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
+      <Label alignment="CENTER" layoutX="202.0" layoutY="35.0" prefHeight="18.0" prefWidth="496.0" styleClass="home-header" stylesheets="@../../Utils/style.css" text="Easy Mode" />
+      <Button fx:id="exitBtn" layoutX="168.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleOnClickExit" text="Thoát" />
    </children>
 </AnchorPane>

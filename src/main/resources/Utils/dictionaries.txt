@@ -1,7 +1,3 @@
-|hello
-*noun
-#chào
-hello, how are you
 |fly
 *VERB
 #bay
@@ -20,4 +16,21 @@ I'm going to teach you to fly. (Tao dạy chúng mày bay!)
 I will fly with you. (Tôi sẽ bay cùng anh.)
 They are added on the fly by the plugin. (Chúng được gửi vào bay do plugin.)
 Can't fly in rain. (Không thể bay trong mưa.)
-
+|think
+*VERB
+#nghĩ rằng
+I think not much. (Tôi nghĩ rằng không nhiều.)
+If you think it was good, tell me! (Nếu bạn nghĩ rằng nó là tốt, cho tôi biết!)
+Do you think that would be enough? (Bạn có nghĩ rằng sẽ là đủ?)
+I think it's great. (Tôi nghĩ rằng nó rất tuyệt.)
+Do you think this is true? (Bạn có nghĩ rằng điều này là đúng?)
+I think you're spot on. (Tôi nghĩ rằng bạn đang tại chỗ trên.)
+Do you think that you always succeed? (Bạn nghĩ rằng bạn luôn thành công?)
+I think it is going to be a good year! (Tôi nghĩ rằng đó là có được một năm tốt!)
+Think you're the best rider? (nghĩ rằng người kỵ sĩ của bạn tốt nhất?)
+I think some people think otherwise. (Tôi nghĩ rằng một số người nghĩ khác.)
+I think it's cool. (Tôi nghĩ rằng nó mát mẻ.)
+I think this video stands alone. (Tôi nghĩ rằng video này đứng một mình.)
+Think that's what you need? (Cô nghĩ rằng đó là điều cô cần sao?)
+They think they are ninjas. (họ nghĩ rằng họ là ninja.)
+I think this article was written for me. (Tôi nghĩ rằng bài này được viết cho tôi.)

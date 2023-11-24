@@ -112,15 +112,6 @@ public class HardModeController extends Wordle{
     }
   }
 
-  @Override
-  protected void showHint() {
-    word0 = CallAPI.lookup(word);
-    if (word0 == null)
-      hintText.setText("Từ này rất dễ, không có gợi ý đâu");
-    else
-      hintText.setText(word0.getWordExplain());
-  }
-
   @FXML @Override
   public void check() {
     checkGuess();

@@ -30,14 +30,14 @@ public class MenuController extends MainController {
       }
     });
     SearchBtn.setOnAction(e -> {
-      Word word = CallAPI.lookup(SearchBox.getText());
+      Word word = CallAPI.lookup(SearchBox.getText().trim());
       if (word == null)
-        result.setText("Từ không tồn tại");
+        result.setText("từ không tồn tại");
       else {
         result.setText(word.toString());
         dictionaryManagement.insertFromFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
-        dictionary.add(word);
-        dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
+//        dictionary.add(word);
+//        dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
       }
     });
     handleActionChangeScene();

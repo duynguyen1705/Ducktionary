@@ -58,7 +58,7 @@ public abstract class Wordle extends Controller {
     if (word0 == null)
       hintText.setText("Từ này rất dễ, không có gợi ý đâu");
     else
-      hintText.setText(word0.getWordExample());
+      hintText.setText(word0.getWordExplain());
   }
   protected abstract void checkGuess();
   protected abstract void check();

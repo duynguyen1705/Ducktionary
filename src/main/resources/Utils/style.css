@@ -318,7 +318,7 @@
     -fx-border-style: 10;
     -fx-border-radius: 8;
     -fx-font-size: 15;
-    -fx-pref-height: 15;
+    -fx-pref-height: 50;
     -fx-font-family: "Montserrat SemiBold";
     -fx-text-alignment: "center";
 }

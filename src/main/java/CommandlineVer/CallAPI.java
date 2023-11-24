@@ -29,16 +29,14 @@ public class CallAPI {
     String wordType = "";
     String wordExplain = "";
 
-    HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
-            .header("content-type", "application/json")
-            .header("X-RapidAPI-Key", "ceea9bf779mshdf99b2304bc6e47p120ad2jsn89f22c1d4cbc")
-            .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-            .body("[{\"Text\": \"" + text + "\"}]")
-            .asString();
+    HttpResponse<String> response = Unirest.post(
+            "https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
+        .header("content-type", "application/json")
+        .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
+        .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
+        .body("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]")
+        .asString();
 
-
-
-//    return response.getBody();
 
     if (response.getStatus() == 200) {// Kiểm tra xem yêu cầu đã thành công hay không
       System.out.println(response.getBody());
@@ -71,28 +69,28 @@ public class CallAPI {
       System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.getStatus());
     }
     Word newWord = new Word(wordTarget, wordExplain);
+
     example(newWord);
+
     wordExplain = "*" + wordType + "\n" + "#" + wordExplain + "\n" + newWord.getWordExample();
     newWord.setWordExplain(wordExplain);
     return newWord;
   }
 
-
   public static void example(Word word) {
     try {
       System.out.println(word);
-      HttpResponse<String> response = Unirest.post(
-                      "https://microsoft-translator-text.p.rapidapi.com/Dictionary/Examples?to=vi&from=en&api-version=3.0")
-              .header("content-type", "application/json")
-              .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
-              .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-              .body("[{\"Text\": \"" + word.getWordTarget() + "\", \"Translation\": \"" + word.getWordExplain() + "\"}]")
-              .asString();
+      HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Examples?to=vi&from=en&api-version=3.0")
+          .header("content-type", "application/json")
+          .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
+          .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
+          .body("[\r\n    {\r\n        \"Text\": \"" + word.getWordTarget() + "\",\r\n        \"Translation\": \"" + word.getWordExplain() +"\"\r\n    }\r\n]")
+          .asString();
 
       String responseBody = response.getBody();
       System.out.println(responseBody);
-
-      if (responseBody != null && !responseBody.isEmpty()) {
+      System.out.println(response.getBody())  ;
+      if (responseBody != null) {
         JSONArray jsonArray = new JSONArray(responseBody);
         System.out.println(jsonArray);
 
@@ -128,8 +126,7 @@ public class CallAPI {
           word.setWordExample("No examples found");
         }
       } else {
-        // Handle the case where the response body is null or empty
-        // It could indicate an issue with the API request or no data received
+        System.out.println("response null");
         word.setWordExample("No response received");
       }
     } catch (Exception e) {
@@ -138,11 +135,5 @@ public class CallAPI {
       // Add appropriate error handling or fallback mechanism
     }
   }
-
-
-
-
-
-
 }
 
