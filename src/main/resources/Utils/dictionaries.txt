@@ -34,3 +34,7 @@ I think this video stands alone. (Tôi nghĩ rằng video này đứng một mì
 Think that's what you need? (Cô nghĩ rằng đó là điều cô cần sao?)
 They think they are ninjas. (họ nghĩ rằng họ là ninja.)
 I think this article was written for me. (Tôi nghĩ rằng bài này được viết cho tôi.)
+|help
+*VERB
+#Giúp đỡ
+Can you help me with the code? (Bạn có thể giúp tôi làm cái code này không?)

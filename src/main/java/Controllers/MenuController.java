@@ -9,10 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
@@ -32,9 +29,11 @@ public class MenuController extends MainController {
     SearchBtn.setOnAction(e -> {
       Word word = CallAPI.lookup(SearchBox.getText().trim());
       if (word == null)
-        result.setText("từ không tồn tại");
+        wordName.setText("từ không tồn tại");
       else {
-        result.setText(word.toString());
+        wordName.setText(word.getWordTarget());
+        wordType.setText(word.getWordType());
+        wordExample.setText(word.getWordExample());
         dictionaryManagement.insertFromFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
 //        dictionary.add(word);
 //        dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
@@ -48,10 +47,14 @@ public class MenuController extends MainController {
 
   @FXML
   private TextField SearchBox;
-
   @FXML
   private Button SearchBtn;
   @FXML
   private TextArea result;
-
+  @FXML
+  private Label wordName;
+  @FXML
+  private Label wordType;
+  @FXML
+  private Label wordExample;
 }
