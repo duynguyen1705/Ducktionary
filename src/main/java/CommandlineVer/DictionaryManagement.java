@@ -10,12 +10,13 @@ import javafx.collections.ObservableList;
 
 public class DictionaryManagement {
     private BinaryTree trie = new BinaryTree();
-    public void insertFromCommandline(ArrayList<Word> dictionary) {
+    // Use with basic Dictionary
+    public void insertFromCommandline(Dictionary dictionary) {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Input word you want to add: ");
         String wordTarget = sc.nextLine();
-
+        wordTarget = wordTarget.toLowerCase();
         System.out.println("Input type of *"  + wordTarget.trim() + " :");
         String wordType = sc.nextLine();
 
@@ -26,6 +27,10 @@ public class DictionaryManagement {
         newWord.setWordTarget(wordTarget);
         newWord.setWordType(wordType);
         newWord.setWordExplain(wordExplain);
+
+        System.out.println(newWord.getWordTarget());
+        System.out.println(newWord.getWordType());
+        System.out.println(newWord.getWordExplain());
 
         dictionary.add(newWord);
         System.out.println(wordTarget + " is added in Ducktionary!");
@@ -76,13 +81,12 @@ public class DictionaryManagement {
         }
     }
 
-    public void dictionaryExportToFile(ArrayList<Word> dictionary, String path) {
+    public void dictionaryExportToFile(Dictionary dictionary, String path) {
         try {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Word word : dictionary) {
-                System.out.println(word.getWordExplain());
-                bufferedWriter.write("|" + word.getWordTarget() + "\n" + word.getWordExplain() + "\n");
+                bufferedWriter.write("|" + word.getWordTarget() + "\n" + "*" + word.getWordType() + "\n" + "-" + word.getWordExplain() + "\n");
             }
             bufferedWriter.close();
             System.out.println("Ductionary notification - Export to file successfully!");
@@ -91,7 +95,7 @@ public class DictionaryManagement {
         }
     }
 
-    public int searchWord(ArrayList<Word> dictionary, String word) {
+    public int searchWord(Dictionary dictionary, String word) {
         try {
             dictionary.sort(new sortWord());
             int begin = 0;
@@ -114,13 +118,17 @@ public class DictionaryManagement {
         return -9;
     }
 
-    public void dictionaryLookup() {
+    public void dictionaryLookup(Dictionary dictionary) {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input word you want to lookup: ");
             String word = scanner.nextLine();
             System.out.println("The result: ");
-            System.out.println(CallAPI.lookup(word));
+            for (Word w : dictionary) {
+                if (w.getWordTarget().startsWith(word)) {
+                    System.out.println(w.getWordTarget());
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -141,7 +149,7 @@ public class DictionaryManagement {
             System.out.println("Null Exception.");
         }
     }
-    public void updateWord(ArrayList<Word> dictionary, String path) {
+    public void updateWord(Dictionary dictionary, String path) {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input word you want to update: ");
@@ -170,31 +178,30 @@ public class DictionaryManagement {
         }
     }
 
-    public void addWord(ArrayList<Word> dictionary, String path) {
+    public void addWord(Dictionary dictionary, String path) {
         try (FileWriter fileWriter = new FileWriter(path, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input word you want to add: ");
             String wordTarget = scanner.nextLine();
+            wordTarget = wordTarget.toLowerCase();
 
-            System.out.println("Input word type of *" + wordTarget + ": (if don't, please type 'null')");
+            System.out.println("Input word type of *" + wordTarget + ": ");
             String wordType = scanner.nextLine();
 
             System.out.println("Input meaning of *" + wordTarget + ": ");
             String meaning = scanner.nextLine();
 
             Word newWord = new Word();
-            newWord.setWordTarget(wordTarget);
-            newWord.setWordType(wordType);
-            newWord.setWordExplain(meaning);
+            newWord.setWordTarget(wordTarget.trim());
+            newWord.setWordType(wordType.trim());
+            newWord.setWordExplain(meaning.trim());
             dictionary.add(newWord);
             bufferedWriter.write("|" + newWord.getWordTarget() + "\n");
 
-            bufferedWriter.write(newWord.getWordType());
-            bufferedWriter.newLine();
+            bufferedWriter.write("*" + newWord.getWordType() + "\n");
 
-            bufferedWriter.write(newWord.getWordExplain());
-            bufferedWriter.newLine();
+            bufferedWriter.write("-" + newWord.getWordExplain() + "\n");
 
             System.out.println(wordTarget + " is added in Ducktionary");
         } catch (IOException e) {
@@ -230,7 +237,7 @@ public class DictionaryManagement {
             System.out.println("Error: " + e);
         }
     }
-    public void removeWord(ArrayList<Word> dictionary) {
+    public void removeWord(Dictionary dictionary, String path) {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input word you remove: ");
@@ -238,8 +245,8 @@ public class DictionaryManagement {
             String word= scanner.nextLine();
             int index = searchWord(dictionary, word);
             dictionary.remove(index);
-
             System.out.println(word + " is removed from Ducktionary");
+            dictionaryExportToFile(dictionary, path);
         } catch (NullPointerException e){
             System.out.println("Null");
         }
