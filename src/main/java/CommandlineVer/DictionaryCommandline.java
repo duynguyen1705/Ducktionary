@@ -9,19 +9,20 @@ public class DictionaryCommandline {
     private static Dictionary dictionary = new Dictionary();
     public void showAllWord() {
         System.out.println("DUCKTIONARY\n----------------------------");
-        System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "WORD TYPE", "VIETNAMESE");
+        System.out.printf("%-3s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "VIETNAMESE");
         for (int i = 0; i < dictionary.size(); i++) {
-            String format = "%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n";
+            String format = "%-3s\t|\t%-15s\t|\t%-15s";
             String no = Integer.toString(i + 1);
             String english = dictionary.get(i).getWordTarget();
-            String wordType = dictionary.get(i).getWordType();
+            //String wordType = dictionary.get(i).getWordType();
             String vietnamese = dictionary.get(i).getWordExplain();
-            System.out.printf(format, no, english, wordType, vietnamese);
+            System.out.printf(format, no, english, vietnamese);
+            System.out.println("\n");
         }
     }
     public static void dictionaryAdvanced(ArrayList<Word> dictionary) {
-        String pathInput = "src/main/resources/dictionaries.txt";
-        final String pathOutput = "src/main/resources/dictionariesOutput.txt";
+        String pathInput = "src/main/resources/Utils/dictionaries.txt";
+        final String pathOutput = "src/main/resources/Utils/dictionariesOutput.txt";
         while(true) {
             System.out.println("\n----------------------------");
             System.out.println("Welcome to Ducktionary!");
@@ -77,7 +78,6 @@ public class DictionaryCommandline {
                     break;
                 case 2:
                     management.removeWord(dictionary);
-                    //DictionaryManagement.insertFromCommandline(Dictionary.dictionary);
                     break;
                 case 3:
                     management.updateWord(dictionary, pathOutput);
@@ -94,8 +94,8 @@ public class DictionaryCommandline {
                     Scanner sc = new Scanner(System.in);
                     String word = sc.nextLine();
                     int index = management.searchWord(dictionary, word);
-                    System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "WORD TYPE", "VIETNAMESE");
-                    System.out.printf("%-3s\t|\t%-15s\t|\t%-15s\t|\t%-15s%n", index + 1, dictionary.get(index).getWordTarget(), dictionary.get(index).getWordType(), dictionary.get(index).getWordExplain());
+                    System.out.printf("%-3s\t|\t%-15s\t|\t%-15s%n", "NO", "ENGLISH", "WORD_EXPLAIN");
+                    System.out.printf("%-3s\t|\t%-15s\t|\t%-15s%n", index + 1, dictionary.get(index).getWordTarget(), dictionary.get(index).getWordExplain());
                     break;
                 case 7:
                     playGame(dictionary);
@@ -124,7 +124,7 @@ public class DictionaryCommandline {
     }
 
     public static void playGame(ArrayList<Word> dictionary) {
-        String pathInput = "src/main/resources/dictionaries.txt";
+        String pathInput = "src/main/resources/Utils/dictionaries.txt";
         management.insertFromFile(dictionary, pathInput);
         Wordle wordle = new Wordle();
         Scanner scan = new Scanner(System.in);

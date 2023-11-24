@@ -28,17 +28,18 @@ public class DictionaryManagement {
         newWord.setWordExplain(wordExplain);
 
         dictionary.add(newWord);
-        System.out.println(wordTarget + "is added in Ducktionary");
+        System.out.println(wordTarget + " is added in Ducktionary!");
     }
 
-    public ObservableList<String> lookupWord(Dictionary dictionary, String key ) {
+    public ObservableList<String> lookupWord(Dictionary dictionary, String key) {
         ObservableList<String> list = FXCollections.observableArrayList();
         try {
             setTrie(dictionary);
             List<String> results = trie.autoComplete(key);
             if (results != null) {
                 int length = Math.min(results.size(), 15);
-                for (int i = 0; i < length; i++) list.add(results.get(i));
+                for (int i = 0; i < length; i++)
+                    list.add(results.get(i));
             }
         } catch (Exception e) {
             System.out.println("Something went wrong: " + e);
@@ -50,17 +51,18 @@ public class DictionaryManagement {
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String englishWord = bufferedReader.readLine();
-            englishWord = englishWord.replace("|", "");
+
+            String newWordTarget = bufferedReader.readLine();
+            newWordTarget = newWordTarget.replace("|", "");
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Word word = new Word();
-                word.setWordTarget(englishWord.trim());
+                word.setWordTarget(newWordTarget.trim());
                 String meaning = line + "\n";
                 while ((line = bufferedReader.readLine()) != null)
                     if (!line.startsWith("|")) meaning += line + "\n";
                     else {
-                        englishWord = line.replace("|", "");
+                        newWordTarget = line.replace("|", "");
                         break;
                     }
                 word.setWordExplain(meaning.trim());
@@ -68,9 +70,9 @@ public class DictionaryManagement {
             }
             bufferedReader.close();
         } catch (IOException e) {
-            System.out.println("An error occur with file: " + e);
+            System.out.println("Error when input file: " + e);
         } catch (Exception e) {
-            System.out.println("Something went wrong: " + e);
+            System.out.println("Error: " + e);
         }
     }
 
@@ -80,11 +82,10 @@ public class DictionaryManagement {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Word word : dictionary) {
                 System.out.println(word.getWordExplain());
-                bufferedWriter.write("|" + word.getWordTarget() + "\n"
-                + word.getWordExplain() + "\n");
+                bufferedWriter.write("|" + word.getWordTarget() + "\n" + word.getWordExplain() + "\n");
             }
             bufferedWriter.close();
-            System.out.println("Export to file successfully!");
+            System.out.println("Ductionary notification - Export to file successfully!");
         } catch (Exception error) {
             System.out.println("Error: " + error);
         }
@@ -110,7 +111,7 @@ public class DictionaryManagement {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        return -1;
+        return -9;
     }
 
     public void dictionaryLookup() {
@@ -188,9 +189,10 @@ public class DictionaryManagement {
             newWord.setWordExplain(meaning);
             dictionary.add(newWord);
             bufferedWriter.write("|" + newWord.getWordTarget() + "\n");
-            if(!newWord.getWordType().isEmpty()) {
-                bufferedWriter.write("*" + newWord.getWordType() + "\n");
-            }
+
+            bufferedWriter.write(newWord.getWordType());
+            bufferedWriter.newLine();
+
             bufferedWriter.write(newWord.getWordExplain());
             bufferedWriter.newLine();
 
@@ -225,7 +227,7 @@ public class DictionaryManagement {
         try {
             for (Word word : dictionary) trie.insert(word.getWordTarget());
         } catch (NullPointerException e) {
-            System.out.println("Something went wrong: " + e);
+            System.out.println("Error: " + e);
         }
     }
     public void removeWord(ArrayList<Word> dictionary) {
