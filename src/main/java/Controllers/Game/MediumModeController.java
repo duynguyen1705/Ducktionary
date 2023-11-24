@@ -110,7 +110,7 @@ public class MediumModeController extends Wordle {
       alert.show();
       turns = 4;
     }
-    if (word.equals(guess.getText())) {
+    if (word.toUpperCase().equals(guessWord.toUpperCase())) {
       Alert alert = new Alert(AlertType.INFORMATION);
       alert.setContentText("You are winner");
       alert.setTitle("Win");

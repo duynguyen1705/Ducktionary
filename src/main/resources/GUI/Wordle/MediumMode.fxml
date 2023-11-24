@@ -42,7 +42,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Box31" alignment="CENTER" layoutX="218.0" layoutY="23.0" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="I">
+            <Label fx:id="Box4" alignment="CENTER" layoutX="218.0" layoutY="23.0" prefHeight="75.0" prefWidth="55.0" styleClass="letter-box" stylesheets="@../../Utils/style.css" text="I">
                <font>
                   <Font size="60.0" />
                </font>
