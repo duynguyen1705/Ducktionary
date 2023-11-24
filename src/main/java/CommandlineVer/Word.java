@@ -5,7 +5,6 @@ public class Word {
     private String wordTarget;
     private String wordExplain;
     private String wordType;
-
     private String wordExample;
 
 
@@ -25,8 +24,6 @@ public class Word {
         this.wordTarget = wordTarget;
         this.wordExplain = wordExplain;
     }
-
-
 
     public Word( String wordTarget, String wordType, String wordExplain) {
         this.wordTarget = wordTarget;
@@ -70,7 +67,6 @@ public class Word {
 
     @Override
     public String toString() {
-        return wordTarget + "\n"
-                + wordExplain;
+        return wordTarget + "\n" + wordExplain;
     }
 }
