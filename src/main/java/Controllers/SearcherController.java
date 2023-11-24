@@ -81,8 +81,10 @@ public class SearcherController extends MainController {
             indexOfSelectedWord = dictionaryManagement.searchWord(dictionary, selectedWord);
             if (indexOfSelectedWord == -1) return;
             Word word = dictionary.get(indexOfSelectedWord);
-            englishWord.setText(word.getWordTarget());
-            explanation.setText(word.getWordType() + "\n" + word.getWordExplain() + "\n" + word.getWordExample());
+            System.out.println("type:" + word.getWordType());
+            System.out.println("example: " + word.getWordExplain());
+            searcherWordName.setText(word.getWordTarget());
+            searcherWordExample.setText(word.getWordExplain());
             headerOfExplanation.setVisible(true);
             explanation.setVisible(true);
             explanation.setEditable(false);
@@ -175,8 +177,8 @@ public class SearcherController extends MainController {
 
         }
         listResults.setItems(list);
-        englishWord.setText(dictionary.get(index).getWordTarget());
-        explanation.setText(dictionary.get(index).getWordExplain());
+        searcherWordName.setText(dictionary.get(index).getWordTarget());
+        searcherWordExample.setText(dictionary.get(index).getWordExplain());
     }
 
     @FXML
@@ -196,6 +198,12 @@ public class SearcherController extends MainController {
 
     @FXML
     private Pane headerOfExplanation;
+
+    @FXML
+    private Label searcherWordName;
+
+    @FXML
+    private Label searcherWordExample;
 
     @FXML
     public AnchorPane container;

@@ -24,7 +24,7 @@
                     <children>
                         <Pane layoutX="7.0" prefHeight="562.0" prefWidth="490.0" styleClass="definition-wrapper" stylesheets="@../Utils/style.css">
                             <children>
-                                <TextArea fx:id="explanation" layoutX="3.0" layoutY="52.0" prefHeight="504.0" prefWidth="483.0" styleClass="explanation-field" text="Explain" wrapText="true" />
+                                <TextArea fx:id="explanation" layoutX="3.0" layoutY="52.0" prefHeight="504.0" prefWidth="483.0" styleClass="explanation-field" wrapText="true" />
                                 <Pane layoutX="3.0" layoutY="52.0" opacity="0.74" prefHeight="2.0" prefWidth="483.0" styleClass="explanation-menu" stylesheets="@../Utils/style.css" />
                                 <Pane fx:id="headerOfExplanation" layoutX="1.0" layoutY="-1.0" prefHeight="45.0" prefWidth="488.0" styleClass="result-bar" stylesheets="@../Utils/style.css">
                                     <children>
@@ -102,6 +102,8 @@
                                     </ImageView>
                                 </graphic>
                             </Label>
+                        <Label fx:id="searcherWordName" layoutX="14.0" layoutY="90.0" styleClass="home_word_name" stylesheets="@../Utils/style.css" text="Word name" />
+                        <Label fx:id="searcherWordExample" alignment="TOP_LEFT" layoutX="14.0" layoutY="126.0" prefHeight="417.0" prefWidth="462.0" styleClass="home_example_bar" stylesheets="@../Utils/style.css" text="Label" />
                             </children>
                         </Pane>
                     </children>

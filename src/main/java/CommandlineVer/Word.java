@@ -20,9 +20,9 @@ public class Word {
         this.wordExplain = wordExplain;
         this.wordType = wordType;
     }
-    public Word(String wordTarget, String wordExplain) {
+    public Word(String wordTarget, String wordType) {
         this.wordTarget = wordTarget;
-        this.wordExplain = wordExplain;
+        this.wordType = wordType;
     }
 
     public Word( String wordTarget, String wordType, String wordExplain) {
