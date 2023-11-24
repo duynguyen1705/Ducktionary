@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 import org.json.*;
 
 public class CallAPI {
@@ -12,8 +13,8 @@ public class CallAPI {
     if (from != "")
       from = "from=" + from + "&";
     HttpResponse<String> response = Unirest.post(
-            "https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=vi" + to
-                + "%3CREQUIRED%3E&api-version=3.0&" + from + "profanityAction=NoAction&textType=plain")
+            "https://microsoft-translator-text.p.rapidapi.com/translate?to=" + to
+                + "%3CREQUIRED%3E&api-version=3.0" + from + "profanityAction=NoAction&textType=plain")
         .header("content-type", "application/json")
         .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
         .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
@@ -24,58 +25,47 @@ public class CallAPI {
   }
 
   public static Word lookup(String text) {
-
     String wordTarget = "";
     String wordType = "";
     String wordExplain = "";
 
-    HttpResponse<String> response = Unirest.post(
-            "https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
-        .header("content-type", "application/json")
-        .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
-        .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-        .body("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]")
-        .asString();
+    try {
+      HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
+              .header("content-type", "application/json")
+              .header("X-RapidAPI-Key", "ceea9bf779mshdf99b2304bc6e47p120ad2jsn89f22c1d4cbc")
+              .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
+              .body("[\r {\r\"Text\": \"" + text + "\"\r}\r]")
+              .asString();
 
+      int statusCode = response.getStatus();
+      if (statusCode == 200) {
+        JSONObject jsonResponse = new JSONObject(response.getBody());
+        JSONArray translations = jsonResponse.getJSONArray("translations");
 
-    if (response.getStatus() == 200) {// Kiểm tra xem yêu cầu đã thành công hay không
-      System.out.println(response.getBody());
-      String jsonData = response.getBody();
-      System.out.println("response" + response);
-      if (jsonData == null) {
-        System.out.println("Vailzzz");
-        return null;
-      }
-      JSONArray jsonArray = new JSONArray(response.getBody());
-      JSONObject obj = jsonArray.getJSONObject(0);
-      String normalizedSource = obj.getString("normalizedSource");
-      JSONArray translations = obj.getJSONArray("translations");
-
-      JSONObject subObj = translations.getJSONObject(0);
-
-      wordTarget += obj.getString("normalizedSource");
-      wordType += subObj.getString("posTag");
-
-      for (int i = 0; i < translations.length(); i++) {
-        JSONObject jsonObj = translations.getJSONObject(i);
-        if (jsonObj.getString("normalizedTarget") != wordTarget) {
-          wordExplain += subObj.getString("normalizedTarget");
-          break;
+        if (translations.length() > 0) {
+          JSONObject translationObj = translations.getJSONObject(0);
+          wordTarget = jsonResponse.getString("normalizedSource");
+          wordType = translationObj.getString("posTag");
+          wordExplain = translationObj.getString("normalizedTarget");
         }
+      } else {
+        System.out.println("Yêu cầu không thành công. Mã trạng thái: " + statusCode);
       }
-
-    } else {
-      // Xử lý lỗi hoặc thông báo khi yêu cầu không thành công
-      System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.getStatus());
+    } catch (UnirestException | JSONException e) {
+      System.out.println("Exception occurred: " + e.getMessage());
     }
-    Word newWord = new Word(wordTarget, wordExplain);
 
+    System.out.println("wordType: " + wordType);
+    System.out.println("wordExplain: " + wordExplain);
+
+    Word newWord = new Word(wordTarget, wordType, wordExplain);
     example(newWord);
 
     wordExplain = "*" + wordType + "\n" + "#" + wordExplain + "\n" + newWord.getWordExample();
     newWord.setWordExplain(wordExplain);
     return newWord;
   }
+
 
   public static void example(Word word) {
     try {
