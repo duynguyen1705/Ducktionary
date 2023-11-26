@@ -242,7 +242,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/icons/icons8-home-48.png" />
+                        <Image url="@../../../../../../BTL_OOP/Ducktionary/Ducktionary/src/main/resources/Utils/games.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />
