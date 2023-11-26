@@ -26,7 +26,7 @@ public class    App extends Application {
     public void start(final Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
         stage.setTitle("Ducktionary");
-        stage.initStyle(StageStyle.TRANSPARENT);
+        
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
