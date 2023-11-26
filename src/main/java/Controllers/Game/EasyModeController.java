@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 public class EasyModeController extends Wordle {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\3Char.txt";
+    path = "src\\main\\resources\\Utils\\3Char.txt";
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Chế độ dễ");
     alert.setHeaderText("Dễ");
@@ -94,8 +94,8 @@ public class EasyModeController extends Wordle {
   }
 
 
-   @FXML @Override
-   public void check() {
+  @FXML @Override
+  public void check() {
     checkGuess();
     if (turns == 0) {
       Alert alert = new Alert(AlertType.INFORMATION);
@@ -111,26 +111,26 @@ public class EasyModeController extends Wordle {
       alert.show();
       turns = 3;
     }
-   }
-   @FXML @Override
+  }
+  @FXML @Override
   public void replay() {
     generate(path);
     turns = 3;
-     resetBox();
-   }
+    resetBox();
+  }
 
-   private void resetBox() {
-     Box1.setText("");
-     Box2.setText("");
-     Box3.setText("");
-     Box1.setStyle("-fx-border-color: #000000");
-     Box2.setStyle("-fx-border-color: #000000");
-     Box3.setStyle("-fx-border-color: #000000");
-     Box1.setStyle("-fx-background-color: #ffffff;");
-     Box2.setStyle("-fx-background-color: #ffffff;");
-     Box3.setStyle("-fx-background-color: #ffffff;");
-     guess.setText("");
-   }
+  private void resetBox() {
+    Box1.setText("");
+    Box2.setText("");
+    Box3.setText("");
+    Box1.setStyle("-fx-border-color: #000000");
+    Box2.setStyle("-fx-border-color: #000000");
+    Box3.setStyle("-fx-border-color: #000000");
+    Box1.setStyle("-fx-background-color: #ffffff;");
+    Box2.setStyle("-fx-background-color: #ffffff;");
+    Box3.setStyle("-fx-background-color: #ffffff;");
+    guess.setText("");
+  }
 
 
   @FXML
@@ -144,9 +144,5 @@ public class EasyModeController extends Wordle {
   @FXML
   public Button hintBtn, checkBtn, exitBtn;
 
-  public static int turns = 3;
 
 }
-
-
-

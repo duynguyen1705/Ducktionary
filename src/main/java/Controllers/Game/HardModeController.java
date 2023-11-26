@@ -22,6 +22,8 @@ import javafx.scene.layout.AnchorPane;
 public class HardModeController extends Wordle{
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
+    turns = 5;
+
     path = "src\\main\\resources\\Utils\\5Char.txt";
 //    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt"; -> chay tren may Duy Nguyen
     Alert alert = new Alert(AlertType.INFORMATION);
@@ -33,27 +35,7 @@ public class HardModeController extends Wordle{
     word = word.toUpperCase();
   }
 
-  @Override
-  protected void generate(String path) {
-    try {
-      FileReader fileReader = new FileReader(path);
-      BufferedReader bufferedReader = new BufferedReader(fileReader);
-      List<String> list = new ArrayList<>();
-      String line;
-      while((line = bufferedReader.readLine()) != null) {
-        list.add(line.trim());
-      }
-      word = list.get((int)(Math.random()*list.size()));
-      System.out.println(word);
-      turns = 5;
-    }
-    catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+
 
   @Override
   protected void checkGuess() {
@@ -172,7 +154,6 @@ public class HardModeController extends Wordle{
 
   String word = "proud";
 
-  private static int turns = 5;
 
 
 }

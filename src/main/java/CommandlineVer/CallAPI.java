@@ -15,23 +15,21 @@ public class CallAPI {
 
   public static String translate(String text, String from, String to) {
     try {
-      if (from != "")
-        from = "from=" + from + "&";
       HttpRequest request = HttpRequest.newBuilder()
-              .uri(URI.create("https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=%3CREQUIRED%3E&api-version=3.0&profanityAction=NoAction&textType=plain"))
+              .uri(URI.create("https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=" + to + "&api-version=3.0&profanityAction=NoAction&textType=plain"))
               .header("content-type", "application/json")
               .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
               .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-              .method("POST", HttpRequest.BodyPublishers.ofString("[\r\n    {\r\n        \"Text\": \"I would really like to drive your car around the block a few times.\"\r\n    }\r\n]"))
+              .method("POST", HttpRequest.BodyPublishers.ofString("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]"))
               .build();
       HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
       System.out.println(response.body());
-      return response.body();
+      return response.body().substring(76, response.body().length() - 15);
     }
     catch (InterruptedException | IOException e) {
       e.printStackTrace();
     }
-    return "";
+    return "Không thể dịch";
   }
 
   public static Word lookup(String text) throws IOException, InterruptedException {
@@ -69,6 +67,17 @@ public class CallAPI {
       wordTarget += obj.getString("normalizedSource");
       wordType += subObj.getString("posTag");
 
+      if (wordType.equals("NOUN")) {
+          wordType = "danh từ";
+      } else if (wordType.equals("VERB")) {
+          wordType = "động từ";
+      } else if (wordType.equals("ADJECTIVE")) {
+          wordType = "tính từ";
+      } else if (wordType.equals("ADVERB")) {
+          wordType = "trạng từ";
+      } else {
+          wordType = "khác";
+      }
       for (int i = 0; i < translations.length(); i++) {
         JSONObject jsonObj = translations.getJSONObject(i);
         if (jsonObj.getString("normalizedTarget") != wordTarget) {

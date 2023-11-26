@@ -7,20 +7,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
 public abstract class Wordle extends Controller {
-   int turns;
+  int turns;
   String word;
   String guessWord;
   Word word0;
@@ -56,10 +50,10 @@ public abstract class Wordle extends Controller {
   @FXML
   protected void showHint() throws IOException, InterruptedException {
     word0 = CallAPI.lookup(word);
-    if (word0 == null)
+    if (word0.getWordExplain() == null)
       hintText.setText("Từ này rất dễ, không có gợi ý đâu");
     else
-      hintText.setText(word0.getWordExplain());
+      hintText.setText(word0.getWordExplain() + "\n" + word0.getWordType());
   }
   protected abstract void checkGuess();
   protected abstract void check();

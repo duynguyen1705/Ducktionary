@@ -19,7 +19,10 @@ public class MediumModeController extends Wordle {
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\4Char.txt";
+
+    turns = 4;
+
+    path = "src\\main\\resources\\Utils\\4Char.txt";
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Chế độ trung bình");
     alert.setHeaderText("Trung bình");
@@ -27,27 +30,6 @@ public class MediumModeController extends Wordle {
     alert.show();
     generate(path);
     word = word.toUpperCase();
-  }
-  @Override
-  protected void generate(String path) {
-    try {
-      FileReader fileReader = new FileReader(path);
-      BufferedReader bufferedReader = new BufferedReader(fileReader);
-      List<String> list = new ArrayList<>();
-      String line;
-      while((line = bufferedReader.readLine()) != null) {
-        list.add(line.trim());
-      }
-      word = list.get((int)(Math.random()*list.size()));
-      System.out.println(word);
-      turns = 4;
-    }
-    catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   @Override
@@ -154,8 +136,6 @@ public class MediumModeController extends Wordle {
   private Label Box4 = new Label();
   @FXML
   private TextField guess;
-
-  String word = "love";
 
 }
 

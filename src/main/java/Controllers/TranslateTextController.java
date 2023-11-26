@@ -3,6 +3,8 @@ package Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import CommandlineVer.CallAPI;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,15 +23,7 @@ public class TranslateTextController extends MainController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        translateBtn.setOnAction(e -> {
-                try {
-                    handleOnClickTranslateBtn();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
 
-        );
         handleActionChangeScene();
 
         sourceLangField.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -42,22 +36,14 @@ public class TranslateTextController extends MainController {
 
         translateBtn.setDisable(true);
         toLangField.setEditable(false);
+        translateBtn.setOnAction(e -> {
+            System.out.println("hello");
+            String fromText = sourceLangField.getText();
+            String text = CallAPI.translate(fromText, "", toLanguage);
+            toLangField.setText(text);
+        });
     }
 
-    @FXML
-    private void handleOnClickTranslateBtn() throws IOException {
-        String fromText = sourceLangField.getText();
-        HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=" + toLanguage +"&api-version=3.0&profanityAction=NoAction&textType=plain")
-            .header("content-type", "application/json")
-            .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
-            .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-            .body("[\r\n    {\r\n        \"Text\": \"" + fromText + "\"\r\n    }\r\n]")
-            .asString();
-
-        String text = response.getBody().substring(76, response.getBody().length()-15);
-        toLangField.setText(text);
-
-    }
 
     @FXML
     private void handleOnClickSwitchToggle() {

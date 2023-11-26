@@ -69,18 +69,11 @@ public class AdderController extends MainController {
                 selectionAlert.setContentText("Thay thế hoặc bổ sung nghĩa cho từ này");
                 selectionAlert.getButtonTypes().clear();
                 ButtonType replaceBtn = new ButtonType("Thay thế");
-                ButtonType insertBtn = new ButtonType("Bổ sung");
-                selectionAlert.getButtonTypes().addAll(replaceBtn, insertBtn, ButtonType.CANCEL);
+                selectionAlert.getButtonTypes().addAll(replaceBtn,  ButtonType.CANCEL);
                 Optional<ButtonType> selection = selectionAlert.showAndWait();
 
                 if (selection.get() == replaceBtn) {
                     dictionary.get(indexOfWord).setWordExplain(meaning);
-                    dictionaryManagement.dictionaryExportToFile(dictionary, path);
-                    showSuccessAlert();
-                }
-                if (selection.get() == insertBtn) {
-                    String oldMeaning = dictionary.get(indexOfWord).getWordExplain();
-                    dictionary.get(indexOfWord).setWordExplain(oldMeaning + "\n= " + meaning);
                     dictionaryManagement.dictionaryExportToFile(dictionary, path);
                     showSuccessAlert();
                 }

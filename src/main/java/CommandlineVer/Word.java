@@ -79,7 +79,7 @@ public class Word implements Comparable <Word>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Word word = (Word) o;
-        return this.getWordTarget() == word.getWordTarget();
+        return this.getWordTarget().equals(word.getWordTarget()) ;
     }
 
     @Override

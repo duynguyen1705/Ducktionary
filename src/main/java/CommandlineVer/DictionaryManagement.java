@@ -88,6 +88,7 @@ public class DictionaryManagement {
             for (Word word : dictionary) {
                 bufferedWriter.write("|" + word.getWordTarget() + "\n" + word.getWordExplain() + "\n");
             }
+            System.out.println(dictionary.get(dictionary.size() - 1));
             bufferedWriter.close();
             System.out.println("Ductionary notification - Export to file successfully!");
         } catch (Exception error) {
