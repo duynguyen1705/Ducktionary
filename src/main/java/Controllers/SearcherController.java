@@ -46,10 +46,10 @@ public class SearcherController extends MainController {
         });
 
         cancelBtn.setOnAction(e -> {
-                searchTerm.clear();
-                notAvailableAlert.setVisible(false);
-                cancelBtn.setVisible(false);
-                setListDefault(0);
+            searchTerm.clear();
+            notAvailableAlert.setVisible(false);
+            cancelBtn.setVisible(false);
+            setListDefault(0);
         });
         handleActionChangeScene();
 
@@ -172,7 +172,7 @@ public class SearcherController extends MainController {
         list.clear();
         for (int i = index; i < Math.min(index + 15, dictionary.size()); i++) {
 
-                list.add(dictionary.get(i).getWordTarget());
+            list.add(dictionary.get(i).getWordTarget());
 
 
         }

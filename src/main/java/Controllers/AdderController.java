@@ -57,7 +57,10 @@ public class AdderController extends MainController {
         String examples = example.getText().trim();
 
         if (option.get() == ButtonType.OK) {
-            Word word = new Word(englishWord, "*" + type + "\n" + "#" + meaning + "\n" + examples);
+            meaning = "*" + type + "\n" + "-" + meaning + "\n" + examples;
+            System.out.println(meaning);
+            Word word = new Word(englishWord, meaning);
+            System.out.println(word);
             if (dictionary.contains(word)) {
                 int indexOfWord = dictionaryManagement.searchWord(dictionary, englishWord);
                 Alert selectionAlert = new Alert(Alert.AlertType.CONFIRMATION);

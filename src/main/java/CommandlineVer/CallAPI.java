@@ -1,55 +1,67 @@
 package CommandlineVer;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
-import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import okhttp3.*;
 import org.json.*;
 
 public class CallAPI {
 
   public static String translate(String text, String from, String to) {
-    if (from != "")
-      from = "from=" + from + "&";
-    HttpResponse<String> response = Unirest.post(
-                    "https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=vi" + to
-                            + "%3CREQUIRED%3E&api-version=3.0&" + from + "profanityAction=NoAction&textType=plain")
-            .header("content-type", "application/json")
-            .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
-            .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-            .body(
-                    "[\r\n    {\r\n        \"Text\": \"I would really like to drive your car around the block a few times.\"\r\n    }\r\n]")
-            .asString();
-    return response.getBody();
+    try {
+      if (from != "")
+        from = "from=" + from + "&";
+      HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=%3CREQUIRED%3E&api-version=3.0&profanityAction=NoAction&textType=plain"))
+              .header("content-type", "application/json")
+              .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
+              .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
+              .method("POST", HttpRequest.BodyPublishers.ofString("[\r\n    {\r\n        \"Text\": \"I would really like to drive your car around the block a few times.\"\r\n    }\r\n]"))
+              .build();
+      HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+      System.out.println(response.body());
+      return response.body();
+    }
+    catch (InterruptedException | IOException e) {
+      e.printStackTrace();
+    }
+    return "";
   }
 
-  public static Word lookup(String text) {
+  public static Word lookup(String text) throws IOException, InterruptedException {
 
     String wordTarget = "";
     String wordType = "";
     String wordExplain = "";
 
-    HttpResponse<String> response = Unirest.post(
-                    "https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en")
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Lookup?to=vi&api-version=3.0&from=en"))
             .header("content-type", "application/json")
             .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
             .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-            .body("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]")
-            .asString();
+            .method("POST", HttpRequest.BodyPublishers.ofString("[\r\n    {\r\n        \"Text\": \"" + text + "\"\r\n    }\r\n]"))
+            .build();
+    HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    System.out.println(response.body());
 
 
-    if (response.getStatus() == 200) {// Kiểm tra xem yêu cầu đã thành công hay không
-      System.out.println(response.getBody());
-      String jsonData = response.getBody();
+    if (response.statusCode() == 200) {// Kiểm tra xem yêu cầu đã thành công hay không
+      System.out.println(response.body());
+      String jsonData = response.body();
       System.out.println("response" + response);
       if (jsonData == null) {
         System.out.println("Vailzzz");
         return null;
       }
-      JSONArray jsonArray = new JSONArray(response.getBody());
+      JSONArray jsonArray = new JSONArray(response.body());
       System.out.println(jsonArray.getJSONObject(0));
       JSONObject obj = jsonArray.getJSONObject(0);
-      String normalizedSource = obj.getString("normalizedSource");
       JSONArray translations = obj.getJSONArray("translations");
 
       JSONObject subObj = translations.getJSONObject(0);
@@ -67,30 +79,29 @@ public class CallAPI {
 
     } else {
       // Xử lý lỗi hoặc thông báo khi yêu cầu không thành công
-      System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.getStatus());
+      System.out.println("Yêu cầu không thành công. Mã trạng thái: " + response.statusCode());
     }
     Word newWord = new Word(wordTarget, wordType, wordExplain);
 
     example(newWord);
 
-    wordExplain = "*" + wordType + "\n" + "#" + wordExplain + "\n" + newWord.getWordExample();
-    newWord.setWordExplain(wordExplain);
     return newWord;
   }
 
   public static void example(Word word) {
     try {
-      System.out.println(word);
-      HttpResponse<String> response = Unirest.post("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Examples?to=vi&from=en&api-version=3.0")
+      HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://microsoft-translator-text.p.rapidapi.com/Dictionary/Examples?to=vi&from=en&api-version=3.0"))
               .header("content-type", "application/json")
               .header("X-RapidAPI-Key", "9e99971471mshfdd0cf36e96afbap15b1dajsn192fdc524617")
               .header("X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com")
-              .body("[\r\n    {\r\n        \"Text\": \"" + word.getWordTarget() + "\",\r\n        \"Translation\": \"" + word.getWordExplain() +"\"\r\n    }\r\n]")
-              .asString();
+              .method("POST", HttpRequest.BodyPublishers.ofString("[\r\n    {\r\n        \"Text\": \"" + word.getWordTarget() + "\",\r\n        \"Translation\": \"" + word.getWordExplain() + "\"\r\n    }\r\n]"))
+              .build();
+      HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+      System.out.println(response.body());
 
-      String responseBody = response.getBody();
+      String responseBody = response.body();
       System.out.println(responseBody);
-      System.out.println(response.getBody())  ;
       if (responseBody != null) {
         JSONArray jsonArray = new JSONArray(responseBody);
         System.out.println(jsonArray);
@@ -121,7 +132,6 @@ public class CallAPI {
           for (String s : list) {
             tmp.append(s).append("\n");
           }
-          System.out.println(tmp.toString());
           word.setWordExample(tmp.toString());
         } else {
           word.setWordExample("No examples found");
@@ -130,8 +140,10 @@ public class CallAPI {
         System.out.println("response null");
         word.setWordExample("No response received");
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+    } catch (IOException e) {
+      System.out.println("IOExeption");
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
     }
   }
 }

@@ -4,6 +4,8 @@ import CommandlineVer.CallAPI;
 import CommandlineVer.Dictionary;
 import CommandlineVer.DictionaryManagement;
 import CommandlineVer.Word;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.EventHandler;
@@ -17,6 +19,7 @@ public class MenuController extends MainController {
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
+    addBtn.setDisable(true);
     SearchBox.setOnKeyTyped(new EventHandler<KeyEvent>() {
       @Override
       public void handle(KeyEvent keyEvent) {
@@ -27,17 +30,23 @@ public class MenuController extends MainController {
       }
     });
     SearchBtn.setOnAction(e -> {
-      Word word = CallAPI.lookup(SearchBox.getText());
+      try {
+        word = CallAPI.lookup(SearchBox.getText());
+      } catch (IOException ex) {
+        throw new RuntimeException(ex);
+      } catch (InterruptedException ex) {
+        throw new RuntimeException(ex);
+      }
       if (word == null)
         wordName.setText("từ không tồn tại");
       else {
         System.out.println("word type: " + word.getWordType());
         wordName.setText(word.getWordTarget());
         wordType.setText(word.getWordType());
+        wordExplain.setText(word.getWordExplain());
         wordExample.setText(word.getWordExample());
         dictionaryManagement.insertFromFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
-//        dictionary.add(word);
-//        dictionaryManagement.dictionaryExportToFile(dictionary, "src/main/resources/Utils/dictionaries.txt");
+        addBtn.setDisable(false);
       }
     });
     handleActionChangeScene();
@@ -51,11 +60,14 @@ public class MenuController extends MainController {
   @FXML
   private Button SearchBtn;
   @FXML
-  private TextArea result;
-  @FXML
   private Label wordName;
   @FXML
   private Label wordType;
   @FXML
   private Label wordExample;
+  @FXML
+  private Label wordExplain;
+  @FXML
+  private Button addBtn;
+  Word word = null;
 }

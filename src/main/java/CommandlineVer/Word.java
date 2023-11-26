@@ -1,7 +1,11 @@
 package CommandlineVer;
 
 
-public class Word {
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+public class Word implements Comparable <Word>{
     private String wordTarget;
     private String wordExplain;
     private String wordType;
@@ -20,9 +24,9 @@ public class Word {
         this.wordExplain = wordExplain;
         this.wordType = wordType;
     }
-    public Word(String wordTarget, String wordType) {
+    public Word(String wordTarget, String wordExplain) {
         this.wordTarget = wordTarget;
-        this.wordType = wordType;
+        this.wordExplain = wordExplain;
     }
 
     public Word( String wordTarget, String wordType, String wordExplain) {
@@ -68,5 +72,24 @@ public class Word {
     @Override
     public String toString() {
         return wordTarget + "\n" + wordExplain;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Word word = (Word) o;
+        return this.getWordTarget() == word.getWordTarget();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wordTarget, wordExplain, wordType, wordExample);
+    }
+
+
+    @Override
+    public int compareTo(@NotNull Word o) {
+        return this.getWordTarget().compareTo(o.getWordTarget());
     }
 }

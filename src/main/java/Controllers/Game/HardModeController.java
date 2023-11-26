@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 public class HardModeController extends Wordle{
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    path = "D:\\Year_2\\BTL_OOP\\Ducktionary\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt";
+    path = "src\\main\\resources\\Utils\\5Char.txt";
 //    path = "T:\\project\\Ducktionary\\src\\main\\resources\\Utils\\5Char.txt"; -> chay tren may Duy Nguyen
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Chế độ khó");

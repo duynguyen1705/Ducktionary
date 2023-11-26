@@ -6,6 +6,7 @@ import Controllers.Controller;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public abstract class Wordle extends Controller {
-  static int turns;
+   int turns;
   String word;
   String guessWord;
   Word word0;
@@ -53,7 +54,7 @@ public abstract class Wordle extends Controller {
     changeScene("/GUI/MenuGame.fxml");
   }
   @FXML
-  protected void showHint() {
+  protected void showHint() throws IOException, InterruptedException {
     word0 = CallAPI.lookup(word);
     if (word0 == null)
       hintText.setText("Từ này rất dễ, không có gợi ý đâu");

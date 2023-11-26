@@ -86,7 +86,7 @@ public class DictionaryManagement {
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Word word : dictionary) {
-                bufferedWriter.write("|" + word.getWordTarget() + "\n" + "*" + word.getWordType() + "\n" + "-" + word.getWordExplain() + "\n");
+                bufferedWriter.write("|" + word.getWordTarget() + "\n" + word.getWordExplain() + "\n");
             }
             bufferedWriter.close();
             System.out.println("Ductionary notification - Export to file successfully!");
