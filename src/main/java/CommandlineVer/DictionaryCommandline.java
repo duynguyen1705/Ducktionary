@@ -1,6 +1,5 @@
 package CommandlineVer;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryCommandline {
@@ -25,7 +24,7 @@ public class DictionaryCommandline {
         while(true) {
             System.out.println("\n----------------------------");
             System.out.println("Welcome to Ducktionary!");
-            final int numberFunction = 11;
+            final int numberFunction = 9;
             for (int i = 0; i < numberFunction; i++) {
                 System.out.print("[" + i + "] ");
                 switch (i) {
@@ -51,16 +50,10 @@ public class DictionaryCommandline {
                         System.out.println("Search");
                         break;
                     case 7:
-                        System.out.println("Game");
-                        break;
-                    case 8:
                         System.out.println("Import from file");
                         break;
-                    case 9:
+                    case 8:
                         System.out.println("Export to file");
-                        break;
-                    case 10:
-                        System.out.println("Translate text");
                         break;
                     default:
                         break;
@@ -99,15 +92,10 @@ public class DictionaryCommandline {
                     System.out.print(dictionary.get(index).getWordExplain());
                     break;
                 case 7:
-                    playGame(dictionary);
-                case 8:
                     management.insertFromFile(dictionary, pathInput);
                     break;
-                case 9:
+                case 8:
                     management.dictionaryExportToFile(dictionary, pathOutput);
-                    break;
-                case 10:
-                    management.translatetext();
                     break;
                 default:
                     System.out.println("Action not supported");
@@ -124,27 +112,4 @@ public class DictionaryCommandline {
         dictionaryAdvanced(dictionary);
     }
 
-    public static void playGame(ArrayList<Word> dictionary) {
-        String pathInput = "src/main/resources/Utils/dictionaries.txt";
-        management.insertFromFile(dictionary, pathInput);
-        Wordle wordle = new Wordle();
-        Scanner scan = new Scanner(System.in);
-        wordle.chooseWord();
-        int count = 5;
-        System.out.println("You have 5 hearts...");
-        while (count >= 0) {
-            System.out.println("Enter your character u guess the word has: ");
-            char temp = scan.next().charAt(0);
-            if (wordle.checkIn(temp)) {
-                wordle.print();
-            }
-            else {
-                System.out.println("You have " + --count + " choices");
-            }
-            if (wordle.checkTrue()) {
-                return;
-            }
-        }
-        System.out.println(":< so sad!! you dead!! Our word is: " + wordle.getTargetWord());
-    }
 }
