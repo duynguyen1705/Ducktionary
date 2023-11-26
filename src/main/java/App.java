@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,6 +26,8 @@ public class App extends Application {
     @Override
     public void start(final Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
+        Image image = new Image("/Utils/ducktionlogo.png");
+        stage.getIcons().add(image);
         stage.setTitle("Ducktionary");
         
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
