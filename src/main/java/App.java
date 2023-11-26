@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class    App extends Application {
+public class App extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
 
